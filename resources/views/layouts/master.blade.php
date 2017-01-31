@@ -32,16 +32,10 @@
   </head>
 
   <body>
-
     @include('layouts.partials._navigation')
-
-    @include('layouts.partials._carousel')
-    @include('layouts.partials._jumbotron')
-
-    <div class="container">
-      @yield('content')
-      @include('layouts.partials._footer')
-    </div> <!-- /container -->
+    @yield('before_container')
+    @yield('content')
+    @include('layouts.partials._footer')
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
