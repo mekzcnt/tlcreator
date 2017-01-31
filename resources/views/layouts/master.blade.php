@@ -35,7 +35,7 @@
 
     @include('layouts.partials._navigation')
 
-    @include('layouts.partials._carousel)
+    @include('layouts.partials._carousel')
     @include('layouts.partials._jumbotron')
 
     <div class="container">
