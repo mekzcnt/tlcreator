@@ -29,4 +29,4 @@ Route::get('/contact', function () {
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/feed', 'HomeController@index');
