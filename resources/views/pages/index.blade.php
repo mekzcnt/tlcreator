@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Home')
+
 @section('before_container')
   <!-- Carousel -->
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
