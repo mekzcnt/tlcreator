@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Timeline Creator</a>
+      <a class="navbar-brand" href="/">Timeline Creator</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <!-- <form class="navbar-form navbar-right">
