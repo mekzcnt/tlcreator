@@ -4,10 +4,10 @@
 
 @section('list_nav')
   @if (Auth::guest())
-      <li><a href="{{ url('/') }}">Home</a></li>
+      <li class="active"><a href="{{ url('/') }}">Home</a></li>
       <li><a href="{{ url('/about') }}">About</a></li>
       <li><a href="{{ url('/contact') }}">Contact</a></li>
-      <li class="active"><a href="{{ url('/login') }}">Login</a></li>
+      <li><a href="{{ url('/login') }}">Login</a></li>
       <li><a href="{{ url('/register') }}">Register</a></li>
   @else
       <li class="dropdown">
