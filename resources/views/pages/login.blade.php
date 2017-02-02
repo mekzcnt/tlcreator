@@ -2,6 +2,13 @@
 
 @section('title', 'Login')
 
+@section('list_nav')
+  <li><a href="/">Home</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li class="active"><a href="/login">Login</a></li>
+@endsection
+
 @section('content')
 <div class="container">
   <!-- Example row of columns -->

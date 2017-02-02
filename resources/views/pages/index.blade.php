@@ -2,6 +2,13 @@
 
 @section('title', 'Home')
 
+@section('list_nav')
+  <li class="active"><a href="/">Home</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li><a href="/login">Login</a></li>
+@endsection
+
 @section('before_container')
   <!-- Carousel -->
   <div id="myCarousel" class="carousel slide" data-ride="carousel">

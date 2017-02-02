@@ -20,10 +20,7 @@
         <button type="submit" class="btn btn-success">Sign in</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="/login">Login</a></li>
+        @yield('list_nav')
       </ul>
     </div><!--/.navbar-collapse -->
   </div>
