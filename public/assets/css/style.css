@@ -28,6 +28,10 @@ ul.nav.navbar-nav li.active a {
   background-color: #3169c6;
 }
 
+li.dropdown ul.dropdown-menu li a {
+  color: #000;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
