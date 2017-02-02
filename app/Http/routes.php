@@ -26,3 +26,7 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('pages.login');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
