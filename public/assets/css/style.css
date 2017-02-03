@@ -11,12 +11,25 @@ body {
 /* CUSTOMIZE NAVBAR
 -------------------------------------------------- */
 .navbar {
+
+}
+
+.navbar-inverse {
   background-color: #487fd9;
   color: #fff;
+  border-color: #3169c6;
 }
 
 .navbar-inverse .navbar-toggle {
   border-color: #3169c6;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  border-color: #3169c6;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+  background-color: #3169c6;
 }
 
 .navbar .navbar-header a {
