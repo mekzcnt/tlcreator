@@ -6,8 +6,9 @@
 @endsection
 
 @section('content')
-  <div class="container">
-    <h2>About</h2>
+<div class="container">
+    <h1 id="title-page" class="text-center">About</h1>
+    <hr>
     <p>About page</p>
-  </div>
+</div>
 @endsection

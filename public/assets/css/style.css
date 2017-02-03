@@ -13,7 +13,7 @@ body {
 .navbar {
   background-color: #487fd9;
   color: #fff;
-  border-bottom: 1px solid #3169c6;
+  border-bottom: 0;
   margin-bottom: 20px;
 }
 
@@ -68,4 +68,10 @@ li.dropdown ul.dropdown-menu li a {
 
 .form-signin .input-group {
   padding: 10px 0;
+}
+
+/* CUSTOMIZE PAGE
+-------------------------------------------------- */
+h1#title-page {
+  margin-bottom: 30px;
 }

@@ -11,7 +11,6 @@
 
 @section('content')
 <div class="container">
-  <!-- Example row of columns -->
   <div class="row">
     <div class="col-md-6">
       <h2>สมัครสมาชิก</h2>
