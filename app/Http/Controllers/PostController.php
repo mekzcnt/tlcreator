@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return
     }
 
     /**
@@ -82,5 +82,17 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contact()
+    {
+      $people = ['Edwin, 'Joe', 'James', 'Peter'];
+      return view('pages.contact');
+    }
+
+    public function show_post($id)
+    {
+      // return view('post')->with('id', $id);
+      return view('post', compact('id'));
     }
 }
