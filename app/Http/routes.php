@@ -34,7 +34,7 @@ Route::auth();
 Route::get('/feed', 'HomeController@index');
 
 Route::get('/create', function(){
-  $user = User:findOrFail(1);
+  $user = User::findOrFail(1);
   $user->posts()->save(new Post([
     'title'=>'My first post',
     'body'=>'I love Laravel, with Jenpasit Puprasert'
@@ -42,6 +42,6 @@ Route::get('/create', function(){
 });
 
 Route::get('/read', function(){
-  $user = User:findOrFail(1);
+  $user = User::findOrFail(1);
   dd($user->posts);
 });
