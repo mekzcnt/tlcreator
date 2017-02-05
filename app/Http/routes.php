@@ -41,7 +41,7 @@ Route::get('/create', function(){
   $user = User::findOrFail(1);
   $user->posts()->save(new Post([
     'title'=>'My first post',
-    'body'=>'I love Laravel, with Jenpasit Puprasert'
+    'description'=>'I love Laravel, with Jenpasit Puprasert'
   ]));
 });
 
