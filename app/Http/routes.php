@@ -27,9 +27,6 @@ Route::get('/login', function () {
      return view('pages.login');
 });
 
-// Route:get('/post/{id}', 'PostsController@index');
-
-Route::get('/post/{id}', 'PostsController@show_post');
 
 Route::auth();
 Route::get('/feed', 'HomeController@index');
