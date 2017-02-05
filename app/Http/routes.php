@@ -23,29 +23,16 @@ Route::get('/', function () {
 //     return view('pages.about');
 // });
 //
+// Route::get('/login', function () {
+//     return view('pages.login');
+// });
 
 // Route:get('/post/{id}', 'PostsController@index');
 
 Route::get('/contact', 'PostController@contact');
 Route::get('/post/{id}', 'PostsController@show_post');
 
-
-// Route::get('/login', function () {
-//     return view('pages.login');
-// });
-
 Route::auth();
 Route::get('/feed', 'HomeController@index');
 
-Route::get('/create', function(){
-  $user = User::findOrFail(1);
-  $user->posts()->save(new Post([
-    'title'=>'My first post',
-    'description'=>'I love Laravel, with Jenpasit Puprasert'
-  ]));
-});
-
-Route::get('/read', function(){
-  $user = User::findOrFail(1);
-  dd($user->posts);
-});
+Route::resouce('admin/users', 'AdminUserController');

@@ -90,9 +90,4 @@ class PostController extends Controller
       return view('pages.contact');
     }
 
-    public function show_post($id)
-    {
-      // return view('post')->with('id', $id);
-      return view('post', compact('id'));
-    }
 }
