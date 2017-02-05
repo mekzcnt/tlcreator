@@ -19,20 +19,19 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-// Route::get('/about', function () {
-//     return view('pages.about');
-// });
+Route::get('/about', function () {
+     return view('pages.about');
+});
 //
-// Route::get('/login', function () {
-//     return view('pages.login');
-// });
+Route::get('/login', function () {
+     return view('pages.login');
+});
 
 // Route:get('/post/{id}', 'PostsController@index');
 
-Route::get('/contact', 'PostController@contact');
 Route::get('/post/{id}', 'PostsController@show_post');
 
 Route::auth();
 Route::get('/feed', 'HomeController@index');
 
-Route::resouce('admin/users', 'AdminUserController');
+Route::resource('admin/users', 'AdminUserController');
