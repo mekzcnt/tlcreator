@@ -31,4 +31,4 @@ Route::get('/login', function () {
 Route::auth();
 Route::get('/feed', 'HomeController@index');
 
-Route::resource('admin/users', 'AdminUserController');
+Route::resource('admin/users', 'AdminUsersController');
