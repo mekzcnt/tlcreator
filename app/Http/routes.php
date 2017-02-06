@@ -27,6 +27,10 @@ Route::get('/login', function () {
      return view('pages.login');
 });
 
+Route::get('admin', function(){
+    return view('admin.index')
+});
+
 
 Route::auth();
 Route::get('/feed', 'HomeController@index');
