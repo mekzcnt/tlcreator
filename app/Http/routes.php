@@ -1,9 +1,5 @@
 <?php
 
-
-use App\Post;
-use App\User;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,37 +23,12 @@ Route::get('/login', function () {
      return view('pages.login');
 });
 
+Route::get('/admin', function(){
+    return view('admin.index');
+});
+
 
 Route::auth();
 Route::get('/feed', 'HomeController@index');
-
-Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
-
-
-
-Route::group(['middleware'=>'admin'], function(){
-
-    Route::get('/admin', function(){
-
-        return view('admin.index');
-
-
-    });
-
-
-    Route::resource('admin/users', 'AdminUsersController');
-
-    Route::resource('admin/posts', 'AdminPostsController');
-
-    Route::resource('admin/categories', 'AdminCategoriesController');
-
-    Route::resource('admin/media', 'AdminMediasController');
-
-
-    Route::resource('admin/comments', 'PostCommentsController');
-
-    Route::resource('admin/comment/replies', 'CommentRepliesController');
-
-});
 
 Route::resource('admin/users', 'AdminUsersController');
