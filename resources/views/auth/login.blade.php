@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Login')
+
 @section('list_nav')
   @if (Auth::guest())
       <li><a href="{{ url('/') }}">Home</a></li>
