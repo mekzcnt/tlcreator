@@ -88,13 +88,6 @@ class AdminUsersController extends Controller
     {
         //
 
-        $user = User::findOrFail($id);
-
-        $roles = Role::lists('name','id')->all();
-
-
-        return view('admin.users.edit', compact('user','roles'));
-
 
     }
 
@@ -109,50 +102,6 @@ class AdminUsersController extends Controller
     {
         //
 
-        $user = User::findOrFail($id);
-
-
-        if(trim($request->password) == ''){
-
-            $input = $request->except('password');
-
-        } else{
-
-
-            $input = $request->all();
-
-            $input['password'] = bcrypt($request->password);
-
-        }
-
-
-
-
-        if($file = $request->file('photo_id')){
-
-
-            $name = time() . $file->getClientOriginalName();
-
-            $file->move('images', $name);
-
-            $photo = Photo::create(['file'=>$name]);
-
-
-            $input['photo_id'] = $photo->id;
-
-
-        }
-
-
-
-        $user->update($input);
-
-
-        return redirect('/admin/users');
-
-
-
-
 
     }
 
@@ -164,24 +113,6 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
-
-        $user = User::findOrFail($id);
-
-
-        unlink(public_path() . $user->photo->file);
-
-
-        $user->delete();
-
-
-        Session::flash('deleted_user','The user has been deleted');
-
-
-        return redirect('/admin/users');
-
-
-
 
 
     }
