@@ -61,7 +61,9 @@ class AdminUsersController extends Controller
         //
         // User::create($input);
 
-
+        if($file = $request->file('photo_id')) {
+          return "photo exist";
+        }
 
         User::create($request->all());
 
