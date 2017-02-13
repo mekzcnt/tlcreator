@@ -45,12 +45,8 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-      // if(trim($request->password) == ''){
-      //     $input = $request->except('password');
-      // } else{
-      //     $input = $request->all();
-      //     $input['password'] = bcrypt($request->password);
-      // }
+
+      $input = $request->all();
 
       if($file = $request->file('photo_id')) {
           $name = time() . $file->getClientOriginalName();
@@ -60,11 +56,9 @@ class AdminUsersController extends Controller
       }
 
 
+      $input['password'] = bcrypt($request->password);
+
       User::create($input);
-
-
-      return redirect('/admin/users');
-
 
 
     }
