@@ -7,11 +7,7 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-<<<<<<< HEAD
         "laravelcollective/html": "^5.2.0"
-=======
-        "laravelcollective/html": "^5.2"
->>>>>>> 10280c77042d186c898f0c6a164845062f085eb4
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
