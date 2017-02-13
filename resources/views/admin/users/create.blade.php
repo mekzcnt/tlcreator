@@ -6,6 +6,8 @@
 
     <h1>Create Users</h1>
 
+    @include('includes.form_error')
+
      {!! Form::open(['method'=>'POST', 'action'=> 'AdminUsersController@store']) !!}
          <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
