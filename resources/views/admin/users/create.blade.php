@@ -6,7 +6,7 @@
 
     <h1>Create Users</h1>
 
-    //@include('includes.form_error')
+    
 
     @if(count($error) > 0)
       <div class="alert alert-danger">
