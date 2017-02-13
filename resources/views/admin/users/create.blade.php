@@ -6,6 +6,7 @@
 
     <h1>Create Users</h1>
 
+      @include('includes.form_error')
 
      {!! Form::open(['method'=>'POST', 'action'=> 'AdminUsersController@store']) !!}
          <div class="form-group">
@@ -39,14 +40,6 @@
          </div>
      {!! Form::close() !!}
 
-     @if(count($errors) > 0)
-       <div class="alert alert-danger">
-         <ul>
-           @foreach($errors->all() as $error)
-             <li>{{$error}}</li>
-           @endforeach
-         </ul>
-       </div>
-     @endif
+
 
  @stop
