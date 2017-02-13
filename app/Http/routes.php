@@ -35,4 +35,6 @@ Route::get('/login', function () {
 Route::auth();
 Route::get('/feed', 'HomeController@index');
 
-Route::resource('admin/users', 'AdminUsersController');
+Route::group(['middleware' => ['web']], function () {
+  Route::resource('admin/users', 'AdminUsersController');
+}
