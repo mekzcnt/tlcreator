@@ -46,18 +46,15 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
 
-      //$input = $request->all();
+      $input = $request->all();
 
-      if($request->file('photo_id')) {
-          return "Hello";
-      }
-
-
-      // $input['password'] = bcrypt($request->password);
-      //
-      // User::create($input);
-
-
+      if($file = $request->file('photo_id')) {
+              $name = time() . $file->getClientOriginalName();
+              $file->move('images', $name);
+              $photo = Photo::create(['file'=>$name]);
+              $input['photo_id'] = $photo->id;
+          }
+      
     }
 
     /**
