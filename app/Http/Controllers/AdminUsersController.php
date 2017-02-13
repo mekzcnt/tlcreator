@@ -54,7 +54,7 @@ class AdminUsersController extends Controller
               $photo = Photo::create(['file'=>$name]);
               $input['photo_id'] = $photo->id;
           }
-      
+        User::create($input);
     }
 
     /**
