@@ -6,18 +6,6 @@
 
     <h1>Create Users</h1>
 
-    
-
-    @if(count($error) > 0)
-      <div class="alert alert-danger">
-        <ul>
-          @foreach($error->all() as $error)
-            <li>{{$error}}</li>
-          @endforeach
-        </ul>
-      </div>
-    @endif
-
      {!! Form::open(['method'=>'POST', 'action'=> 'AdminUsersController@store']) !!}
          <div class="form-group">
                 {!! Form::label('name', 'Name:') !!}
