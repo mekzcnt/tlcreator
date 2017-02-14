@@ -23,9 +23,9 @@ Route::get('/contact', function () {
      return view('pages.contact');
 });
 
-Route::get('/login', function () {
-     return view('pages.login');
-});
+// Route::get('/login', function () {
+//      return view('pages.login');
+// });
 
 Route::auth();
 Route::get('/feed', 'HomeController@index');
@@ -37,5 +37,5 @@ Route::get('/admin', function(){
 Route::group(['middleware'=>'admin'], function() {
 
       Route::resource('admin/users', 'AdminUsersController');
-      
+
 });
