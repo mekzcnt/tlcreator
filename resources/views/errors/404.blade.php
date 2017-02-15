@@ -2,10 +2,8 @@
 
 @section('title', '404 Not Found')
 
-@section('list_nav')
-  <li><a href="/">Home</a></li>
-@endsection
-
 @section('content')
-  <h1>Oops! No pages available</h1>
+<div class="container">
+  <h1 id="title-page" class="text-center">Oops! No pages available</h1>
+</div>
 @stop
