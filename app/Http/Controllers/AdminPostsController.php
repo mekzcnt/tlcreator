@@ -22,9 +22,7 @@ class AdminPostsController extends Controller
     {
         //
 
-
-        $posts = Post::paginate(2);
-        return view('admin.posts.index', compact('posts','categories'));
+        return view('admin.posts.index');
 
 
     }
@@ -36,8 +34,9 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::lists('name','id')->all();
-        return view('admin.posts.create', compact('categories'));
+
+        return view('admin.posts.create');
+
     }
 
     /**
