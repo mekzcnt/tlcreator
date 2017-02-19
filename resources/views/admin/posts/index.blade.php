@@ -28,7 +28,7 @@
 
           <tr>
               <td>{{$post->id}}</td>
-              <td>{{$post->user_id}}</td>
+              <td>{{$post->user->name}}</td>
               <td>{{$post->category_id}}</td>
               <td>{{$post->photo_id}}</td>
               <td>{{$post->title}}</td>
@@ -50,7 +50,7 @@
     <div class="row">
         <div class="col-sm-6 col-sm-offset-5">
 
-            
+
 
         </div>
     </div>
