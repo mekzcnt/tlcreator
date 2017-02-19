@@ -31,10 +31,10 @@
           <tr>
               <td>{{$post->id}}</td>
               <td><img height="50" src="#" alt=""></td>
-              <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
+              <td><a href="#">{{$post->user->name}}</a></td>
               <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
               <td>{{$post->title}}</td>
-              <td>{{str_limit($post->body, 30)}}</td>
+              <td>{{str_limit($post->description, 30)}}</td>
               <td><a href="#">View Post</a></td>
               <td><a href="#">View Comments</a></td>
               <td>{{$post->created_at->diffForhumans()}}</td>
