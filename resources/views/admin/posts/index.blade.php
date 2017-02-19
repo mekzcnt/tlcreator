@@ -11,13 +11,11 @@
        <thead>
          <tr>
              <th>Id</th>
-             <th>Photo</th>
-             <th>Owner</th>
+             <th>User</th>
              <th>Category</th>
+             <th>Photo</th>
              <th>Title</th>
-             <th>body</th>
-             <th>Post link</th>
-             <th>Comments</th>
+             <th>Description</th>
              <th>Created at</th>
              <th>Update</th>
         </thead>
@@ -30,13 +28,11 @@
 
           <tr>
               <td>{{$post->id}}</td>
-              <td><img height="50" src="#" alt=""></td>
-              <td><a href="#">{{$post->user->name}}</a></td>
-              <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
+              <td>{{$post->user_id}}</td>
+              <td>{{$post->category_id}}</td>
+              <td>{{$post->photo_id}}</td>
               <td>{{$post->title}}</td>
               <td>{{str_limit($post->description, 30)}}</td>
-              <td><a href="#">View Post</a></td>
-              <td><a href="#">View Comments</a></td>
               <td>{{$post->created_at->diffForhumans()}}</td>
               <td>{{$post->updated_at->diffForhumans()}}</td>
 
