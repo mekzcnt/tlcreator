@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>Admin Panel - Timeline Creator</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/">Timeline Creator (Admin Panel)</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -170,11 +170,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="#">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="#">Upload Media</a>
                             </li>
 
                         </ul>
