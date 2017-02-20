@@ -142,7 +142,7 @@ class AdminPostsController extends Controller
     }
 
 
-    public function post($slug){
+    public function post($id){
 
 
         // $post = Post::findBySlugOrFail($slug);
@@ -152,6 +152,7 @@ class AdminPostsController extends Controller
         //
         // return view('post', compact('post','comments'));
 
+        return "It works";
 
     }
 
