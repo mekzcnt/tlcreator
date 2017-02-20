@@ -138,7 +138,7 @@
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Posts<span class="fa arrow"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.posts.index')}}">All Posts</a>
@@ -154,7 +154,7 @@
 
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Categories<span class="fa arrow"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.categories.index')}}">All Categories</a>
@@ -165,7 +165,7 @@
 
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Media<span class="fa arrow"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.media.index')}}">All Media</a>
