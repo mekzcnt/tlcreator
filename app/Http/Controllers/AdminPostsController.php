@@ -47,8 +47,6 @@ class AdminPostsController extends Controller
      */
     public function store(PostsCreateRequest $request)
     {
-
-
         $input = $request->all();
 
         $user = Auth::user();
@@ -68,7 +66,6 @@ class AdminPostsController extends Controller
         $user->posts()->create($input);
 
         return redirect('/admin/posts');
-
     }
 
     /**
@@ -90,15 +87,11 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-
-
         $post = Post::findOrFail($id);
 
         $categories = Category::lists('name','id')->all();
 
         return view('admin.posts.edit', compact('post','categories'));
-
-
     }
 
     /**
@@ -110,7 +103,6 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $input = $request->all();
 
         if($file = $request->file('photo_id')){
@@ -127,7 +119,6 @@ class AdminPostsController extends Controller
         Auth::user()->posts()->whereId($id)->first()->update($input);
 
         return redirect('/admin/posts');
-
     }
 
     /**
@@ -138,17 +129,13 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
 
-        // $post = Post::findOrFail($id);
-        //
-        // unlink(public_path() . $post->photo->file);
-        //
-        // $post->delete();
-        //
-        // return redirect('/admin/posts');
+        unlink(public_path() . $post->photo->file);
 
+        $post->delete();
 
+        return redirect('/admin/posts');
     }
 
 
