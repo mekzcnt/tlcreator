@@ -125,11 +125,8 @@ class AdminPostsController extends Controller
         }
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
-        
+
         return redirect('/admin/posts');
-
-
-
 
     }
 
