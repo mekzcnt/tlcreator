@@ -152,7 +152,7 @@ class AdminPostsController extends Controller
         //
         // return view('post', compact('post','comments'));
 
-        return "It works";
+        return view('post', compact('post'));
 
     }
 
