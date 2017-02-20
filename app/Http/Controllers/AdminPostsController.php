@@ -131,7 +131,10 @@ class AdminPostsController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        unlink(public_path() . $post->photo->file);
+        // Check if the post has a photo:
+        if(isset($post->photo->file)) {
+          unlink(public_path() . $post->photo->file);
+        }
 
         $post->delete();
 
