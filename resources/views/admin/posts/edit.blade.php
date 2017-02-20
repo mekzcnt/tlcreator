@@ -9,24 +9,18 @@
 
 
     <h1>Edit Post</h1>
-    
 
     <div class="row">
 
         <div class="col-sm-3">
 
-
             <img src="{{$post->photo->file}}" alt="" class="img-responsive">
-            
-            
-            </div>
 
+        </div>
 
 
         <div class="col-sm-9">
-        
-        
-        
+
         {!! Form::model($post, ['method'=>'PATCH', 'action'=> ['AdminPostsController@update', $post->id], 'files'=>true]) !!}
 
         <div class="form-group">
@@ -47,8 +41,8 @@
 
 
         <div class="form-group">
-            {!! Form::label('body', 'Description:') !!}
-            {!! Form::textarea('body', null, ['class'=>'form-control'])!!}
+            {!! Form::label('description', 'Description:') !!}
+            {!! Form::textarea('description', null, ['class'=>'form-control'])!!}
         </div>
 
 
