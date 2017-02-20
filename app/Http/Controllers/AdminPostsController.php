@@ -154,7 +154,7 @@ class AdminPostsController extends Controller
 
         $post = Post::findOrFail($id);
 
-        return view('post', compact('post'));
+        return view('timeline-post', compact('timeline-post'));
 
     }
 
