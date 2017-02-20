@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '{{$post->title}}')
+@section('title', '$post->title')
 
 @section('before_container')
 @endsection
