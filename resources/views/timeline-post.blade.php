@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '$post->title')
+@section('title', '')
 
 @section('before_container')
 @endsection
@@ -8,7 +8,13 @@
 @section('content')
 <div class="container">
     <h1 id="title-page" class="">{{$post->title}}</h1>
+    <p class="lead">
+        Created by <a href="#">{{$post->user->name}}</a> |
+        <span class="glyphicon glyphicon-time">{{$post->created_at->diffForHumans()}}</span>
+    </p>
     <hr>
-    <p>Timeline Post page</p>
+    <img class="img-responsive" src="{{$post->photo->file}}" alt="">
+    <br>
+    <p>{{$post->description}}</p>
 </div>
 @endsection
