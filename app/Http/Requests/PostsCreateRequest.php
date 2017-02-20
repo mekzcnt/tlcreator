@@ -13,7 +13,7 @@ class PostsCreateRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class PostsCreateRequest extends Request
     public function rules()
     {
         return [
-            //
+            'category_id'   =>  'required',
+            'photo_id'      =>  'required',
+            'title'         =>  'required',
+            'description'   =>  'required',
         ];
     }
 }
