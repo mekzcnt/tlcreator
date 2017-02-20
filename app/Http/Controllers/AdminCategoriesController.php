@@ -39,8 +39,6 @@ class AdminCategoriesController extends Controller
         //
 
         Category::create($request->all());
-
-
         return redirect('/admin/categories');
 
 
