@@ -119,11 +119,11 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="/admin"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a>
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Users<span class="fa arrow"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.users.index')}}">All Users</a>
