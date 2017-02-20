@@ -22,9 +22,7 @@ class AdminPostsController extends Controller
     {
 
         $posts = Post::all();
-
         return view('admin.posts.index', compact('posts'));
-
 
     }
 
@@ -36,7 +34,8 @@ class AdminPostsController extends Controller
     public function create()
     {
 
-        return view('admin.posts.create');
+      $categories = Category::lists('name','id')->all();
+      return view('admin.posts.create', compact('categories'));
 
     }
 
@@ -65,7 +64,7 @@ class AdminPostsController extends Controller
 
             // return "It works";
         }
-        
+
         $user->posts()->create($input);
 
         return redirect('/admin/posts');
