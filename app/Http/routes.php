@@ -31,7 +31,7 @@ Route::auth();
 
 Route::get('/feed', 'HomeController@index');
 
-Route::get('/timeline/{id}', 'AdminPostsController@index');
+Route::get('/timeline/{id}', 'AdminPostsController@post');
 
 Route::group(['middleware'=>'admin'], function() {
 
