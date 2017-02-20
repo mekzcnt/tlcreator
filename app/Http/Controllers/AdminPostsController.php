@@ -48,15 +48,13 @@ class AdminPostsController extends Controller
      */
     public function store(PostsCreateRequest $request)
     {
-        //
 
-        // $input = $request->all();
-        //
-        //
-        // $user = Auth::user();
-        //
-        //
-        // if($file = $request->file('photo_id')){
+
+        $input = $request->all();
+
+        $user = Auth::user();
+
+        if($file = $request->file('photo_id')){
         //
         //
         //     $name = time() . $file->getClientOriginalName();
@@ -70,14 +68,16 @@ class AdminPostsController extends Controller
         //     $input['photo_id'] = $photo->id;
         //
         //
-        // }
+            return "It works";
+        }
         //
         //
         // $user->posts()->create($input);
         //
         //
         // return redirect('/admin/posts');
-        return $request->all();
+
+        $user->posts;
 
 
 
