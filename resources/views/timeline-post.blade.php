@@ -14,6 +14,7 @@
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}}</span>
     </p>
     <hr>
+    <p><strong>Description :</strong></p>
     <p>{{$post->description}}</p>
 </div>
 @endsection
