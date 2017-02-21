@@ -14,7 +14,7 @@
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}}</span>
     </p>
     <hr>
-    <p class="text-center"><img src="https://f.ptcdn.info/652/016/000/1394692365-updatetime-o.jpg"></p><br>
+    <p class="text-center"><img class="img-responsive" src="https://f.ptcdn.info/652/016/000/1394692365-updatetime-o.jpg"></p><br>
     <p><strong>Description :</strong></p>
     <p>{{$post->description}}</p>
 </div>
