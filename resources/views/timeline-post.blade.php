@@ -2,6 +2,14 @@
 
 @section('title', '')
 
+@section('code_head')
+    <meta property="og:url"          content="ใส่ด้วยอย่าลืม" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:title"        content="{{$post->title}}" />
+    <meta property="og:description"  content="{{$post->description}}" />
+    <meta property="og:image"        content="{{$post->photo->file}}" />
+@endsection
+
 @section('before_container')
 @endsection
 

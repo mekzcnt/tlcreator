@@ -36,7 +36,7 @@ Route::get('/timeline/{id}', 'AdminPostsController@post');
 Route::group(['middleware'=>'admin'], function() {
 
     Route::get('/admin', function(){
-        return view('admin.index');
+      return view('admin.index');
     });
 
     Route::resource('admin/users', 'AdminUsersController');
@@ -44,4 +44,7 @@ Route::group(['middleware'=>'admin'], function() {
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/media', 'AdminMediasController');
 
+    Route::resource('admin/comments', 'PostCommentsController');
+    Route::resource('admin/comments/replies', 'PostRepliesController');
+    
 });
