@@ -25,7 +25,7 @@
            <td><a href="{{route('feed.timeline',$comment->post->id)}}">View Post</a></td>
         </tr>
       @endforeach
-
+      </tbody>
   </table>
     @else
       <h1 class="text-center">No Comments</h1>
