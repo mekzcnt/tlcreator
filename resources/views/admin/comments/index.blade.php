@@ -15,8 +15,8 @@
         </tr>
       </thead>
 
-      @foreach($comments as $comment)
       <tbody>
+        @foreach($comments as $comment)
         <tr>
            <td>{{$comment->id}}</td>
            <td>{{$comment->author}}</td>
@@ -24,7 +24,7 @@
            <td>{{$comment->body}}</td>
            <td><a href="{{route('feed.timeline',$comment->post->id)}}">View Post</a></td>
         </tr>
-      @endforeach
+        @endforeach
       </tbody>
   </table>
     @else
