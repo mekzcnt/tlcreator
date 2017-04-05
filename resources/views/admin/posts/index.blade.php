@@ -15,7 +15,8 @@
              <th>User</th>
              <th>Category</th>
              <th>Title</th>
-             <!-- <th>Description</th> -->
+             <th>Post link</th>
+             <th>Comments</th>
              <th>Created at</th>
              <th>Update</th>
         </thead>
@@ -32,7 +33,8 @@
               <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
               <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
               <td>{{$post->title}}</td>
-              <!-- <td>{{str_limit($post->description, 30)}}</td> -->
+              <td><a href="{{route('feed.timeline', $post->slug)}}">View Post</a></td>
+              <td><a href="{{route('admin.comments.show', $post->id)}}">View Comments</a></td>
               <td>{{$post->created_at->diffForhumans()}}</td>
               <td>{{$post->updated_at->diffForhumans()}}</td>
 
