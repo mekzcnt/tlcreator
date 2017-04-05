@@ -42,8 +42,9 @@
     @include('layouts.partials._navigation')
     @yield('before_container')
     @yield('content')
-    @include('layouts.partials._footer')
     @yield('comment')
+    @include('layouts.partials._footer')
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
