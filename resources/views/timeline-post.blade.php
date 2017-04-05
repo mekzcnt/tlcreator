@@ -33,6 +33,8 @@
   @if(Session::has('comment_message'))
     {{session('comment_message')}}
   @endif
+
+  @if(Auth::check())
   <!-- Comments Form -->
   <div class="well">
       <h4>Leave a Comment:</h4>
@@ -51,7 +53,8 @@
            </div>
       {!! Form::close() !!}
   </div>
-
+  @endif
+  
   <hr>
 
   <!-- Posted Comments -->
