@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.layouts.master')
 
 @section('title', '')
 
@@ -60,7 +60,6 @@
   <!-- Posted Comments -->
 
   @if(count($comments) > 0)
-
           @foreach($comments as $comment)
           <!-- Comment -->
           <div class="media">
@@ -77,4 +76,4 @@
           @endforeach
   @endif
 
-@stop
+@endsection
