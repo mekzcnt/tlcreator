@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class PostCommentsController extends Controller
 {
@@ -36,7 +39,19 @@ class PostCommentsController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $user = Auth::user();
+
+        $data = [
+          'post_id' => $request->post_id,
+          'author' => $user->name,
+          'email' => $user->email,
+          'file' => $user->photo->file,
+          'body' => $request->body
+        ];
+
+        Comment::create($request->all());
+        $request->session()->flash('comment_message', 'Your message has been submitted and is waiting moderation');
+        return redirect()->back();
     }
 
     /**

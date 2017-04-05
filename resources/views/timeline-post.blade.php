@@ -29,11 +29,17 @@
 @endsection
 
 @section('comment')
+
+@if(Session::has('comment_message'))
+  {{session('comment_message')}}
+@endif
 <!-- Comments Form -->
 <div class="well">
     <h4>Leave a Comment:</h4>
 
     {!! Form::open(['method'=>'POST', 'action'=> 'PostCommentsController@store']) !!}
+
+        <input type="hidden" name="post_id" value="{{$post->id}}">
 
          <div class="form-group">
              {!! Form::label('body', 'Comments:') !!}
