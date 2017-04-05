@@ -22,7 +22,7 @@
            <td>{{$comment->author}}</td>
            <td>{{$comment->email}}</td>
            <td>{{$comment->body}}</td>
-           <td><a href="{{route('feed.post',$comment->post->id)}}">View Post</a></td>
+           <td><a href="{{route('feed.timeline',$comment->post->id)}}">View Post</a></td>
         </tr>
       @endforeach
 
