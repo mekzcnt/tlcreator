@@ -3,27 +3,32 @@
 
 @section('content')
 
-<h1>Comments</h1>
-<table class="table">
-   <thead>
-     <tr>
-        <th>ID</th>
-        <th>Author</th>
-        <th>Email</th>
-        <th>Body</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-         <td>John</td>
-         <td>Doe</td>
-         <td>john@example.com</td>
-      </tr>
-      <tr>
-         <td>Mary</td>
-         <td>Moe</td>
-         <td>marry@example.com</td>
-      </tr>
-    </tbody>
-</table>
+  @if(count($comments) > 0)
+  <h1>Comments</h1>
+  <table class="table">
+     <thead>
+       <tr>
+          <th>ID</th>
+          <th>Author</th>
+          <th>Email</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+
+      @foreach($comments as $comment)
+      <tbody>
+        <tr>
+           <td>{{$comment->id}}</td>
+           <td>{{$comment->author}}</td>
+           <td>{{$comment->email}}</td>
+           <td>{{$comment->body}}</td>
+           <td><a href="{{route('home.post',$comment->post->id)}}">View Post</a></td>
+        </tr>
+      @endforeach
+
+  </table>
+    @else
+      <h1 class="text-center">No Comments</h1>
+  @endif
+
 @endsection
