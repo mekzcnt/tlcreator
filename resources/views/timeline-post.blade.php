@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+
     <img class="img-responsive" src="{{$post->photo->file}}" alt=""><br>
     <h1 class="">{{$post->title}}</h1>
     <p class="lead">
@@ -25,7 +25,7 @@
     <p class="text-center"><img class="img-responsive" src="https://f.ptcdn.info/652/016/000/1394692365-updatetime-o.jpg"></p><br>
     <p><strong>Description :</strong></p>
     <p>{{$post->description}}</p>
-</div>
+
 @endsection
 
 @section('comment')
@@ -36,7 +36,7 @@
 
   @if(Auth::check())
   <!-- Comments Form -->
-  <div class="container">
+  <div class="well">
       <h4>Leave a Comment:</h4>
 
       {!! Form::open(['method'=>'POST', 'action'=> 'PostCommentsController@store']) !!}

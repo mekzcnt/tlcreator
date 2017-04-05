@@ -41,8 +41,10 @@
   <body>
     @include('layouts.partials._navigation')
     @yield('before_container')
-    @yield('content')
-    @yield('comment')
+    <div class="container">
+      @yield('content')
+      @yield('comment')
+    </div>
     @include('layouts.partials._footer')
 
 
