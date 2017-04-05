@@ -36,7 +36,7 @@
 
   @if(Auth::check())
   <!-- Comments Form -->
-  <div class="well">
+  <div class="container">
       <h4>Leave a Comment:</h4>
 
       {!! Form::open(['method'=>'POST', 'action'=> 'PostCommentsController@store']) !!}
