@@ -71,4 +71,6 @@
                 <p>{{$comment->body}}</p>
             </div>
         </div>
+        @endforeach
+  @endif
 @endsection
