@@ -54,27 +54,9 @@
       {!! Form::close() !!}
   </div>
   @endif
-  
+
   <hr>
 
-  <!-- Posted Comments -->
 
-  @if(count($comments) > 0)
-
-          @foreach($comments as $comment)
-          <!-- Comment -->
-          <div class="media">
-              <a class="pull-left" href="#">
-                  <img height="64" class="media-object" src="{{$comment->photo}}" alt="">
-              </a>
-              <div class="media-body">
-                  <h4 class="media-heading">{{$comment->author}}
-                      <small>{{$comment->created_at->diffForHumans()}}</small>
-                  </h4>
-                  <p>{{$comment->body}}</p>
-              </div>
-          </div>
-          @endforeach
-  @endif
 
 @endsection
