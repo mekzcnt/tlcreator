@@ -43,6 +43,7 @@
     @yield('before_container')
     @yield('content')
     @include('layouts.partials._footer')
+    @yield('comment')
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

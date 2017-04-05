@@ -27,3 +27,24 @@
     <p>{{$post->description}}</p>
 </div>
 @endsection
+
+@section('comment')
+<!-- Comments Form -->
+<div class="well">
+    <h4>Leave a Comment:</h4>
+
+    {!! Form::open(['method'=>'POST', 'action'=> 'PostCommentsController@store']) !!}
+
+         <div class="form-group">
+             {!! Form::label('body', 'Comments:') !!}
+             {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>3])!!}
+         </div>
+
+         <div class="form-group">
+             {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
+         </div>
+    {!! Form::close() !!}
+
+
+    </div>
+@endsection
