@@ -44,8 +44,8 @@ class PostCommentsController extends Controller
         $data = [
           'post_id' => $request->post_id,
           'author' => $user->name,
-          'email' => $user->email,
           'photo' => $user->photo->file,
+          'email' => $user->email,
           'body' => $request->body
         ];
 
