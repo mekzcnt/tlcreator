@@ -148,10 +148,19 @@
                                 <a href="{{route('admin.posts.create')}}">Create Post</a>
                             </li>
 
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{route('admin.comments.index')}}">All Comments</a>
                             </li>
-
+                            <li>
+                              All Replies
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>

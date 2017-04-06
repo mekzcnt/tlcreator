@@ -21,7 +21,7 @@
            <td>{{$comment->id}}</td>
            <td>{{$comment->author}}</td>
            <td>{{$comment->email}}</td>
-           <td>{{$comment->body}}</td>
+           <td>{{str_limit($comment->body, 30)}}</td>
            <td><a href="{{route('feed.timeline',$comment->post->id)}}">View Post</a></td>
            <td>
               @if($comment->is_active == 1)
