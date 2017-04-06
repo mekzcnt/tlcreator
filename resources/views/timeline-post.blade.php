@@ -71,6 +71,8 @@
                   </h4>
                   <p>{{$comment->body}}</p>
 
+                  <button class="toggle-reply btn btn-primary pull-right">Reply</button>
+
 
                   @if(count($comment->replies) > 0)
 
@@ -92,31 +94,28 @@
                                   <p>{{$reply->body}}</p>
                               </div>
 
-                              <div class="comment-reply-container">
-
-                                  <button class="toggle-reply btn btn-primary pull-right">Reply</button>
-
-                                  <div class="comment-reply">
-                                      {!! Form::open(['method'=>'POST', 'action'=> 'CommentRepliesController@createReply']) !!}
-                                       <div class="form-group">
-                                          <input type="hidden" name="comment_id" value="{{$comment->id}}">
-                                           {!! Form::label('body', 'Reply:') !!}
-                                           {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>1])!!}
-                                       </div>
-
-                                       <div class="form-group">
-                                           {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
-                                       </div>
-                                      {!! Form::close() !!}
-                                  </div>
-
-                              </div>
-
-
                             </div>
                             <!-- End Nested Comment -->
                       @endforeach
                   @endif
+
+                  <div class="comment-reply-container">
+
+                      <div class="comment-reply col-sm-6">
+                          {!! Form::open(['method'=>'POST', 'action'=> 'CommentRepliesController@createReply']) !!}
+                           <div class="form-group">
+                              <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                               {!! Form::label('body', 'Reply:') !!}
+                               {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>1])!!}
+                           </div>
+
+                           <div class="form-group">
+                               {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
+                           </div>
+                          {!! Form::close() !!}
+                      </div>
+
+                  </div>
 
               </div>
           </div>
