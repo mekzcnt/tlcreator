@@ -159,7 +159,7 @@
                                 <a href="{{route('admin.comments.index')}}">All Comments</a>
                             </li>
                             <li>
-                              All Replies
+                                <a href="#">All Replies</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
