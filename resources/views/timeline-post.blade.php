@@ -75,7 +75,7 @@
 
                   <div class="comment-reply-container">
 
-                      <!-- <button class="toggle-reply btn btn-primary pull-right">Reply</button> -->
+                      <button class="toggle-reply btn btn-primary">Reply</button>
 
                       <div class="comment-reply well">
                           {!! Form::open(['method'=>'POST', 'action'=> 'CommentRepliesController@createReply']) !!}
