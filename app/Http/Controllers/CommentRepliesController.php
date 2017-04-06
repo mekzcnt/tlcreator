@@ -28,6 +28,7 @@ class CommentRepliesController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -38,6 +39,12 @@ class CommentRepliesController extends Controller
     {
         //
     }
+
+    public function createReply(Request $request)
+    {
+        return 'it works';
+    }
+
 
     /**
      * Display the specified resource.
