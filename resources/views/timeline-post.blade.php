@@ -93,8 +93,10 @@
                               </div>
 
                               <div class="comment-reply-container">
+
                                   <button class="toggle-reply btn btn-primary pull-right">Reply</button>
-                                    <div class="comment-reply">
+
+                                  <div class="comment-reply">
                                       {!! Form::open(['method'=>'POST', 'action'=> 'CommentRepliesController@createReply']) !!}
                                        <div class="form-group">
                                           <input type="hidden" name="comment_id" value="{{$comment->id}}">
@@ -106,7 +108,7 @@
                                            {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
                                        </div>
                                       {!! Form::close() !!}
-                                    </div>
+                                  </div>
 
                               </div>
 
