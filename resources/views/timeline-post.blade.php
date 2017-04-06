@@ -36,7 +36,7 @@
 
   @if(Auth::check())
   <!-- Comments Form -->
-  <div class="col-sm-9">
+  <div class="well">
       <h4>Leave a Comment:</h4>
 
       {!! Form::open(['method'=>'POST', 'action'=> 'PostCommentsController@store']) !!}
@@ -57,12 +57,12 @@
   <hr>
 
   <!-- Posted Comments -->
-
+  <div class="well">
   @if(count($comments) > 0)
           @foreach($comments as $comment)
           <!-- Comment -->
-          <div class="col-sm-9">
-            <div class="media">
+
+          <div class="media">
               <a class="pull-left" href="#">
                   <img height="64" class="media-object" src="{{$comment->photo}}" alt="">
               </a>
@@ -121,9 +121,9 @@
 
               </div>
           </div>
-          </div>
           @endforeach
   @endif
+  </div>
 
 @endsection
 
