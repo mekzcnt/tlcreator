@@ -83,16 +83,16 @@
                         </div>
 
                         {!! Form::open(['method'=>'POST', 'action'=> 'CommentRepliesController@createReply']) !!}
-                          <input type="hidden" name="post_id" value="{{$post->id}}">
 
-                           <div class="form-group">
-                               {!! Form::label('body', 'Reply:') !!}
-                               {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>1])!!}
-                           </div>
+                             <div class="form-group">
+                                <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                                 {!! Form::label('body', 'Reply:') !!}
+                                 {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>1])!!}
+                             </div>
 
-                           <div class="form-group">
-                               {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
-                           </div>
+                             <div class="form-group">
+                                 {!! Form::submit('Submit comment', ['class'=>'btn btn-primary']) !!}
+                             </div>
                         {!! Form::close() !!}
 
                     </div>
