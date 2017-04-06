@@ -57,7 +57,7 @@
   <hr>
 
   <!-- Posted Comments -->
-  <div class="well">
+  <div class="">
   @if(count($comments) > 0)
           @foreach($comments as $comment)
           <!-- Comment -->
@@ -73,7 +73,7 @@
                   <p>{{$comment->body}}</p>
 
 
-                  <div class="comment-reply-container">
+                  <div class="comment-reply-container well">
 
                       <button class="toggle-reply btn btn-primary pull-right">Reply</button>
 
