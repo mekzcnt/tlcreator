@@ -100,10 +100,6 @@
 
                       @foreach($comment->replies as $reply)
 
-
-
-
-
                           <!-- Nested Comment -->
                           <div class="media">
                               <a class="pull-left" href="#">
