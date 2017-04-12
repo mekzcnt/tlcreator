@@ -22,8 +22,10 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}">
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
