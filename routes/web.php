@@ -14,6 +14,8 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
+Route::auth();
+
 Route::group(['middleware'=>'admin'], function() {
 
     Route::get('/admin', function(){
