@@ -42,7 +42,7 @@
               @else
 
 
-                  {!! Form::open(['method'=>'PATCH', 'action'=> ['PostCommentsController@update', $reply->id]]) !!}
+                  {!! Form::open(['method'=>'PATCH', 'action'=> ['CommentsRepliesController@update', $reply->id]]) !!}
 
 
                   <input type="hidden" name="is_active" value="1">
@@ -59,7 +59,7 @@
               @endif
             </td>
             <td>
-              {!! Form::open(['method'=>'DELETE', 'action'=> ['PostrepliesController@destroy', $reply->id]]) !!}
+              {!! Form::open(['method'=>'DELETE', 'action'=> ['PostCommentsController@destroy', $reply->id]]) !!}
 
               <div class="form-group">
                   {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
