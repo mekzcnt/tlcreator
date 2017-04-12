@@ -59,7 +59,7 @@
               @endif
             </td>
             <td>
-              {!! Form::open(['method'=>'DELETE', 'action'=> ['PostCommentsController@destroy', $reply->id]]) !!}
+              {!! Form::open(['method'=>'DELETE', 'action'=> ['CommentsRepliesController@destroy', $reply->id]]) !!}
 
               <div class="form-group">
                   {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
