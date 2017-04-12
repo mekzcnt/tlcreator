@@ -22,7 +22,7 @@
            <td>{{$reply->author}}</td>
            <td>{{$reply->email}}</td>
            <td>{{str_limit($reply->body, 30)}}</td>
-           <td><a href="{{route('feed.timeline',$reply->comment->id)}}">View Post</a></td>
+           <td><a href="{{route('feed.timeline',$reply->comment->post->id)}}">View Post</a></td>
            <td>
               @if($reply->is_active == 1)
 
