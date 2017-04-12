@@ -23,7 +23,7 @@
            <td>{{$comment->email}}</td>
            <td>{{str_limit($comment->body, 30)}}</td>
            <td><a href="{{route('feed.timeline',$comment->post->id)}}">View Post</a></td>
-           <td><a href="{{route('admin.comments.replies.show',$comment->id)}}">View Replies</a></td>
+           <td><a href="{{route('admin.replies.show',$comment->id)}}">View Replies</a></td>
            <td>
               @if($comment->is_active == 1)
 
