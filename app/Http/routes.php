@@ -15,7 +15,6 @@
 
 
 
-Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
 
 Route::group(['middleware'=>'admin'], function() {
 

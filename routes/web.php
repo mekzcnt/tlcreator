@@ -28,11 +28,11 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/feed', 'HomeController@index');
 
-Route::group(['middleware'=>'admin'], function() {
+Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
 
-    Route::get('/admin', function(){
-      return view('admin.index');
-    });
+Route::group(['middleware'=>'admin', 'as'=>'admin.'], function() {
+
+    Route::get('/admin', function(){ return view('admin.index');});
 
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
