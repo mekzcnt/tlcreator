@@ -14,7 +14,17 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
+Route::get('/about', function () {
+     return view('pages.about');
+});
+
+Route::get('/contact', function () {
+     return view('pages.contact');
+});
+
 Route::auth();
+
+Route::get('/feed', 'HomeController@index');
 
 Route::group(['middleware'=>'admin'], function() {
 
