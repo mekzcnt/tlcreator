@@ -22,7 +22,9 @@ Route::get('/contact', function () {
      return view('pages.contact');
 });
 
-Route::auth();
+Auth::routes();
+
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/feed', 'HomeController@index');
 
