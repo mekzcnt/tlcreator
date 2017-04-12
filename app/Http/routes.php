@@ -23,10 +23,6 @@ Route::get('/contact', function () {
      return view('pages.contact');
 });
 
-// Route::get('/login', function () {
-//      return view('pages.login');
-// });
-
 Route::auth();
 
 Route::get('/feed', 'HomeController@index');
