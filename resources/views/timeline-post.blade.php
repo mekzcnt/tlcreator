@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '{{$post->title}}S')
+@section('title', $post->title)
 
 @section('code_head')
     <meta property="og:url"          content="ใส่ด้วยอย่าลืม" />
