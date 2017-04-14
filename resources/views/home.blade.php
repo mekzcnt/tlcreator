@@ -74,19 +74,21 @@
         <h1>Timeline ล่าสุดในระบบ <small></small></h1>
       </div>
     </div>
-
-    @foreach($posts as $post)
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-          <div class="caption">
-            <h3>{{$post->title}}</h3>
-            <p>{{str_limit($post->description, 30)}}</p>
-            <p><a href="#" class="btn btn-default">More Info</a></p>
+    
+    @if(count($posts) > 0)
+        @foreach($posts as $post)
+        <div class="col-md-3 col-sm-6 hero-feature">
+          <div class="thumbnail">
+            <img src="http://placehold.it/800x500" alt="">
+              <div class="caption">
+                <h3>{{$post->title}}</h3>
+                <p>{{str_limit($post->description, 30)}}</p>
+                <p><a href="#" class="btn btn-default">More Info</a></p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    @endforeach
+        @endforeach
+    @endif
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
