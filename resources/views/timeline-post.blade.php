@@ -75,7 +75,7 @@
                   </h4>
                   <p>{{$comment->body}}</p>
 
-
+                  @if(Auth::check())
                   <div class="comment-reply-container">
 
                       <button class="toggle-reply btn btn-primary">Reply</button>
@@ -95,6 +95,7 @@
                       </div>
 
                   </div>
+                  @endif
 
                   @if(count($comment->replies) > 0)
 
