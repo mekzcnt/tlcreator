@@ -81,7 +81,7 @@
         <img src="http://placehold.it/800x500" alt="">
           <div class="caption">
             <h3>{{$post->title}}</h3>
-            <p>{{str_limit($post->body, 30)}}</p>
+            <p>{{str_limit($post->description, 30)}}</p>
             <p><a href="#" class="btn btn-default">More Info</a></p>
           </div>
         </div>
