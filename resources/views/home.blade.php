@@ -69,17 +69,17 @@
 
 
   <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <h1>Timeline ล่าสุดในระบบ <small></small></h1>
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>Timeline ล่าสุดในระบบ <small></small></h1>
+        </div>
       </div>
-    </div>
-    
-    @if(count($posts) > 0)
-        @foreach($posts as $post)
-        <div class="col-md-3 col-sm-6 hero-feature">
-          <div class="thumbnail">
-            <img src="http://placehold.it/800x500" alt="">
+
+      @if(count($posts) > 0)
+          @foreach($posts as $post)
+          <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+              <img src="{{$post->photo->file}}" alt="">
               <div class="caption">
                 <h3>{{$post->title}}</h3>
                 <p>{{str_limit($post->description, 30)}}</p>
@@ -87,41 +87,9 @@
               </div>
             </div>
           </div>
-        @endforeach
-    @endif
+          @endforeach
+      @endif
 
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-          <div class="caption">
-            <h3>Feature Label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p><a href="#" class="btn btn-default">More Info</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="thumbnail">
-          <img src="http://placehold.it/800x500" alt="">
-          <div class="caption">
-            <h3>Feature Label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p><a href="#" class="btn btn-default">More Info</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="thumbnail">
-          <img src="http://placehold.it/800x500" alt="">
-            <div class="caption">
-              <h3>Feature Label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              <p><a href="#" class="btn btn-default">More Info</a></p>
-            </div>
-        </div>
-      </div>
   </div>
 
   <div class="row">
