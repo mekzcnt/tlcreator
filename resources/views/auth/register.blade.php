@@ -89,6 +89,9 @@
                         </div>
                     </div>
 
+                    <input id="is-active" type="hidden" name="is_active">
+                    <input id="role-id" type="hidden" name="role_id">
+
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
