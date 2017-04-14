@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Home of Timeline Feed')
+@section('title', 'Feed')
 
 @section('before_container')
 <div class="jumbotron">
@@ -67,22 +67,26 @@
     </div>
   </div>
 
+
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>Timeline ที่เคยดูล่าสุด <small>อ้างอิงจากข้อมูลผู้ใช้</small></h1>
+        <h1>Timeline ล่าสุดในระบบ <small></small></h1>
       </div>
     </div>
+
+    @foreach($posts as $post)
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
         <img src="http://placehold.it/800x500" alt="">
           <div class="caption">
-            <h3>Feature Label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h3>{{$post->title}}</h3>
+            <p>{{str_limit($post->body, 30)}}</p>
             <p><a href="#" class="btn btn-default">More Info</a></p>
           </div>
         </div>
       </div>
+    @endforeach
 
     <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
