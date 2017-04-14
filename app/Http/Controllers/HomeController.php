@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Photo;
+use App\Post;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
