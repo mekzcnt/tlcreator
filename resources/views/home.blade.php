@@ -68,7 +68,7 @@
   </div>
 
 
-  <div class="row">
+  <div class="row equal-height">
 
       <div class="col-md-12">
         <div class="page-header">
@@ -82,8 +82,8 @@
             <div class="thumbnail">
               <img src="{{$post->photo->file}}" alt="{{$post->title}}">
               <div class="caption">
-                <h3>{{str_limit($post->title, 20)}}</h3>
-                <p>{{str_limit($post->description, 50)}}</p>
+                <h3>{{str_limit($post->title, 30)}}</h3>
+                <p>{{str_limit($post->description, 60)}}</p>
                 <p><a href="#" class="btn btn-default">More Info</a></p>
               </div>
             </div>
