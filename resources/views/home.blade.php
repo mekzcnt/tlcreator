@@ -69,6 +69,7 @@
 
 
   <div class="row">
+
       <div class="col-md-12">
         <div class="page-header">
           <h1>Timeline ล่าสุดในระบบ <small></small></h1>
@@ -79,10 +80,10 @@
           @foreach($posts as $post)
           <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
-              <img src="{{$post->photo->file}}" alt="">
+              <img src="{{$post->photo->file}}" alt="{{$post->title}}">
               <div class="caption">
-                <h3>{{$post->title}}</h3>
-                <p>{{str_limit($post->description, 30)}}</p>
+                <h3>{{str_limit($post->title, 20)}}</h3>
+                <p>{{str_limit($post->description, 50)}}</p>
                 <p><a href="#" class="btn btn-default">More Info</a></p>
               </div>
             </div>
