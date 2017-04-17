@@ -77,18 +77,20 @@
   </div>
 
   <div class="row equal-height">
-      @foreach($posts as $post)
-      <div class="col-md-3 col-sm-6 hero-feature">
-        <div class="thumbnail">
-          <img src="{{$post->photo->file}}" alt="{{$post->title}}">
-          <div class="caption">
-            <h3>{{str_limit($post->title, 30)}}</h3>
-            <p>{{str_limit($post->description, 60)}}</p>
-            <p><a href="#" class="btn btn-default">More Info</a></p>
+      @if(count($posts) > 0)
+          @foreach($posts as $post)
+          <div class="col-md-3 col-sm-6 hero-feature">
+            <div class="thumbnail">
+              <img src="{{$post->photo->file}}" alt="{{$post->title}}">
+              <div class="caption">
+                <h3>{{str_limit($post->title, 30)}}</h3>
+                <p>{{str_limit($post->description, 60)}}</p>
+                <p><a href="#" class="btn btn-default">More Info</a></p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      @endforeach
+          @endforeach
+      @endif
   </div>
 
   <div class="row">
