@@ -19,7 +19,7 @@ class AdminCategoriesController extends Controller
         //
 
 
-        $categories = Category::orderBy('id', 'desc');
+        $categories = Category::all();
 
 
         return view('admin.categories.index', compact('categories'));
