@@ -46,6 +46,10 @@ body {
   color: #fff;
 }
 
+.navbar-right li.dropdown a.dropdown-toggle:hover {
+  background-color: transparent;
+}
+
 ul.nav.navbar-nav li.active a {
   background-color: #3169c6;
 }
