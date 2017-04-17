@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('content')
+@section('title', 'Welcome back to Admin System!')
 
-    <h1>Welcome back to Admin System!</h1>
+@section('content')
 
     <p>Now you able to use these features</p>
     <ul>
