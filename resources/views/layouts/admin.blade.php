@@ -12,9 +12,9 @@
     <title>Admin Panel - Timeline Creator</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{{public('css/libs.css')}}" rel="stylesheet">
+    <link href="{{asset('css/libs.css')}}" rel="stylesheet">
 
-    <link href="{{public('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -356,7 +356,7 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="{{public('js/libs.js')}}"></script>
+<script src="{{asset('js/libs.js')}}"></script>
 <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js"></script> -->
 
