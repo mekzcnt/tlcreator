@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc');
         return view('home', compact('posts'));
     }
 }
