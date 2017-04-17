@@ -58,7 +58,7 @@
 
 @section('content')
 <div class="container">
-  
+
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">ข่าวจากผู้พัฒนาระบบ</h3>
@@ -77,20 +77,18 @@
   </div>
 
   <div class="row equal-height">
-      @if(count($posts) > 0)
-          @foreach($posts as $post)
-          <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-              <img src="{{$post->photo->file}}" alt="{{$post->title}}">
-              <div class="caption">
-                <h3>{{str_limit($post->title, 30)}}</h3>
-                <p>{{str_limit($post->description, 60)}}</p>
-                <p><a href="#" class="btn btn-default">More Info</a></p>
-              </div>
-            </div>
+      @foreach($posts as $post)
+      <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+          <img src="{{$post->photo->file}}" alt="{{$post->title}}">
+          <div class="caption">
+            <h3>{{str_limit($post->title, 30)}}</h3>
+            <p>{{str_limit($post->description, 60)}}</p>
+            <p><a href="#" class="btn btn-default">More Info</a></p>
           </div>
-          @endforeach
-      @endif
+        </div>
+      </div>
+      @endforeach
   </div>
 
   <div class="row">
