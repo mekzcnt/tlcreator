@@ -42,12 +42,14 @@ body {
 //   color: #fff;
 // }
 
-.navbar-right li.dropdown a.dropdown-toggle {
-  color: #fff;
-}
+// .navbar-right li.dropdown a.dropdown-toggle {
+//
+// }
 
-.navbar-right li.dropdown a.dropdown-toggle:hover {
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  color: #fff;
   background-color: transparent;
+  border-color: #487fd9;
 }
 
 ul.nav.navbar-nav li.active a {
