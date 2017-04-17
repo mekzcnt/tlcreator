@@ -1,120 +1,354 @@
-/*
- * metismenu - v1.1.3
- * Easy menu jQuery plugin for Twitter Bootstrap 3
- * https://github.com/onokumus/metisMenu
- *
- * Made by Osman Nuri Okumus
- * Under MIT License
- */
-;(function($, window, document, undefined) {
+const Util = (($) => {
+  let transition = false;
 
-    var pluginName = "metisMenu",
-        defaults = {
-            toggle: true,
-            doubleTapToGo: false
-        };
+  const TransitionEndEvent = {
+    WebkitTransition: 'webkitTransitionEnd',
+    MozTransition: 'transitionend',
+    OTransition: 'oTransitionEnd otransitionend',
+    transition: 'transitionend'
+  };
 
-    function Plugin(element, options) {
-        this.element = $(element);
-        this.settings = $.extend({}, defaults, options);
-        this._defaults = defaults;
-        this._name = pluginName;
-        this.init();
+  function getSpecialTransitionEndEvent() {
+    return {
+      bindType: transition.end,
+      delegateType: transition.end,
+      handle(event) {
+        if ($(event.target).is(this)) {
+          return event.
+            handleObj.
+            handler.
+            apply(this, arguments);
+        }
+        return undefined;
+      }
+    };
+  }
+
+  function transitionEndTest() {
+    if (window.QUnit) {
+      return false;
     }
 
-    Plugin.prototype = {
-        init: function() {
+    const el = document.createElement('mm');
 
-            var $this = this.element,
-                $toggle = this.settings.toggle,
-                obj = this;
+    for (const name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return {
+          end: TransitionEndEvent[name]
+        };
+      }
+    }
 
-            if (this.isIE() <= 9) {
-                $this.find("li.active").has("ul").children("ul").collapse("show");
-                $this.find("li").not(".active").has("ul").children("ul").collapse("hide");
-            } else {
-                $this.find("li.active").has("ul").children("ul").addClass("collapse in");
-                $this.find("li").not(".active").has("ul").children("ul").addClass("collapse");
+    return false;
+  }
+
+  function transitionEndEmulator(duration) {
+    let called = false;
+
+    $(this).one(Util.TRANSITION_END, () => {
+      called = true;
+    });
+
+    setTimeout(() => {
+      if (!called) {
+        Util.triggerTransitionEnd(this);
+      }
+    }, duration);
+
+    return this;
+  }
+
+  function setTransitionEndSupport() {
+    transition = transitionEndTest();
+    $.fn.emulateTransitionEnd = transitionEndEmulator;
+
+    if (Util.supportsTransitionEnd()) {
+      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+    }
+  }
+
+  const Util = {
+    TRANSITION_END: 'mmTransitionEnd',
+
+    triggerTransitionEnd(element) {
+      $(element).trigger(transition.end);
+    },
+
+    supportsTransitionEnd() {
+      return Boolean(transition);
+    }
+  };
+
+  setTransitionEndSupport();
+
+  return Util;
+
+})(jQuery);
+
+const MetisMenu = (($) => {
+
+  const NAME = 'metisMenu';
+  const DATA_KEY = 'metisMenu';
+  const EVENT_KEY = `.${DATA_KEY}`;
+  const DATA_API_KEY = '.data-api';
+  const JQUERY_NO_CONFLICT = $.fn[NAME];
+  const TRANSITION_DURATION = 350;
+
+  const Default = {
+    toggle: true,
+    preventDefault: true,
+    activeClass: 'active',
+    collapseClass: 'collapse',
+    collapseInClass: 'in',
+    collapsingClass: 'collapsing',
+    triggerElement: 'a',
+    parentTrigger: 'li',
+    subMenu: 'ul'
+  };
+
+  const Event = {
+    SHOW: `show${EVENT_KEY}`,
+    SHOWN: `shown${EVENT_KEY}`,
+    HIDE: `hide${EVENT_KEY}`,
+    HIDDEN: `hidden${EVENT_KEY}`,
+    CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
+  };
+
+  class MetisMenu {
+    constructor(element, config) {
+      this._element = element;
+      this._config = this._getConfig(config);
+      this._transitioning = null;
+
+      this.init();
+    }
+    init() {
+      let self = this;
+      $(this._element)
+        .find(this._config.parentTrigger + '.' + this._config.activeClass)
+        .has(this._config.subMenu)
+        .children(this._config.subMenu)
+        .attr('aria-expanded', true)
+        .addClass(this._config.collapseClass + ' ' + this._config.collapseInClass);
+
+      $(this._element)
+        .find(this._config.parentTrigger)
+        .not('.' + this._config.activeClass)
+        .has(this._config.subMenu)
+        .children(this._config.subMenu)
+        .attr('aria-expanded', false)
+        .addClass(this._config.collapseClass);
+
+      $(this._element)
+        .find(this._config.parentTrigger)
+        .has(this._config.subMenu)
+        .children(this._config.triggerElement)
+        .on(Event.CLICK_DATA_API, function (e) {
+          var _this = $(this);
+          var _parent = _this.parent(self._config.parentTrigger);
+          var _siblings = _parent.siblings(self._config.parentTrigger).children(self._config.triggerElement);
+          var _list = _parent.children(self._config.subMenu);
+          if (self._config.preventDefault) {
+            e.preventDefault();
+          }
+          if (_this.attr('aria-disabled') === 'true') {
+            return;
+          }
+          if (_parent.hasClass(self._config.activeClass)) {
+            _this.attr('aria-expanded', false);
+            self._hide(_list);
+
+          } else {
+            self._show(_list);
+            _this.attr('aria-expanded', true);
+            if (self._config.toggle) {
+              _siblings.attr('aria-expanded', false);
             }
+          }
 
-            //add the "doubleTapToGo" class to active items if needed
-            if (obj.settings.doubleTapToGo) {
-                $this.find("li.active").has("ul").children("a").addClass("doubleTapToGo");
-            }
+          if (self._config.onTransitionStart) {
+            self._config.onTransitionStart(e);
+          }
+        });
 
-            $this.find("li").has("ul").children("a").on("click" + "." + pluginName, function(e) {
-                e.preventDefault();
+    }
 
-                //Do we need to enable the double tap
-                if (obj.settings.doubleTapToGo) {
+    _show(element) {
+      if (this._transitioning ||
+        $(element).hasClass(this._config.collapsingClass)) {
+        return;
+      }
+      let _this = this;
+      let _el = $(element);
 
-                    //if we hit a second time on the link and the href is valid, navigate to that url
-                    if (obj.doubleTapToGo($(this)) && $(this).attr("href") !== "#" && $(this).attr("href") !== "") {
-                        e.stopPropagation();
-                        document.location = $(this).attr("href");
-                        return;
-                    }
-                }
+      let startEvent = $.Event(Event.SHOW);
+      _el.trigger(startEvent);
 
-                $(this).parent("li").toggleClass("active").children("ul").collapse("toggle");
+      if (startEvent.isDefaultPrevented()) {
+        return;
+      }
 
-                if ($toggle) {
-                    $(this).parent("li").siblings().removeClass("active").children("ul.in").collapse("hide");
-                }
+      _el
+        .parent(this._config.parentTrigger)
+        .addClass(this._config.activeClass);
 
-            });
-        },
 
-        isIE: function() { //https://gist.github.com/padolsey/527683
-            var undef,
-                v = 3,
-                div = document.createElement("div"),
-                all = div.getElementsByTagName("i");
+      if (this._config.toggle) {
+        this.
+          _hide(_el
+            .parent(this._config.parentTrigger)
+            .siblings()
+            .children(this._config.subMenu + '.' + this._config.collapseInClass)
+            .attr('aria-expanded', false)
+          );
+      }
 
-            while (
-                div.innerHTML = "<!--[if gt IE " + (++v) + "]><i></i><![endif]-->",
-                all[0]
-            ) {
-                return v > 4 ? v : undef;
-            }
-        },
+      _el
+        .removeClass(this._config.collapseClass)
+        .addClass(this._config.collapsingClass)
+        .height(0);
 
-        //Enable the link on the second click.
-        doubleTapToGo: function(elem) {
-            var $this = this.element;
+      this.setTransitioning(true);
 
-            //if the class "doubleTapToGo" exists, remove it and return
-            if (elem.hasClass("doubleTapToGo")) {
-                elem.removeClass("doubleTapToGo");
-                return true;
-            }
+      let complete = function () {
 
-            //does not exists, add a new class and return false
-            if (elem.parent().children("ul").length) {
-                 //first remove all other class
-                $this.find(".doubleTapToGo").removeClass("doubleTapToGo");
-                //add the class on the current element
-                elem.addClass("doubleTapToGo");
-                return false;
-            }
-        },
+        _el
+          .removeClass(_this._config.collapsingClass)
+          .addClass(_this._config.collapseClass + ' ' + _this._config.collapseInClass)
+          .height('')
+          .attr('aria-expanded', true);
 
-        remove: function() {
-            this.element.off("." + pluginName);
-            this.element.removeData(pluginName);
+        _this.setTransitioning(false);
+
+        _el.trigger(Event.SHOWN);
+      };
+
+      if (!Util.supportsTransitionEnd()) {
+        complete();
+        return;
+      }
+
+      _el
+        .height(_el[0].scrollHeight)
+        .one(Util.TRANSITION_END, complete)
+        .emulateTransitionEnd(TRANSITION_DURATION);
+
+    }
+
+    _hide(element) {
+
+      if (this._transitioning || !$(element).hasClass(this._config.collapseInClass)) {
+        return;
+      }
+      let _this = this;
+      let _el = $(element);
+
+      let startEvent = $.Event(Event.HIDE);
+      _el.trigger(startEvent);
+
+      if (startEvent.isDefaultPrevented()) {
+        return;
+      }
+
+      _el.parent(this._config.parentTrigger).removeClass(this._config.activeClass);
+      _el.height(_el.height())[0].offsetHeight;
+
+      _el
+        .addClass(this._config.collapsingClass)
+        .removeClass(this._config.collapseClass)
+        .removeClass(this._config.collapseInClass);
+
+      this.setTransitioning(true);
+
+      let complete = function () {
+        if (_this._transitioning && _this._config.onTransitionEnd) {
+          _this._config.onTransitionEnd();
         }
 
-    };
+        _this.setTransitioning(false);
+        _el.trigger(Event.HIDDEN);
 
-    $.fn[pluginName] = function(options) {
-        this.each(function () {
-            var el = $(this);
-            if (el.data(pluginName)) {
-                el.data(pluginName).remove();
-            }
-            el.data(pluginName, new Plugin(this, options));
-        });
-        return this;
-    };
+        _el
+          .removeClass(_this._config.collapsingClass)
+          .addClass(_this._config.collapseClass)
+          .attr('aria-expanded', false);
 
-})(jQuery, window, document);
+      };
+
+      if (!Util.supportsTransitionEnd()) {
+        complete();
+        return;
+      }
+
+      (_el.height() == 0 || _el.css('display') == 'none') ? complete() : _el
+        .height(0)
+        .one(Util.TRANSITION_END, complete)
+        .emulateTransitionEnd(TRANSITION_DURATION);
+    }
+
+    setTransitioning(isTransitioning) {
+      this._transitioning = isTransitioning;
+    }
+
+    dispose() {
+      $.removeData(this._element, DATA_KEY);
+
+      $(this._element)
+        .find(this._config.parentTrigger)
+        .has(this._config.subMenu)
+        .children(this._config.triggerElement)
+        .off('click');
+
+      this._transitioning = null;
+      this._config = null;
+      this._element = null;
+    }
+
+    _getConfig(config) {
+      config = $.extend({}, Default, config);
+      return config;
+    }
+
+    static _jQueryInterface(config) {
+      return this.each(function () {
+        let $this = $(this);
+        let data = $this.data(DATA_KEY);
+        let _config = $.extend({},
+          Default,
+          $this.data(),
+          typeof config === 'object' && config
+        );
+
+        if (!data && /dispose/.test(config)) {
+          this.dispose();
+        }
+
+        if (!data) {
+          data = new MetisMenu(this, _config);
+          $this.data(DATA_KEY, data);
+        }
+
+        if (typeof config === 'string') {
+          if (data[config] === undefined) {
+            throw new Error(`No method named "${config}"`);
+          }
+          data[config]();
+        }
+      });
+    }
+  }
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   */
+
+  $.fn[NAME] = MetisMenu._jQueryInterface;
+  $.fn[NAME].Constructor = MetisMenu;
+  $.fn[NAME].noConflict = function () {
+    $.fn[NAME] = JQUERY_NO_CONFLICT;
+    return MetisMenu._jQueryInterface;
+  };
+  return MetisMenu;
+
+})(jQuery);
