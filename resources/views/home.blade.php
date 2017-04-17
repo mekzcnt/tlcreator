@@ -58,6 +58,7 @@
 
 @section('content')
 <div class="container">
+  
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">ข่าวจากผู้พัฒนาระบบ</h3>
@@ -67,15 +68,15 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Timeline ล่าสุดในระบบ <small></small></h1>
+      </div>
+    </div>
+  </div>
 
   <div class="row equal-height">
-
-      <div class="col-md-12">
-        <div class="page-header">
-          <h1>Timeline ล่าสุดในระบบ <small></small></h1>
-        </div>
-      </div>
-
       @if(count($posts) > 0)
           @foreach($posts as $post)
           <div class="col-md-3 col-sm-6 hero-feature">
@@ -90,7 +91,6 @@
           </div>
           @endforeach
       @endif
-
   </div>
 
   <div class="row">
