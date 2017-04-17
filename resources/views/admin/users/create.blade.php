@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 
+@section('title', 'Create Users')
 
 @section('content')
-
-
-    <h1 class="page-header">Create Users</h1>
 
       @include('includes.form_error')
 

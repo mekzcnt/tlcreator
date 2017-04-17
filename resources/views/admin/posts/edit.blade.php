@@ -1,18 +1,10 @@
 @extends('layouts.admin')
 
-
-
-
-
+@section('title', 'Edit Post')
 
 @section('content')
 
-
-    <h1>Edit Post</h1>
-
-    <div class="row">
-        @include('includes.form_error')
-    </div>
+    @include('includes.form_error')
 
     <div class="row">
 

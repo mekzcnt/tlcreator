@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
+@section('title', 'Show Replies')
 
 @section('content')
 
   @if(count($replies) > 0)
-  <h1>replies</h1>
   <table class="table">
      <thead>
        <tr>

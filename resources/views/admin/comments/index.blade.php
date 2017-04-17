@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
+@section('title', 'Comments')
 
 @section('content')
 
   @if(count($comments) > 0)
-  <h1>Comments</h1>
   <table class="table">
      <thead>
        <tr>

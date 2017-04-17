@@ -1,13 +1,8 @@
 @extends('layouts.admin')
 
-
-
-
+@section('title', 'Media')
 
 @section('content')
-
-
-    <h1>Media</h1>
 
     @if($photos)
 

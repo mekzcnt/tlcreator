@@ -1,14 +1,8 @@
 @extends('layouts.admin')
 
-
-
-
+@section('title', 'Categories')
 
 @section('content')
-
-
-    <h1>Categories</h1>
-
 
     <div class="col-sm-6">
 
@@ -23,8 +17,6 @@
              </div>
         {!! Form::close() !!}
 
-
-
     </div>
 
 
@@ -32,9 +24,7 @@
 
     <div class="col-sm-6">
 
-
         @if($categories)
-
 
             <table class="table">
                 <thead>
@@ -60,11 +50,7 @@
 
         @endif
 
-
-
     </div>
-
-
 
 
 
