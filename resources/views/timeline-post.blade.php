@@ -26,7 +26,7 @@
     </p>
     <hr>
 
-    {{$post->timeline}}
+
 
     <div id='timeline-embed' style="width: 100%; height: 600px"></div>
 
@@ -142,7 +142,7 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      var obj = json_decode('');
+      var obj = '{{$post->timeline}}';
       return obj;
     }
     var timeline_json = make_the_json(); // you write this part
