@@ -142,7 +142,8 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      var obj = @{{post->timeline}};
+      var tl = {{$post->timeline}};
+      var obj = JSON.parse(tl);
       return obj;
     }
     var timeline_json = make_the_json(); // you write this part
