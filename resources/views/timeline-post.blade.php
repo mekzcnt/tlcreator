@@ -142,8 +142,7 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      var obj = '{{$post->timeline}}';
-      return obj;
+      return encode_json($post->timeline);
     }
     var timeline_json = make_the_json(); // you write this part
     // two arguments: the id of the Timeline container (no '#')
