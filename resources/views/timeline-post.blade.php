@@ -140,7 +140,9 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      var obj = json_decode('{{$post->timeline}}');
+      var obj = DB::table('posts')
+                ->where('timeline')
+                ->get();
       return obj;
     }
     var timeline_json = make_the_json(); // you write this part
