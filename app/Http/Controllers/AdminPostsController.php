@@ -136,6 +136,15 @@ class AdminPostsController extends Controller
           unlink(public_path() . $post->photo->file);
         }
 
+        $posts = DB::select('SELECT * FROM posts WHERE user_id = ?', [$id]);
+        foreach ($posts as $post) {
+          if ($post->photo_id) {
+            $photo = Photo::findOrFail($post->photo_id);
+            unlink(public_path() . $photo->file);
+            $photo->delete();
+          }
+        }
+
         $post->delete();
 
         return redirect('/admin/posts');
