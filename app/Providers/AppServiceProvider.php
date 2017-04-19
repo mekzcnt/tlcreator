@@ -14,10 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      // event after the photo was deleted in the db
-      Photo::deleted(function($photo) {
-          File::delete(public_path() . $photo->path);
-      });
+      //
     }
 
     /**
