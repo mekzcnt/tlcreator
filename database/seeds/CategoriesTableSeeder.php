@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -11,6 +12,23 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+      $roles = [
+        [
+          'name' => 'Thai History'
+        ],
+        [
+          'name' => 'World History'
+        ],
+        [
+          'name' => 'Thailand News'
+        ],
+        [
+          'name' => 'World News'
+        ],
+      ];
+
+      foreach ($role as $key => $value) {
+         Permission::create($value);
+      }
     }
 }
