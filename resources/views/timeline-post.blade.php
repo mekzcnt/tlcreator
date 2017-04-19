@@ -139,7 +139,7 @@
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
   <script type="text/javascript">
-    function make_the_json = {
+    function make_the_json() = {
       return JSON.parse('{{$post->timeline}}');
     }
     var timeline_json = make_the_json(); // you write this part
