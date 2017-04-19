@@ -139,10 +139,8 @@
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
   <script type="text/javascript">
-    function make_the_json() = {
-      return {{$post->timeline}};
-    }
-    var timeline_json = make_the_json(); // you write this part
+
+    var timeline_json = {{$post->timeline}}; // you write this part
     // two arguments: the id of the Timeline container (no '#')
     // and the JSON object or an instance of TL.TimelineConfig created from
     // a suitable JSON object
