@@ -139,14 +139,10 @@
 @section('code_foot')
 
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
-  @php
-    $tl = encode_json($post);
-    echo $tl;
-  @endphp
+
   <script type="text/javascript">
     function make_the_json() {
-      var tl = '';
-      var obj = JSON.parse(tl);
+      var obj = {{encode_json($post->timeline)}};
       return obj;
     }
     var timeline_json = make_the_json(); // you write this part
