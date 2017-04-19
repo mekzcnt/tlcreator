@@ -109,11 +109,16 @@ class AdminPostsController extends Controller
 
             $name = time() . $file->getClientOriginalName();
 
-            $file->move('images', $name);
+            $file->move('uploads', $name);
             $photo = Photo::create(['file'=>$name]);
 
             $input['photo_id'] = $photo->id;
 
+        }
+
+        $user = Auth::user()->posts()->whereId($id)->first();
+        if($user->photo){
+            unlink(public_path().'/uploads/'.$user->photo->file);
         }
 
         Auth::user()->posts()->whereId($id)->first()->update($input);
