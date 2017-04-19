@@ -14,7 +14,7 @@ class AddTimelineToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->json('timeline');
+            $table->json('timeline')->after('description')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddTimelineToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropColumn('timeline');
         });
     }
 }
