@@ -26,6 +26,8 @@
     </p>
     <hr>
 
+    {{$post->timeline}}
+
     <div id='timeline-embed' style="width: 100%; height: 600px"></div>
 
     <hr>
@@ -140,9 +142,7 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      var obj = DB::table('posts')
-                ->where('timeline')
-                ->get();
+      var obj = json_decode('');
       return obj;
     }
     var timeline_json = make_the_json(); // you write this part
