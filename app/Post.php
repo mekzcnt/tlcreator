@@ -11,7 +11,7 @@ class Post extends Model
     ];
 
     protected $attributes = array(
-        'json' => '{}'
+        'timeline' => '{}'
     );
 
     public function user() {
