@@ -140,7 +140,7 @@
 
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
   @php
-    $tl = encode({{$post->timeline}});
+    $tl = encode($post);
     echo $tl;
   @endphp
   <script type="text/javascript">
