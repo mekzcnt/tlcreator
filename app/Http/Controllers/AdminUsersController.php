@@ -112,6 +112,10 @@ class AdminUsersController extends Controller
         }
 
         if($file = $request->file('photo_id')) {
+          if (file_exists($filename = public_path() . $user->photo->file)) {
+            unlink($filename);
+          }
+
           $name = time() . $file->getClientOriginalName();
 
           $file->move('uploads', $name);
@@ -121,7 +125,6 @@ class AdminUsersController extends Controller
         }
 
         $user->update($input);
-
         return redirect('/admin/users');
 
     }
@@ -135,7 +138,13 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        unlink(public_path() . $user->photo->file);
+
+        if ($user->photo_id) {
+          $photo = Photo::findOrFail($user->photo_id);
+          unlink(public_path() . $photo->file);
+          $photo->delete();
+        }
+
         $user->delete();
 
         Session::flash('delete_user', 'The user has been deleted');
