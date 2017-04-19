@@ -142,7 +142,7 @@
 
   <script type="text/javascript">
     function make_the_json() {
-      return encode_json($post->timeline);
+      return encode_json(@{{$post->timeline}});
     }
     var timeline_json = make_the_json(); // you write this part
     // two arguments: the id of the Timeline container (no '#')
