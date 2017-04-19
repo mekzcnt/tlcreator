@@ -10,6 +10,10 @@ class Post extends Model
         'title', 'timeline', 'description', 'category_id', 'photo_id',
     ];
 
+    protected $attributes = array(
+        'json' => '{}'
+    );
+
     public function user() {
         return $this->belongsTo('App\User');
     }
