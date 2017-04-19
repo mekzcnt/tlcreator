@@ -116,11 +116,6 @@ class AdminPostsController extends Controller
 
         }
 
-        $user = Auth::user()->posts()->whereId($id)->first();
-        if($user->photo){
-            unlink(public_path().'/uploads/'.$user->photo->file);
-        }
-
         Auth::user()->posts()->whereId($id)->first()->update($input);
 
         return redirect('/admin/posts');
