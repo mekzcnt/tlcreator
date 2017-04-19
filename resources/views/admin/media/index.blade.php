@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-5">
-                {{ $photo->render() }}
+                {{ $photos->render() }}
             </div>
         </div>
 
