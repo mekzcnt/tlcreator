@@ -41,7 +41,7 @@ class AdminMediasController extends Controller
         $file = $request->file('file');
 
         $name = time() . $file->getClientOriginalName();
-        $file->move('images', $name);
+        $file->move('uploads', $name);
 
         Photo::create(['file'=>$name]);
 
@@ -53,15 +53,11 @@ class AdminMediasController extends Controller
 
             $photo = Photo::findOrFail($id);
 
-
             unlink(public_path() . $photo->file);
 
             $photo->delete();
 
             return redirect('/admin/media');
-
-
-
 
     }
 
