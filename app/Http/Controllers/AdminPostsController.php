@@ -22,10 +22,8 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-
         $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('admin.posts.index', compact('posts'));
-
     }
 
     /**
@@ -35,10 +33,8 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-
       $categories = Category::pluck('name','id')->all();
       return view('admin.posts.create', compact('categories'));
-
     }
 
     /**
@@ -54,15 +50,12 @@ class AdminPostsController extends Controller
         $user = Auth::user();
 
         if($file = $request->file('photo_id')){
-
             $name = time() . $file->getClientOriginalName();
 
             $file->move('images', $name);
             $photo = Photo::create(['file'=>$name]);
 
             $input['photo_id'] = $photo->id;
-
-            // return "It works";
         }
 
         $user->posts()->create($input);
@@ -90,9 +83,7 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-
         $categories = Category::pluck('name','id')->all();
-
         return view('admin.posts.edit', compact('post','categories'));
     }
 
@@ -107,17 +98,29 @@ class AdminPostsController extends Controller
     {
         $input = $request->all();
 
+        //When a post image is updated only one record is used in photos table.
+        //So there is no need to bother about old unused records in this table.
         if($file = $request->file('photo_id')){
+            if {
+              $photoId =  $post->photo->id;
+              unlink(public_path().$post->photo->path);
+              $name = time() . $file->getClientOriginalName();
+              $file->move('images',$name);
 
-            $name = time() . $file->getClientOriginalName();
+              $photo = Photo::whereId($photoId)->update(['path'=>$name]);
+              $input['photo_id'] = $photoId;
+            }
+            else {
+              $name = time() . $file->getClientOriginalName();
 
-            $file->move('uploads', $name);
-            $photo = Photo::create(['file'=>$name]);
+              $file->move('uploads', $name);
+              $photo = Photo::create(['file'=>$name]);
 
-            $input['photo_id'] = $photo->id;
-
+              $input['photo_id'] = $photo->id;
+            }
         }
 
+        //Updata data which you edit them in forms
         Auth::user()->posts()->whereId($id)->first()->update($input);
 
         return redirect('/admin/posts');
@@ -138,6 +141,7 @@ class AdminPostsController extends Controller
           unlink(public_path() . $post->photo->file);
         }
 
+        //Delete a photo when delete a post
         $posts = DB::select('SELECT * FROM posts WHERE user_id = ?', [$id]);
         foreach ($posts as $post) {
           if ($post->photo_id) {
