@@ -112,10 +112,6 @@ class AdminUsersController extends Controller
         }
 
         if ($file = $request->file('photo_id')) {
-            if (file_exists($filename = public_path() . $user->photo->file)) {
-                unlink($filename);
-            }
-
             $name = time() . $file->getClientOriginalName();
             $file->move('uploads', $name);
             $photo = Photo::create(['file'=>$name]);
