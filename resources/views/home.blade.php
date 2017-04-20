@@ -83,9 +83,9 @@
             <div class="thumbnail">
               <img src="{{$post->photo->file}}" alt="{{$post->title}}">
               <div class="caption">
-                <h3>{{str_limit($post->title, 30)}}</h3>
+                <h3><a href="{{route('feed.timeline', $post->id)}}">{{str_limit($post->title, 30)}}</a></h3>
                 <p>{{str_limit($post->description, 60)}}</p>
-                <p><a href="#" class="btn btn-default">More Info</a></p>
+                <p><a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a></p>
               </div>
             </div>
           </div>

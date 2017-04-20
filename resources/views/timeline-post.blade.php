@@ -3,7 +3,7 @@
 @section('title', htmlentities($post->title))
 
 @section('code_head')
-    <meta property="og:url"          content="/timeline/{{$post->id}}" />
+    <meta property="og:url"          content="{{route('feed.timeline', $post->id)}}" />
     <meta property="og:type"         content="article" />
     <meta property="og:title"        content="{{$post->title}}" />
     <meta property="og:description"  content="{{$post->description}}" />
