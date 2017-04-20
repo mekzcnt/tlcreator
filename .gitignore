@@ -1,9 +1,14 @@
 /vendor
 /node_modules
+/public/hot
 /public/storage
 /public/uploads
+/storage/*.key
 Homestead.yaml
 Homestead.json
 .env
 ..gitignore.swp
 *.swp
+/.idea
+/.vagrant
+npm-debug.log
