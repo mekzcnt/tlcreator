@@ -6,7 +6,11 @@
 @stop
 
 @section('content')
-<p>{{ $currentUser->name }}</p>
-<p>{{ $currentUser->email }}</p>
-<p>{{ $currentUser->username }}</p>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>{{ $currentUser->name }}</p>
+        <p>{{ $currentUser->email }}</p>
+        <p>{{ $currentUser->photo->id }}</p>
+      </div>
+    </div>
 @stop
