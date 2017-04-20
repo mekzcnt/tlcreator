@@ -82,7 +82,9 @@ Route::group(['middleware'=>'admin', ], function() {
 });
 
 Route::group(['middleware'=>'auth'], function(){
-
     Route::post('comment/reply', 'CommentRepliesController@createReply');
 
+    Route::get('/profile', 'UserController@getProfile');
+    Route::get('/profile/edit', 'UserController@getUpdateProfile');
+    Route::patch('/profile/edit', 'UserController@updateProfile');
 });
