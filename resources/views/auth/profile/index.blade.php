@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<p>{{ $user->name }}</p>
-<p>{{$user->email }}</p>
-<p>{{ $user->username }}</p>
+<p>{{ $currentUser->name }}</p>
+<p>{{ $currentUser->email }}</p>
+<p>{{ $currentUser->username }}</p>
 @stop
