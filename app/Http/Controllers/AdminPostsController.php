@@ -97,13 +97,14 @@ class AdminPostsController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-
+        $post = Post::findOrFail($id);
+        
         //When a post image is updated only one record is used in photos table.
         //So there is no need to bother about old unused records in this table.
         if($file = $request->file('photo_id')){
-            if ($posts->photo) {
+            if ($post->photo) {
               $photoId =  $post->photo->id;
-              unlink(public_path().$posts->photo->path);
+              unlink(public_path().$post->photo->path);
               $name = time() . $file->getClientOriginalName();
               $file->move('images',$name);
 
