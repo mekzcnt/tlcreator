@@ -12,7 +12,8 @@
         <hr>
         <p>{{ $currentUser->name }}</p>
         <p>{{ $currentUser->email }}</p>
-        <p>{{ $currentUser->photo->id }}</p>
+        <p><img height="50" src="{{$currentUser->photo ? $currentUser->photo->file
+          : 'http://placehold.it/400x400' }} " alt=""></p>
       </div>
     </div>
 @stop
