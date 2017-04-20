@@ -13,7 +13,7 @@ class UserController extends Controller
           'currentUser' => $user
       ];
 
-      return view('profiles.profile', $viewData);
+      return view('auth.profile.view', $viewData);
   }
 
   public function getUpdateProfile()
@@ -22,7 +22,7 @@ class UserController extends Controller
           'currentUser' => auth()->user()
       ];
 
-      return view('profiles.editProfile', $viewData);
+      return view('auth.profile.edit', $viewData);
   }
 
   public function UpdateProfile(Request $request)
