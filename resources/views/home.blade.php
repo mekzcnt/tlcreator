@@ -54,7 +54,7 @@
     <p class="text-right"><a class="btn btn-primary btn-lg" href="#" role="button">ดู Timeline ที่น่าสนใจทั้งหมด &raquo;</a></p>
   </div>
 </div>
-@endsection
+@stop
 
 @section('content')
 <div class="container">
@@ -296,4 +296,4 @@
         </div>
       </div>
   </div>
-@endsection
+@stop
