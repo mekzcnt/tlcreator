@@ -10,9 +10,16 @@
   <div class="col-md-8 col-md-offset-2">
     <h1 id="title-page" class="text-center">Contact</h1>
     <hr>
-    <h2>ที่อยู่</h2>
-    <p>คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง, เลขที่ 1 ซอยฉลองกรุง 1, แขวง ลาดกระบัง เขต ลาดกระบัง กรุงเทพมหานคร 10520</p>
-    <h2>ติดต่อผ่านทางอีเมล</h2>
+    <iframe
+      width="100%"
+      height="450"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDsgad9q61ijgIcWxvNcd93tvPqp-rknnc
+        &q=Faculty+of+Information+Technology,+Lat+Krabang,+Bangkok" allowfullscreen>
+    </iframe>
+    <h2 class="text-center">ที่อยู่</h2>
+    <p class="text-center">คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง, เลขที่ 1 ซอยฉลองกรุง 1, แขวง ลาดกระบัง เขต ลาดกระบัง กรุงเทพมหานคร 10520</p>
+    <h2 class="text-center">ติดต่อผ่านทางอีเมล</h2>
     <form class="form-horizontal" action="" method="post">
           <fieldset>
             <!-- <legend class="text-center">Contact us</legend> -->
