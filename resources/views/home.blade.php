@@ -2,6 +2,15 @@
 
 @section('title', 'Feed')
 
+@section('code_head')
+  @if(auth()->user()->role_id == 1)
+    <script language="javascript">
+      {{-- Please change link when you upload on web --}}
+      window.location.href = "http://103.253.146.81/admin"
+    </script>
+  @endif
+@endsection
+
 @section('before_container')
 <div class="jumbotron">
   <div class="container">
