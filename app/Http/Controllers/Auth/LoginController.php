@@ -23,7 +23,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/feed';
+    protected $redirectTo = '/admin';
     /**
      * Create a new controller instance.
      *
