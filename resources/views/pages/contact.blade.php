@@ -12,7 +12,7 @@
     <hr>
     <iframe
       width="100%"
-      height="450"
+      height="300"
       frameborder="0" style="border:0"
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDnwk5BdpQR3lN4gC_WlijxLkK4Q8KLJXg&q=Faculty+of+Information+Technology,+Lat+Krabang,+Bangkok" allowfullscreen>
     </iframe>
