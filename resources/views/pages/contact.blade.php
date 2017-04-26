@@ -10,10 +10,12 @@
   <div class="col-md-8 col-md-offset-2">
     <h1 id="title-page" class="text-center">Contact</h1>
     <hr>
-    <p>Contact page</p>
+    <h2>ที่อยู่</h2>
+    <p>คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง, เลขที่ 1 ซอยฉลองกรุง 1, แขวง ลาดกระบัง เขต ลาดกระบัง กรุงเทพมหานคร 10520</p>
+    <h2>ติดต่อผ่านทางอีเมล</h2>
     <form class="form-horizontal" action="" method="post">
           <fieldset>
-            <legend class="text-center">Contact us</legend>
+            <!-- <legend class="text-center">Contact us</legend> -->
 
             <!-- Name input-->
             <div class="form-group">
