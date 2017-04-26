@@ -11,27 +11,42 @@
     <h1 id="title-page" class="text-center">Contact</h1>
     <hr>
     <p>Contact page</p>
-    <table class="table table-bordered">
-        <tr>
-            <td>Name</td>
-            <td>
-                <input type="text" class="form-control" name="name" value="" autofocus>
-            </td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <input type="text" class="form-control" name="age" value="">
-            </td>
-        </tr>
-        <tr>
-            <td>Content</td>
-            <td>
-                <input type="text" class="form-control" name="occupation" value="">
-            </td>
-        </tr>
-    </table>
-    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+    <form class="form-horizontal" action="" method="post">
+          <fieldset>
+            <legend class="text-center">Contact us</legend>
+
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Name</label>
+              <div class="col-md-9">
+                <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+              </div>
+            </div>
+
+            <!-- Email input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Your E-mail</label>
+              <div class="col-md-9">
+                <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+              </div>
+            </div>
+
+            <!-- Message body -->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="message">Your message</label>
+              <div class="col-md-9">
+                <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+              </div>
+            </div>
+
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+      </form>
   </div>
 </div>
 @endsection
