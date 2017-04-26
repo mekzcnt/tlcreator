@@ -36,9 +36,9 @@
         <img class="first-slide" src="{{ asset('assets/img/6-oct-2519-cover.jpg') }}" alt="First slide">
         <div class="container">
           <div class="carousel-caption">
-            <h1>Example headline.</h1>
-            <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <h1>เหตุการณ์ 6 ตุลาคม 2519</h1>
+            <p>ย้อนดูเหตุการณ์ล้อมปราบนักศึกษา ประชาชน อันน่าสลดใจที่สุดของเมืองไทย</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">อ่านต่อ</a></p>
           </div>
         </div>
       </div>
@@ -76,8 +76,8 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1>Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+      <h1>สร้างไทม์ไลน์ง่ายนิดเดียว!</h1>
+      <p>เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจได้ง่ายยิ่งขึ้น</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
   </div>
