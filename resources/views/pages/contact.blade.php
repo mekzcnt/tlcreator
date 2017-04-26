@@ -17,7 +17,7 @@
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDnwk5BdpQR3lN4gC_WlijxLkK4Q8KLJXg&q=Faculty+of+Information+Technology,+Lat+Krabang,+Bangkok" allowfullscreen>
     </iframe>
     <h2 class="text-center">ที่อยู่</h2>
-    <p class="text-center">คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง, เลขที่ 1 ซอยฉลองกรุง 1, แขวง ลาดกระบัง เขต ลาดกระบัง กรุงเทพมหานคร 10520</p>
+    <p class="text-center">คณะเทคโนโลยีสารสนเทศ<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพมหานคร 10520</p>
     <h2 class="text-center">ติดต่อผ่านทางอีเมล</h2>
     <form class="form-horizontal" action="" method="post">
           <fieldset>
