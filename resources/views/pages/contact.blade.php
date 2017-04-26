@@ -18,7 +18,7 @@
     </iframe>
     <h2 class="text-center">ที่อยู่</h2>
     <p class="text-center">คณะเทคโนโลยีสารสนเทศ<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง<br>เขตลาดกระบัง กรุงเทพมหานคร 10520</p>
-    <h2 class="text-center">ติดต่อผ่านทางอีเมล</h2>
+    <br><h2 class="text-center">ติดต่อผ่านทางอีเมล</h2><br>
     <form class="form-horizontal" action="" method="post">
           <fieldset>
             <!-- <legend class="text-center">Contact us</legend> -->
