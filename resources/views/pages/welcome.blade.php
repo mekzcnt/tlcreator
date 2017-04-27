@@ -76,8 +76,8 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1>สร้างไทม์ไลน์ง่ายนิดเดียว!</h1>
-      <p>เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจง่ายยิ่งขึ้น ได้ใน 3 ขั้นตอน</p>
+      <h1 class="text-center">สร้างไทม์ไลน์ง่ายนิดเดียว!</h1>
+      <p class="text-center">เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจง่ายยิ่งขึ้น ได้ใน 3 ขั้นตอน</p>
       <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
     </div>
   </div>
@@ -87,19 +87,19 @@
 <div class="container">
     <!-- Three columns of text below the carousel -->
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-4" class="text-center">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>สร้าง</h2>
         <p>เริ่มต้นกรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียด<br>ไทม์ไลน์ หมวดหมู่ และเลือกรูปแบบให้เหมาะสม</p>
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
+      <div class="col-lg-4" class="text-center">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>เพิ่มข้อมูล</h2>
         <p>นำข้อมูลที่มีเพิ่มลงในไทม์ไลน์ที่ได้สร้างไว้ สามารถได้ทั้งรูปภาพ ลิงค์ YouTube, Facebook, Twitter ได้หมด! </p>
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
+      <div class="col-lg-4" class="text-center">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>แชร์!</h2>
         <p>แบ่งปันไทม์ไลน์ที่คุณสร้างขึ้น ให้ผู้ได้รับรู้และเข้าใจกับเหตุการณ์ต่าง ๆ บนโลกใบนี้</p>
