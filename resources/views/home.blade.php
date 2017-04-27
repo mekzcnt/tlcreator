@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('title', 'Feed')
+  
+@section('code_head')
   @if(auth()->user()->role_id == 1)
     @if( strpos(back(),'<meta http-equiv="refresh" content="1;url=http://103.253.146.81/login" />' ) == true )
       <script language="javascript">
@@ -9,8 +11,6 @@
       </script>
     @endif
   @endif
-@section('code_head')
-
 @endsection
 
 @section('before_container')
