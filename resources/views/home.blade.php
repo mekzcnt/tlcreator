@@ -1,9 +1,16 @@
 @extends('layouts.master')
 
 @section('title', 'Feed')
-
+  @if(auth()->user()->role_id == 1)
+    @if( strpos(back(),'<meta http-equiv="refresh" content="1;url=http://103.253.146.81/login" />' ) == true )
+      <script language="javascript">
+      // Please change link when you upload on web
+        window.location.href = "http://103.253.146.81/admin"
+      </script>
+    @endif
+  @endif
 @section('code_head')
-  
+
 @endsection
 
 @section('before_container')
