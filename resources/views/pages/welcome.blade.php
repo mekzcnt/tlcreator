@@ -77,8 +77,8 @@
   <div class="jumbotron">
     <div class="container">
       <h1>สร้างไทม์ไลน์ง่ายนิดเดียว!</h1>
-      <p>เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจได้ง่ายยิ่งขึ้น</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      <p>เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจง่ายยิ่งขึ้น ได้ใน 3 ขั้นตอน</p>
+      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
     </div>
   </div>
 @endsection
@@ -90,7 +90,7 @@
       <div class="col-lg-4">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>สร้าง</h2>
-        <p>เริ่มต้นกรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียดไทม์ไลน์ หมวดหมู่ และเลือกรูปแบบให้เหมาะสม</p>
+        <p>เริ่มต้นกรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียด<br>ไทม์ไลน์ หมวดหมู่ และเลือกรูปแบบให้เหมาะสม</p>
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
