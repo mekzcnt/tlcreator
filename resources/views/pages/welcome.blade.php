@@ -93,13 +93,13 @@
         <p>เริ่มต้นกรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียด<br>ไทม์ไลน์ หมวดหมู่ และเลือกรูปแบบให้เหมาะสม</p>
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4" class="text-center">
+      <div class="col-lg-4">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>เพิ่มข้อมูล</h2>
         <p>นำข้อมูลที่มีเพิ่มลงในไทม์ไลน์ที่ได้สร้างไว้ สามารถได้ทั้งรูปภาพ ลิงค์ YouTube, Facebook, Twitter ได้หมด! </p>
         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4" class="text-center">
+      <div class="col-lg-4">
         <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
         <h2>แชร์!</h2>
         <p>แบ่งปันไทม์ไลน์ที่คุณสร้างขึ้น ให้ผู้ได้รับรู้และเข้าใจกับเหตุการณ์ต่าง ๆ บนโลกใบนี้</p>
