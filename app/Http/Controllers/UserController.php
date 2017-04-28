@@ -34,13 +34,12 @@ class UserController extends Controller
       ]);
 
       $user = auth()->user();
-//        $user->fill($request->all());
+      // $user->fill($request->all());
       $user->name = $request->name;
       $user->email = $request->email;
       $user->username = $request->username;
-      $user->sex = $request->sex;
-      $user->age = $request->age;
-      $user->occupation = $request->occupation;
+      // $user->sex = $request->sex;
+
 //        don't have photo_id yet.
 
       $user->save();

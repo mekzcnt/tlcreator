@@ -39,41 +39,7 @@
                     <td>
                         <input type="text" class="form-control" name="username" value="{{ $currentUser->username }}">
                     </td>
-                </tr>
-                <tr>
-                    <td>Sex</td>
-                    <td>
-                        @if($currentUser->sex == 'male')
-                            <form>
-                                <div class="pull-left">
-                                    <input type="radio" name="sex" value="male" checked> Male
-                                    <br>
-                                    <input type="radio" name="sex" value="female"> Female
-                                </div>
-                            </form>
-                        @else
-                            <form>
-                                <div class="pull-left">
-                                    <input type="radio" name="sex" value="male"> Male
-                                    <br>
-                                    <input type="radio" name="sex" value="famale" checked> Female
-                                </div>
-                            </form>
-                        @endif
-                    </td>
-                </tr>
-                <tr>
-                    <td>Age</td>
-                    <td>
-                        <input type="text" class="form-control" name="age" value="{{ $currentUser->age }}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Occupation</td>
-                    <td>
-                        <input type="text" class="form-control" name="occupation" value="{{ $currentUser->occupation }}">
-                    </td>
-                </tr>
+                </tr>s
             </table>
             <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </form>
