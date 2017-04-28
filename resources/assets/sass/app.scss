@@ -492,12 +492,9 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     margin-top: 20px;
     padding: 30px;
     background-color: rgba(214, 224, 226, 0.2);
-    -webkit-border-top-left-radius:5px;
-    -moz-border-top-left-radius:5px;
-    border-top-left-radius:5px;
-    -webkit-border-top-right-radius:5px;
-    -moz-border-top-right-radius:5px;
-    border-top-right-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -511,7 +508,7 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     background-color: rgba(255, 255, 255, 1);
 }
 .card.hovercard .card-background {
-    height: 330px;
+    height: 350px;
 }
 .card-background img {
     -webkit-filter: blur(25px);
@@ -530,10 +527,10 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     right: 0;
 }
 .card.hovercard .useravatar img {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    max-height: 300px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
