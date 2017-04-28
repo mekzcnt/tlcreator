@@ -508,7 +508,7 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     background-color: rgba(255, 255, 255, 1);
 }
 .card.hovercard .card-background {
-    height: 350px;
+    height: 250px;
 }
 .card-background img {
     -webkit-filter: blur(25px);
@@ -527,10 +527,10 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
     right: 0;
 }
 .card.hovercard .useravatar img {
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    max-height: 300px;
+    width: 180px;
+    height: 180px;
+    max-width: 180px;
+    max-height: 180px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -544,7 +544,7 @@ box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
 .card.hovercard .card-info .card-title {
     padding:0 5px;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1;
     color: #262626;
     background-color: rgba(255, 255, 255, 0.1);
