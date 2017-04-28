@@ -15,9 +15,6 @@ class AddProfilesToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique();
-            $table->string('sex')->default('male');
-            $table->integer('age')->default(0);
-            $table->string('occupation')->nullable();
         });
     }
 
@@ -30,9 +27,6 @@ class AddProfilesToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->removeColumn('username');
-            $table->removeColumn('sex');
-            $table->removeColumn('age');
-            $table->removeColumn('occupation');
         });
     }
 }
