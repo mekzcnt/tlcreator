@@ -26,7 +26,7 @@ class AddProfilesToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->removeColumn('username');
+            $table->removeUnique('username');
         });
     }
 }
