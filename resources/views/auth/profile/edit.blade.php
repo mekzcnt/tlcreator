@@ -23,7 +23,7 @@
             {{ method_field('PATCH') }}
             <table class="table table-bordered">
                 <tr>
-                    <td>Userame</td>
+                    <td>Username</td>
                     <td>
                         <input type="text" class="form-control" name="name" value="{{ $currentUser->username }}" autofocus>
                     </td>
