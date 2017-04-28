@@ -45,9 +45,8 @@ class LoginController extends Controller
      */
     protected function credentials(Request $request)
     {
-        $usernameInput = trim($request->{$this->username()});
-        $usernameColumn = filter_var($usernameInput, FILTER_VALIDATE_EMAIL) ? 'email' : $this->username();
-
-        return [$usernameColumn => $usernameInput, 'password' => $request->password];
+      $field = filter_var($request->input($this->username()), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+      $request->merge([$field => $request->input($this->username())]);
+      return $request->only($field, 'password');
     }
 }
