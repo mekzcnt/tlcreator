@@ -23,9 +23,9 @@
             {{ method_field('PATCH') }}
             <table class="table table-bordered">
                 <tr>
-                    <td>Name</td>
+                    <td>Userame</td>
                     <td>
-                        <input type="text" class="form-control" name="name" value="{{ $currentUser->name }}" autofocus>
+                        <input type="text" class="form-control" name="name" value="{{ $currentUser->username }}" autofocus>
                     </td>
                 </tr>
                 <tr>
@@ -37,9 +37,9 @@
                 <tr>
                     <td>Display Name</td>
                     <td>
-                        <input type="text" class="form-control" name="username" value="{{ $currentUser->username }}">
+                        <input type="text" class="form-control" name="username" value="{{ $currentUser->name }}">
                     </td>
-                </tr>s
+                </tr>
             </table>
             <button type="submit" class="btn btn-primary pull-right">Submit</button>
         </form>
