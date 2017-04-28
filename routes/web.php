@@ -25,6 +25,7 @@ Route::get('/contact', function () {
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/feed', 'HomeController@index');
 
