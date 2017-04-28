@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title', 'Feed')
-  
+
 @section('code_head')
   @if(auth()->user()->role_id == 1)
     @if( strpos(back(),'<meta http-equiv="refresh" content="1;url=http://103.253.146.81/login" />' ) == true )
@@ -69,15 +69,6 @@
 
 @section('content')
 <div class="container">
-
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title">ข่าวจากผู้พัฒนาระบบ</h3>
-    </div>
-    <div class="panel-body">
-      <p>test test ทดสอบ 1 2 3 4</p>
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-md-12">
