@@ -20,7 +20,7 @@
             <div class="card-info"> <span class="card-title">{{ $currentUser->name }}</span>
           </div>
         </div>
-        <h1 id="title-page" class="text-center">Your Profile</h1>
+        <h1 id="title-page" class="text-center">My Timeline</h1>
         <hr>
         <p>{{ $currentUser->name }}</p>
         <p>{{ $currentUser->email }}</p>
