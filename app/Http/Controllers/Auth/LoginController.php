@@ -48,6 +48,6 @@ class LoginController extends Controller
         $usernameInput = trim($request->{$this->username()});
         $usernameColumn = filter_var($usernameInput, FILTER_VALIDATE_EMAIL) ? 'email' : $this->username();
 
-        return [$usernameColumn => $usernameInput, 'password' => $request->password, 'active' => 1];
+        return [$usernameColumn => $usernameInput, 'password' => $request->password];
     }
 }
