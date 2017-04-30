@@ -31,7 +31,7 @@ Route::get('/feed', 'HomeController@index');
 
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
 
-Route::get('/{username}', 'UserController@getProfile');
+Route::get('/{username}', 'UserController@getPublicProfile');
 
 Route::group(['middleware'=>'admin', ], function() {
 

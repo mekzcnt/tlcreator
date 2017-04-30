@@ -12,11 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-  public function getProfile($username)
+  public function getPublicProfile($username)
   {
-      $currentUser = User::where('username', $username)->first();
-      $posts = User::where('username', $username)->posts;
-      //$currentUser = auth()->user();
+    $currentUser = User::where('username', $username)->first();
+    $posts = User::where('username', $username)->first()->posts;
+  }
+  public function getProfile()
+  {
+      $currentUser = auth()->user();
+      $posts = User::find(Auth::id())->posts;
 
       return view('auth.profile.index', compact('posts','currentUser'));
   }
