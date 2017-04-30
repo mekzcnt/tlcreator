@@ -89,7 +89,6 @@ Route::group(['middleware'=>'auth'], function(){
 
         'create'=>'auth.posts.create',
         'store'=>'auth.posts.store',
-
     ]]);
 
     Route::get('/profile', 'UserController@getProfile');
