@@ -14,9 +14,9 @@ class UserController extends Controller
 {
   public function getProfile($username)
   {
-      $user = User::where('username', $username)->first();
+      $currentUser = User::where('username', $username)->first();
       $posts = User::where('username', $username)->first()->posts;
-      $currentUser = auth()->user();
+      //$currentUser = auth()->user();
 
       return view('auth.profile.index', compact('posts','currentUser'));
   }
