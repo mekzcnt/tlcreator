@@ -87,8 +87,8 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::resource('/timeline', 'UserPostsController',['names'=>[
 
-        'create'=>'auth.posts.create',
-        'store'=>'auth.posts.store',
+        'create'=>'auth.timeline.create',
+        'store'=>'auth.timeline.store',
     ]]);
 
     Route::get('/profile', 'UserController@getProfile');

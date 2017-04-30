@@ -27,7 +27,7 @@
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/register') }}">Register</a></li>
         @else
-            <li><a href="{{ route('auth.posts.create') }}"><button type="button" class="btn btn-warning">Create Timeline</button></a></li>
+            <li><a href="{{ route('auth.timeline.create') }}"><button type="button" class="btn btn-warning">Create Timeline</button></a></li>
             <li><a href="{{ url('/feed') }}">Timeline Feed</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -28,7 +28,7 @@ class UserPostsController extends Controller
     public function create()
     {
         $categories = Category::pluck('name','id')->all();
-        return view('auth.posts.create', compact('categories'));
+        return view('auth.timeline.create', compact('categories'));
     }
 
     /**
