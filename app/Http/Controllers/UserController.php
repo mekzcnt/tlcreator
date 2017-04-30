@@ -14,8 +14,8 @@ class UserController extends Controller
 {
   public function getPublicProfile($username)
   {
-    $currentUser = User::where('username', $username)->first();
-    $posts = User::where('username', $username)->first()->posts;
+      // $currentUser = User::where('username', $username)->first();
+      // $posts = User::where('username', $username)->first()->posts;
   }
   public function getProfile()
   {
