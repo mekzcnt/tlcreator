@@ -8,8 +8,9 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
+  <h1 id="title-page" class="text-center">Create a timeline</h1>
+  <hr>
   @include('includes.form_error')
-
 
   {!! Form::open(['method'=>'POST', 'action'=> 'UserPostsController@store', 'files'=>true]) !!}
 
