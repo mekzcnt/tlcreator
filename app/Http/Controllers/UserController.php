@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
+use App\Post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
