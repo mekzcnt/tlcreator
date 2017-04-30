@@ -12,7 +12,7 @@ class UserController extends Controller
           'currentUser' => auth()->user()
       ];
 
-      return view('auth.profile.index', compact('viewData'));
+      return view('auth.profile.index', $viewData);
   }
 
   public function getUpdateProfile()
