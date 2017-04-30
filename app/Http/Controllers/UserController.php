@@ -12,11 +12,9 @@ class UserController extends Controller
   {
       $posts = Post::all();
       $user = auth()->user();
-      $viewData = [
-          'currentUser' => $user
-      ];
+      $viewData = ['currentUser' => $user];
 
-      return view('auth.profile.index', compact('viewData','posts'));
+      return view('auth.profile.index', compact($viewData,'posts'));
   }
 
   public function getUpdateProfile()
