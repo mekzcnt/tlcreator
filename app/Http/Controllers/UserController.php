@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Photo;
-use App\Post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
   public function getProfile()
   {
-      $posts = Post::all();
-      $user = auth()->user();
-      $viewData = ['currentUser' => $user];
+      $viewData = [
+          'currentUser' => auth()->user()
+      ];
 
-      return view('auth.profile.index', compact($viewData,'posts'));
+      return view('auth.profile.index', compact('viewData'));
   }
 
   public function getUpdateProfile()
