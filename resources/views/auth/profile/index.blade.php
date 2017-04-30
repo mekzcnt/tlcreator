@@ -22,9 +22,24 @@
         </div>
         <h1 id="title-page" class="text-center">My Timeline</h1>
         <hr>
-        <p>{{ $currentUser->name }}</p>
-        <p>{{ $currentUser->email }}</p>
-        <p><img height="50" src=" " alt=""></p>
+      </div>
+    </div>
+    <div class="row equal-height">
+      <div class="col-lg-12">
+        @if(count($posts) > 0)
+            @foreach($posts as $post)
+            <div class="col-md-3 col-sm-6 hero-feature">
+              <div class="thumbnail">
+                <img src="{{$post->photo->file}}" alt="{{$post->title}}">
+                <div class="caption">
+                  <h3><a href="{{route('feed.timeline', $post->id)}}">{{str_limit($post->title, 30)}}</a></h3>
+                  <p>{{str_limit($post->description, 60)}}</p>
+                  <p><a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a></p>
+                </div>
+              </div>
+            </div>
+            @endforeach
+        @endif
       </div>
     </div>
 @stop
