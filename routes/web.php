@@ -35,7 +35,9 @@ Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsControll
 
 Route::group(['middleware'=>'admin', ], function() {
 
-    // Route::get('/admin', function(){ return view('admin.index');});
+    Route::get('/admin', function(){ 
+      return 'test';
+    });
 
     Route::resource('admin/users', 'AdminUsersController',['names'=>[
         'index'=>'admin.users.index',
