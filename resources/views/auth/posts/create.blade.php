@@ -8,39 +8,39 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-  <h1 id="title-page" class="text-center">Create a timeline</h1>
-  <hr>
-  @include('includes.form_error')
+    <h1 id="title-page" class="text-center">Create a timeline</h1>
+    <hr>
+    @include('includes.form_error')
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'UserPostsController@store', 'files'=>true]) !!}
-
-   <div class="form-group">
-         {!! Form::label('title', 'Title:') !!}
-         {!! Form::text('title', null, ['class'=>'form-control'])!!}
-   </div>
-
-    <div class="form-group">
-        {!! Form::label('category_id', 'Category:') !!}
-        {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control'])!!}
-    </div>
-
-
-    <div class="form-group">
-        {!! Form::label('photo_id', 'Photo:') !!}
-        {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
-     </div>
-
-
-    <div class="form-group">
-        {!! Form::label('description', 'Description:') !!}
-        {!! Form::textarea('description', null, ['class'=>'form-control'])!!}
-    </div>
+    {!! Form::open(['method'=>'POST', 'action'=> 'UserPostsController@store', 'files'=>true]) !!}
 
      <div class="form-group">
-        {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+           {!! Form::label('title', 'Title:') !!}
+           {!! Form::text('title', null, ['class'=>'form-control'])!!}
      </div>
 
-   {!! Form::close() !!}
+      <div class="form-group">
+          {!! Form::label('category_id', 'Category:') !!}
+          {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control'])!!}
+      </div>
+
+
+      <div class="form-group">
+          {!! Form::label('photo_id', 'Photo:') !!}
+          {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
+       </div>
+
+
+      <div class="form-group">
+          {!! Form::label('description', 'Description:') !!}
+          {!! Form::textarea('description', null, ['class'=>'form-control'])!!}
+      </div>
+
+       <div class="form-group">
+          {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+       </div>
+
+     {!! Form::close() !!}
   </div>
 </div>
 
