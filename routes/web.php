@@ -85,7 +85,7 @@ Route::group(['middleware'=>'admin', ], function() {
 Route::group(['middleware'=>'auth'], function(){
     Route::post('/comment/reply', 'CommentRepliesController@createReply');
 
-    Route::resource('/timeline', 'UserPostsController',['names'=>[
+    Route::resource('timeline', 'UserPostsController',['names'=>[
 
         'create'=>'auth.timeline.create',
         'store'=>'auth.timeline.store',
