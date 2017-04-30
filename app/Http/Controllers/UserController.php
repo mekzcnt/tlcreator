@@ -10,7 +10,7 @@ class UserController extends Controller
 {
   public function getProfile()
   {
-      $posts = Post::all();
+      $posts = User::find(Auth::id())->posts;
       $currentUser = auth()->user();
 
       return view('auth.profile.index', compact('posts','currentUser'));
