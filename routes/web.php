@@ -31,6 +31,8 @@ Route::get('/feed', 'HomeController@index');
 
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
 
+Route::get('/{username}', 'UserController@getProfile');
+
 Route::group(['middleware'=>'admin', ], function() {
 
     Route::get('/admin', function(){ return view('admin.index');});
@@ -93,7 +95,6 @@ Route::group(['middleware'=>'auth'], function(){
         'store'=>'auth.timeline.store',
     ]]);
 
-    Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');
     Route::patch('/profile/edit', 'UserController@updateProfile');
 });
