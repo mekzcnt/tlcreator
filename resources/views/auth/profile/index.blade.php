@@ -25,7 +25,6 @@
       </div>
     </div>
     <div class="row equal-height">
-      <div class="col-lg-12">
         @if(count($posts) > 0)
             @foreach($posts as $post)
             <div class="col-md-3 col-sm-6 hero-feature">
@@ -40,6 +39,5 @@
             </div>
             @endforeach
         @endif
-      </div>
     </div>
 @stop
