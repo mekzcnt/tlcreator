@@ -85,6 +85,13 @@ Route::group(['middleware'=>'admin', ], function() {
 Route::group(['middleware'=>'auth'], function(){
     Route::post('comment/reply', 'CommentRepliesController@createReply');
 
+    Route::resource('timeline/posts', 'UserPostsController',['names'=>[
+
+        'create'=>'auth.posts.create',
+        'store'=>'auth.posts.store',
+
+    ]]);
+
     Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');
     Route::patch('/profile/edit', 'UserController@updateProfile');

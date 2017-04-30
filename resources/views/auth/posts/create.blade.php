@@ -1,6 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.master')
 
-@section('title', 'Create Post')
+@section('title', 'Create a timeline')
+
+@section('before_container')
+@stop
 
 @section('content')
 <div class="row">
@@ -8,7 +11,7 @@
   @include('includes.form_error')
 
 
-  {!! Form::open(['method'=>'POST', 'action'=> 'AdminPostsController@store', 'files'=>true]) !!}
+  {!! Form::open(['method'=>'POST', 'action'=> 'UserPostsController@store', 'files'=>true]) !!}
 
    <div class="form-group">
          {!! Form::label('title', 'Title:') !!}
