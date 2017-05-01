@@ -117,7 +117,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/admin"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a>
+                        <a href="/admin/index"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a>
                     </li>
 
                     <li>

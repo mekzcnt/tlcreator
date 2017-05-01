@@ -23,19 +23,18 @@ Route::get('/contact', function () {
 });
 
 Auth::routes();
-
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
 Route::get('/feed', 'HomeController@index');
 
+Route::get('/timeline', function(){ return redirect('/');});
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
-
 Route::get('/{username}', 'UserController@getProfile');
 
-Route::group(['middleware'=>'admin', ], function() {
+Route::group(['middleware'=>'admin'], function() {
 
-    Route::get('/admin', function(){
+    Route::get('/admin/index', function(){
       return view('admin.index');
     });
 
@@ -88,8 +87,6 @@ Route::group(['middleware'=>'admin', ], function() {
 
 Route::group(['middleware'=>'auth'], function(){
     Route::post('/comment/reply', 'CommentRepliesController@createReply');
-
-    Route::get('/timeline', function(){ return view('home');});
 
 
 
