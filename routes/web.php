@@ -31,7 +31,7 @@ Route::get('/feed', 'HomeController@index');
 
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
 
-// Route::get('/{username}', 'UserController@getPublicProfile');
+Route::get('/{username}', 'UserController@getProfile');
 
 Route::group(['middleware'=>'admin', ], function() {
 
@@ -91,12 +91,15 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/timeline', function(){ return view('home');});
 
+
+
     Route::resource('/timeline/posts', 'UserPostsController',['names'=>[
 
         'create'=>'auth.timeline.create',
         'store'=>'auth.timeline.store',
     ]]);
 
+    // Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');
     Route::patch('/profile/edit', 'UserController@updateProfile');
 });

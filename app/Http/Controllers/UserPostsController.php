@@ -59,7 +59,7 @@ class UserPostsController extends Controller
 
       $user->posts()->create($input);
 
-      return redirect('/profile');
+      return redirect('/'.$user->username);
     }
 
     /**
