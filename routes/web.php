@@ -34,11 +34,7 @@ Route::get('/{username}', 'UserController@getProfile');
 
 Route::group(['middleware'=>'admin'], function() {
 
-<<<<<<< HEAD
     Route::get('/admin/dashboard', function(){
-=======
-    Route::get('/admin/index', function(){
->>>>>>> 441196191feada34d60769602d59d5be1bd2a08e
       return view('admin.index');
     });
 
