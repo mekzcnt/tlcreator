@@ -12,15 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-  public function getPublicProfile($username)
+
+  public function getProfile($username)
   {
-      // $currentUser = User::where('username', $username)->first();
-      // $posts = User::where('username', $username)->first()->posts;
-  }
-  public function getProfile()
-  {
-      $currentUser = auth()->user();
-      $posts = User::find(Auth::id())->posts;
+      $currentUser = User::where('username', $username)->firstOrFail();
+      // $posts = User::where('username', $username)->firstOrFail()->posts;
+      // $user = auth()->user();
+      $posts = Post::where("user_id", "=", $currentUser->id)->orderBy('id', 'desc')->paginate(12);
 
       return view('auth.profile.index', compact('posts','currentUser'));
   }
@@ -53,6 +51,6 @@ class UserController extends Controller
 
       $user->save();
 
-      return redirect('/profile');
+      return redirect('/'.$user->username);
   }
 }

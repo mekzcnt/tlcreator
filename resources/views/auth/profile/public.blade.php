@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Your Profile')
+@section('title', 'Profile')
 
 @section('before_container')
 @stop
@@ -24,7 +24,6 @@
         <hr>
       </div>
     </div>
-    
     <div class="row equal-height">
         @if(count($posts) > 0)
             @foreach($posts as $post)
@@ -40,11 +39,5 @@
             </div>
             @endforeach
         @endif
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-5">
-            {{ $posts->render() }}
-        </div>
     </div>
 @stop

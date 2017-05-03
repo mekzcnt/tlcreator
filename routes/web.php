@@ -23,19 +23,18 @@ Route::get('/contact', function () {
 });
 
 Auth::routes();
-
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
 Route::get('/feed', 'HomeController@index');
 
+Route::get('/timeline', function(){ return redirect('/');});
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
+Route::get('/{username}', 'UserController@getProfile');
 
-// Route::get('/{username}', 'UserController@getPublicProfile');
+Route::group(['middleware'=>'admin'], function() {
 
-Route::group(['middleware'=>'admin', ], function() {
-
-    Route::get('/admin', function(){
+    Route::get('/admin/dashboard', function(){
       return view('admin.index');
     });
 
@@ -89,7 +88,7 @@ Route::group(['middleware'=>'admin', ], function() {
 Route::group(['middleware'=>'auth'], function(){
     Route::post('/comment/reply', 'CommentRepliesController@createReply');
 
-    Route::get('/timeline', function(){ return view('home');});
+
 
     Route::resource('/timeline/posts', 'UserPostsController',['names'=>[
 
@@ -97,6 +96,7 @@ Route::group(['middleware'=>'auth'], function(){
         'store'=>'auth.timeline.store',
     ]]);
 
+    // Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');
     Route::patch('/profile/edit', 'UserController@updateProfile');
 });
