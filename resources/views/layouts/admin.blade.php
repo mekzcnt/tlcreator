@@ -117,7 +117,11 @@
                         <!-- /input-group -->
                     </li>
                     <li>
+<<<<<<< HEAD
                         <a href="/admin/dashboard"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a>
+=======
+                        <a href="/admin/index"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard</a>
+>>>>>>> 441196191feada34d60769602d59d5be1bd2a08e
                     </li>
 
                     <li>
