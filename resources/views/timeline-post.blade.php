@@ -21,14 +21,9 @@
     <img class="img-responsive" src="{{$post->photo->file}}" alt=""><br>
     <h1 class="">{{$post->title}}</h1>
     <p class="lead">
-<<<<<<< HEAD
         <span class="glyphicon glyphicon-user"></span> <a href="{{ url('/', $post->user->username) }}">{{$post->user->name}}</a> |
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}}</span> |
         Category: {{$post->category->name}}
-=======
-        <span class="glyphicon glyphicon-user"></span> <a href="{{ url('/timeline/', $post->user->username) }}">{{$post->user->name}}</a> |
-        <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}}</span>
->>>>>>> 441196191feada34d60769602d59d5be1bd2a08e
     </p>
     <hr>
 
