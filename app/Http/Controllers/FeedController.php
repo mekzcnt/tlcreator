@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Photo;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class FeedController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,7 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('home', compact('posts'));
+
+        $posts = Post::take(4)->orderBy('id', 'desc')->get();
+        $categories = Category::get();
+
+        return view('auth.feed', compact('all_posts','categories','posts'));
     }
 }

@@ -9,9 +9,6 @@ use App\Http\Requests;
 
 class AdminMediasController extends Controller
 {
-    //
-
-
 
     public function index(){
         $photos = Photo::orderBy('id', 'desc')->paginate(10);
@@ -37,7 +34,7 @@ class AdminMediasController extends Controller
 
     public function destroy($id){
         $photo = Photo::findOrFail($id);
-        
+
         unlink(public_path() . $photo->file);
         $photo->delete();
 

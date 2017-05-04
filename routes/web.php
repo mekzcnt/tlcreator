@@ -26,10 +26,11 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
-Route::get('/feed', 'HomeController@index');
+Route::get('/feed', 'FeedController@index');
 
 Route::get('/timeline', function(){ return redirect('/');});
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
+ Route::get('/category/{id}','CategoryController@show');
 Route::get('/{username}', 'UserController@getProfile');
 
 Route::group(['middleware'=>'admin'], function() {

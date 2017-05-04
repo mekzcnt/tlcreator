@@ -22,8 +22,8 @@
     <h1 class="">{{$post->title}}</h1>
     <p class="lead">
         <span class="glyphicon glyphicon-user"></span> <a href="{{ url('/', $post->user->username) }}">{{$post->user->name}}</a> |
-        <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}}</span> |
-        Category: {{$post->category->name}}
+        <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}} |
+        <span class="glyphicon glyphicon-folder-open"></span> Category: <a href="#">{{$post->category->name}}</a>
     </p>
     <hr>
 
@@ -33,7 +33,9 @@
 
     <hr>
     <p><strong>Description :</strong></p>
-    <p>{{$post->description}}</p>
+    <p>{{$post->description}}</p><br>
+    <p><strong>Tag :</strong></p>
+    <p><span class="label label-default">Default</span></p>
     <hr>
 @endsection
 
