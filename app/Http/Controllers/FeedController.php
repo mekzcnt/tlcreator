@@ -29,10 +29,8 @@ class FeedController extends Controller
      */
     public function index()
     {
+        $categories = Category::take(4)->orderBy('id', 'desc')->get();
 
-        $posts = Post::take(4)->orderBy('id', 'desc')->get();
-        $categories = Category::get();
-
-        return view('auth.feed', compact('all_posts','categories','posts'));
+        return view('auth.feed', compact('categories'));
     }
 }
