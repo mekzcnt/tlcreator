@@ -72,8 +72,8 @@
   </div>
 
   <div class="row equal-height">
-      @if(count($posts) > 0)
-          @foreach($posts as $post)
+      @if(count($lastestPosts) > 0)
+          @foreach($lastestPosts as $post)
           <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail">
               <img src="{{$post->photo->file}}" alt="{{$post->title}}">

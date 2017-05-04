@@ -23,7 +23,7 @@
     <p class="lead">
         <span class="glyphicon glyphicon-user"></span> <a href="{{ url('/', $post->user->username) }}">{{$post->user->name}}</a> |
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at->diffForHumans()}} |
-        <span class="glyphicon glyphicon-folder-open"></span> Category: <a href="#">{{$post->category->name}}</a>
+        <span class="glyphicon glyphicon-folder-close"></span> Category: <a href="{{ url('/category', $post->category_id) }}">{{$post->category->name}}</a>
     </p>
     <hr>
 
