@@ -2,17 +2,24 @@
 
 namespace App;
 
+// use Bluora\LaravelModelJson\JsonColumnTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    // use JsonColumnTrait;
+
+    protected $json_columns = [
+        'timeline'
+    ];
+
     protected $fillable = [
         'title', 'timeline', 'description', 'category_id', 'photo_id',
     ];
 
-    protected $attributes = array(
-        'timeline' => '{}'
-    );
+    protected $casts = [
+        'timeline' => 'json',
+    ];
 
     public function user() {
         return $this->belongsTo('App\User');

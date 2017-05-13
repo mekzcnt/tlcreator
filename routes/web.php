@@ -89,15 +89,26 @@ Route::group(['middleware'=>'admin'], function() {
 Route::group(['middleware'=>'auth'], function(){
     Route::post('/comment/reply', 'CommentRepliesController@createReply');
 
-
-
     Route::resource('/timeline/posts', 'UserPostsController',['names'=>[
-
         'create'=>'auth.timeline.create',
         'store'=>'auth.timeline.store',
+        'edit'=>'admin.posts.edit'
     ]]);
+
+    Route::get('/timeline/posts/create/index', 'UserPostsController@indexEvent');
+    Route::post('/timeline/posts/create/add', 'UserPostsController@addEvent');
+    Route::get('/timeline/posts/create/view', 'UserPostsController@viewEvent');
+    Route::post('/timeline/posts/create/update', 'UserPostsController@updateEvent');
+    Route::post('/timeline/posts/create/delete', 'UserPostsController@deleteEvent');
+    Route::post('/timeline/posts/create/deleteAll', 'UserPostsController@deleteAllEvent');
 
     // Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');
-    Route::patch('/profile/edit', 'UserController@updateProfile');
+    Route::patch('/profile/edit', 'UserController@UpdateProfile');
+
+    // Route::resource('/profile/edit/', 'UserController',['names'=>[
+    //     'updateProfile'=>'auth.profile.edit'
+    // ]]);
+
+
 });
