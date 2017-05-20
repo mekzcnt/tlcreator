@@ -2,9 +2,13 @@
 
 @section('title', 'Posts')
 
+@section('header')
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+@endsection
+
 @section('content')
 
-    <table class="table">
+    <table class="table" id="table">
        <thead>
          <tr>
              <th>ID</th>
@@ -46,12 +50,30 @@
 
 
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-6 col-sm-offset-5">
             {{ $posts->render() }}
         </div>
-    </div>
-
-
+    </div> --}}
 
 @stop
+
+
+@section('footer')
+  <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#table').DataTable({
+        // "paging":   false,
+        // "searching":   false
+        "order": [[0, 'desc']],
+        "columnDefs": [
+            { "orderable": false, "targets": 5 },
+            { "orderable": false, "targets": 6 }
+        ]
+      });
+    });
+  </script>
+@endsection

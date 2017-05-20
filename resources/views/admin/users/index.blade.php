@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
-
 @section('title', 'Users')
 
+@section('header')
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+@endsection
 
 @section('content')
 
@@ -10,7 +12,7 @@
         <p class="bg-danger">{{session('deleted_user')}}</p>
     @endif
 
-    <table class="table">
+    <table id="table" class="table">
        <thead>
          <tr>
              <th>Id</th>
@@ -51,10 +53,26 @@
        </tbody>
      </table>
 
-     <div class="row">
+     {{-- <div class="row">
          <div class="col-sm-6 col-sm-offset-5">
              {{ $users->render() }}
          </div>
-     </div>
+     </div> --}}
 
 @stop
+
+@section('footer')
+  <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#table').DataTable({
+        // "paging":   false,
+        // "searching":   false
+        "order": [[0, 'desc']]
+        
+      });
+    });
+  </script>
+@endsection

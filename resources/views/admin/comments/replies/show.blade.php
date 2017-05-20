@@ -2,16 +2,24 @@
 
 @section('title', 'Show Replies')
 
+@section('header')
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+@endsection
+
 @section('content')
 
   @if(count($replies) > 0)
-  <table class="table">
+  <table id="table" class="table">
      <thead>
        <tr>
           <th>ID</th>
           <th>Author</th>
           <th>Email</th>
           <th>Body</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -74,4 +82,19 @@
       <h1 class="text-center">No replies</h1>
   @endif
 
+@endsection
+
+@section('footer')
+  <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#table').DataTable({
+        // "paging":   false,
+        // "searching":   false
+        order: [[0, 'desc']]
+      });
+    });
+  </script>
 @endsection

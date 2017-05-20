@@ -211,12 +211,12 @@ class UserPostsController extends Controller
      */
     public function viewEvent(Request $request)
     {
-      if($request->ajax()){
-          $id = $request->id;
-          $info = Post::find($id);
-
-          return response()->json($info);
-      }
+      // if($request->ajax()){
+      //     $id = $request->id;
+      //     $info = Post::find($id);
+      //
+      //     return response()->json($info);
+      // }
     }
 
     /**
@@ -224,12 +224,12 @@ class UserPostsController extends Controller
      */
     public function updateEvent(Request $request)
      {
-         $tl = $request->timeline;
-         $data = Post::find($tl);
-         $data->timeline = $request->timeline;
-         $data->save();
-
-         return back()->with('success','Record Updated successfully.');
+        //  $tl = $request->timeline;
+        //  $data = Post::find($tl);
+        //  $data->timeline = $request->timeline;
+        //  $data->save();
+         //
+        //  return back()->with('success','Record Updated successfully.');
      }
 
      /**
@@ -252,11 +252,6 @@ class UserPostsController extends Controller
      public function deleteAllEvent(Request $request)
        {
           $request->session()->forget('event');
-
-          // if(!Session::has('event'))
-          //     echo "All Events deleted successfully.";
-          // else
-          //     echo "There was a problem. Please try again later.";
 
           return back()->with('success','All Events deleted successfully.');
        }
