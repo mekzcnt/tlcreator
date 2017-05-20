@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Timeline Creator</a>
+      <a class="navbar-brand" href="/">Event Timeline Creation System</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <!-- <form class="navbar-form navbar-right">
@@ -36,7 +36,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('/', Auth::user()->username) }}"><i class="fa fa-user fa-fw"></i> My Timeline</a></li>
-                    <li><a href="{{ url('/profile/edit') }}"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                    <li><a href="{{ url('/profile/edit/') }}"><i class="fa fa-gear fa-fw"></i> Edit Profile</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                 </ul>

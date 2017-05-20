@@ -24,7 +24,7 @@
         <hr>
       </div>
     </div>
-    
+
     <div class="row equal-height">
         @if(count($posts) > 0)
             @foreach($posts as $post)
@@ -34,7 +34,24 @@
                 <div class="caption">
                   <h3><a href="{{route('feed.timeline', $post->id)}}">{{str_limit($post->title, 30)}}</a></h3>
                   <p>{{str_limit($post->description, 60)}}</p>
-                  <p><a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a></p>
+                  <p>
+                      @if (Auth::user())
+                        @if (Auth::user()->id == $currentUser->id)
+                          <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">View</a>
+
+                                {!! Form::submit('Edit', ['class'=>'btn btn-warning']) !!}
+
+                              {!! Form::open(['method'=>'DELETE', 'action'=> ['UserPostsController@destroy', $post->id]]) !!}
+                                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                              {!! Form::close() !!}
+                        @else
+                          <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a>
+                        @endif
+                      @else
+                        <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a>
+                      @endif
+
+                  </p>
                 </div>
               </div>
             </div>

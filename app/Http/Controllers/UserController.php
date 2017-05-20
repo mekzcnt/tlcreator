@@ -25,32 +25,34 @@ class UserController extends Controller
 
   public function getUpdateProfile()
   {
-      $viewData = [
-          'currentUser' => auth()->user()
-      ];
+      $currentUser = auth()->user();
 
-      return view('auth.profile.edit', $viewData);
+      return view('auth.profile.edit', compact('currentUser'));
   }
 
   public function UpdateProfile(Request $request)
   {
+      $user = auth()->user();
+
       $this->validate($request, [
-          'name' => 'required|alpha',
+          'name' => 'required|max:255',
           'email' => 'required|email',
           'username' => 'required|max:255',
       ]);
 
-      $user = auth()->user();
-      // $user->fill($request->all());
       $user->name = $request->name;
       $user->email = $request->email;
       $user->username = $request->username;
-      // $user->sex = $request->sex;
 
-//        don't have photo_id yet.
+      if($file = $request->file('photo_id')) {
+        $name = time() . $file->getClientOriginalName();
+        $file->move('uploads', $name);
+        $photo = Photo::create(['file'=>$name]);
+        $user->photo_id = $photo->id;
+      }
 
       $user->save();
 
-      return redirect('/'.$user->username);
+      return redirect('/profile/edit');
   }
 }

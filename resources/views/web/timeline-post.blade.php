@@ -38,9 +38,23 @@
       <div class="col-md-1"></div>
       <div class="col-md-1"></div>
       <div class="col-md-8">
-        <p>
-          {{-- json_decode($post->timeline)->title->text->headline --}}
-        </p>
+        <div class="row">
+          <div class="col-md-6">
+              @if (Auth::check())
+                @if($post->isLiked)
+                  <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Liked <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                @else
+                  <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                @endif
+              @else
+                <a href="#" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+              @endif
+          </div>
+          <div class="col-md-6 text-right">
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="at-below-post"></div>
+          </div>
+        </div>
         <br>
         <p><strong>Description :</strong></p>
         <p>{{$post->description}}</p><br>
@@ -58,8 +72,12 @@
     <div class="col-md-1"></div>
     <div class="col-md-1"></div>
     <div class="col-md-8">
+
+
         @if(Session::has('comment_message'))
-          {{session('comment_message')}}
+          <div class="alert alert-warning">
+            {{session('comment_message')}}
+          </div>
         @endif
 
         @if(Auth::check())
@@ -80,6 +98,10 @@
                </div>
             {!! Form::close() !!}
         </div>
+        @else
+          <div class="alert alert-warning">
+            Please <a title="Login to system" href="{{ url('/login') }}">Login</a> to likes or comments.
+          </div>
         @endif
 
         <hr>
@@ -161,6 +183,9 @@
 
 @section('code_foot')
 
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=mekz"></script>
+
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
   <script type="text/javascript">
@@ -196,6 +221,10 @@
     		}
     	}
     });
+  </script>
+
+  <script>
+
   </script>
 
 @endsection

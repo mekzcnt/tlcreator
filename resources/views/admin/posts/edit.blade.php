@@ -49,12 +49,14 @@
           {!! Form::close() !!}
 
 
-          {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminPostsController@destroy', $post->id]]) !!}
+
 
                <div class="form-group">
-                   {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
+                  {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminPostsController@destroy', $post->id]]) !!}
+                      {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
+                  {!! Form::close() !!}
                </div>
-          {!! Form::close() !!}
+
 
         </div>
 

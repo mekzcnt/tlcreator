@@ -144,11 +144,6 @@ class AdminPostsController extends Controller
     }
 
 
-    public function post($id){
-        $post = Post::findOrFail($id);
-        $comments = $post->comments()->whereIsActive(1)->get();
-        // $json = json_decode($post->timeline);
-        return view('web.timeline-post', compact('post','comments'));
-    }
+    
 
 }

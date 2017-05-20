@@ -92,6 +92,17 @@ li.dropdown ul.dropdown-menu li a {
   height: 500px;
 }
 
+/* Makes images fully responsive */
+.carousel .img-responsive,
+.carousel .thumbnail > img,
+.carousel .thumbnail a > img,
+.carousel .carousel-inner > .item > img,
+.carousel .carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 

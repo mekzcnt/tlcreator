@@ -11,7 +11,7 @@
 
     <title>
       @hasSection ('title')
-        @yield('title') - Timeline Creator
+        @yield('title') - Event Timeline Creation System
       @else
         Timeline Creator
       @endif

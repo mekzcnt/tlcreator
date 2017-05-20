@@ -2,12 +2,11 @@
 
 namespace App;
 
-// use Bluora\LaravelModelJson\JsonColumnTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
-    // use JsonColumnTrait;
 
     protected $json_columns = [
         'timeline'
@@ -20,6 +19,15 @@ class Post extends Model
     protected $casts = [
         'timeline' => 'json',
     ];
+
+    public function likes() {
+        return $this->morphToMany('App\User', 'likeable')->whereDeletedAt(null);
+    }
+
+    public function getIsLikedAttribute() {
+        $like = $this->likes()->whereUserId(Auth::id())->first();
+        return (!is_null($like)) ? true : false;
+    }
 
     public function user() {
         return $this->belongsTo('App\User');

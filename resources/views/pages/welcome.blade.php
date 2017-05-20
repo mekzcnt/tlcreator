@@ -77,47 +77,52 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="text-center">สร้างไทม์ไลน์ง่ายนิดเดียว!</h1>
-      <p class="text-center">เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์' ที่จะช่วยให้เข้าใจในข่าว เหตุการณ์สำคัญ หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ที่มีความต่อเนื่องของช่วงเวลาได้อย่างชัดเจนและเข้าใจง่ายยิ่งขึ้น ได้ใน 3 ขั้นตอน</p>
+      <p class="text-center">เราขอแนะนำรูปแบบการเสนอข้อมูลด้วย 'ไทม์ไลน์'
+        <br>'ไทม์ไลน์' จะช่วยให้เข้าใจในข่าว หรือเหตุการณ์สำคัญ ๆ ทางประวัติศาสตร์ ได้อย่างชัดเจนและเข้าใจง่ายยิ่งขึ้น</p>
+      <p class="text-center">Event Timeline Creation System จะช่วยให้สร้างไทม์ไลน์ได้ภายใน 2 ขั้นตอน และแชร์ได้ทันที</p>
+      <br><br>
       <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row text-center">
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ asset('images/icon-1.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>เพิ่มเหตุการณ์</h2>
+          <p>เพิ่มเหตุการณ์ต่างๆ ลงในไทม์ไลน์ สามารถแทรกรูปภาพ, ลิงค์, YouTube, Facebook, Twitter ประกอบได้</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ asset('images/icon-2.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>สร้างไทม์ไลน์</h2>
+          <p>กรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียดไทม์ไลน์ หมวดหมู่ และรูปหน้าปกให้เรียบร้อย</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ asset('images/icon-3.png') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>แชร์!</h2>
+          <p>แบ่งปันไทม์ไลน์ที่คุณสร้างขึ้น ให้ผู้ได้รับรู้และเข้าใจกับเหตุการณ์ต่าง ๆ บนโลกใบนี้</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
     </div>
+
   </div>
 @endsection
 
 @section('content')
 <div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4" class="text-center">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>สร้าง</h2>
-        <p>เริ่มต้นกรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียด<br>ไทม์ไลน์ หมวดหมู่ และเลือกรูปแบบให้เหมาะสม</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>เพิ่มข้อมูล</h2>
-        <p>นำข้อมูลที่มีเพิ่มลงในไทม์ไลน์ที่ได้สร้างไว้ สามารถได้ทั้งรูปภาพ ลิงค์ YouTube, Facebook, Twitter ได้หมด! </p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>แชร์!</h2>
-        <p>แบ่งปันไทม์ไลน์ที่คุณสร้างขึ้น ให้ผู้ได้รับรู้และเข้าใจกับเหตุการณ์ต่าง ๆ บนโลกใบนี้</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
 
-    <!-- START THE FEATURETTES -->
 
-    <hr class="featurette-divider">
+    <!-- <hr class="featurette-divider"> -->
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">เพิ่มเหตุการณ์<span class="text-muted">ลงในไทม์ไลน์</span></h2>
+        <p class="lead">เพิ่มเหตุการณ์ต่างๆ ลงในไทม์ไลน์ สามารถแทรกรูปภาพ, ลิงค์, YouTube, Facebook, Twitter ประกอบได้ (แนะนำให้ใส่ไม่เกิน 25 เหตุการณ์ต่อ 1 ไทม์ไลน์)</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <img class="featurette-image img-responsive center-block" src="{{ asset('images/step-1.png') }}" alt="Generic placeholder image">
       </div>
     </div>
 
@@ -125,11 +130,11 @@
 
     <div class="row featurette">
       <div class="col-md-7 col-md-push-5">
-        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">สร้างไทม์ไลน์<span class="text-muted">ง่ายจริง ๆ</span></h2>
+        <p class="lead">หลังจากสร้างเหตุการณ์เพิ่มไว้เรียบร้อยแล้ว ต่อมาเราก็กรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียดไทม์ไลน์ หมวดหมู่ และรูปหน้าปกให้เรียบร้อย แล้วกด Create Timeline เพื่องสร้างไทม์ไลน์ได้เลย!</p>
       </div>
       <div class="col-md-5 col-md-pull-7">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <img class="featurette-image img-responsive center-block" src="{{ asset('images/step-2.png') }}" alt="Generic placeholder image">
       </div>
     </div>
 
@@ -137,11 +142,11 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">ได้ไทม์ไลน์ไว้แชร์<span class="text-muted">บนออนไลน์</span></h2>
+        <p class="lead">ไทม์ไลน์ที่สร้างขึ้นใช้ <a href="//timeline.knightlab.com/">TimelineJS</a> เข้ามาช่วยในการแสดงผล ทำให้เข้าใจข้อมูลที่แสดงบนไทม์ไลน์ได้ง่ายยิ่งขึ้น นอกจากนี้ยังสามารถกดแชร์สู่โซเชียลมีเดีย หรือนำ embed code ไปแปะในเว็บไซต์ได้อีกด้วย</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <img class="featurette-image img-responsive center-block" src="{{ asset('images/step-3.png') }}" alt="Generic placeholder image">
       </div>
     </div>
 

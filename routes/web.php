@@ -29,9 +29,12 @@ Route::post('auth/register', 'Auth\RegisterController@postRegister');
 Route::get('/feed', 'FeedController@index');
 
 Route::get('/timeline', function(){ return redirect('/');});
-Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'AdminPostsController@post']);
- Route::get('/category/{id}','CategoryController@show');
+Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'UserPostsController@post']);
+Route::get('/category/{id}','CategoryController@show');
 Route::get('/{username}', 'UserController@getProfile');
+
+Route::get('comment/like/{id}', ['as' => 'comment.like', 'uses' => 'LikeController@likeComment']);
+Route::get('post/like/{id}', ['as' => 'post.like', 'uses' => 'LikeController@likePost']);
 
 Route::group(['middleware'=>'admin'], function() {
 

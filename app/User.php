@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function likedPosts() {
+        return $this->morphedByMany('App\Post', 'likeable')->whereDeletedAt(null);
+    }
+
     public function role() {
         return $this->belongsTo('App\Role');
     }
