@@ -48,7 +48,7 @@ class UserResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Your link for Reset Password in Event Timeline Creation Project')
+                    ->subject('Link for Reset Password')
                     ->line('You are receiving this email because we received a password reset request for your account.')
                     ->action('Reset your password', url('password/reset', $this->token))
                     ->line('If you did not request a password reset, no further action is required.');

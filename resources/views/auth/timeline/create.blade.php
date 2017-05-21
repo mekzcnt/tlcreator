@@ -5,6 +5,7 @@
 @section('code_head')
     <link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
 @stop
 
 @section('before_container')
@@ -106,7 +107,7 @@
           </div>
 
           <div class="modal-body">
-                <div class="form-group">
+                {{-- <div class="form-group">
 
                   <div class="row">
 
@@ -129,6 +130,15 @@
                           <input type="text" class="form-control" id="event_year" name="event_year">
                         </div>
                       </div>
+                    </div>
+
+                </div> --}}
+
+                <div class="form-group">
+                    <label for="date" class="col-md-4 control-label">Date</label>
+
+                    <div class="input-group date">
+                        <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
 
                 </div>
@@ -237,6 +247,8 @@
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
     <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+
     <script type="text/javascript">
       function make_the_json() {
         var obj = { };

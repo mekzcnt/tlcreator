@@ -27,9 +27,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+
+          <h1 id="title-page" class="text-center">Reset Password</h1>
+
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+
                 <div class="panel-body">
+                  <br>
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -61,6 +65,9 @@
                             </div>
                         </div>
                     </form>
+
+                    <br>
+
                 </div>
             </div>
         </div>

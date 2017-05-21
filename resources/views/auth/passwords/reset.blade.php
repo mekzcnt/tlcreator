@@ -26,10 +26,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+
+          <h1 id="title-page" class="text-center">Reset Password</h1>
+          {{-- <hr> --}}
+
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
+                  <br>
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {{ csrf_field() }}
 
@@ -84,6 +88,9 @@
                             </div>
                         </div>
                     </form>
+
+                    <br>
+
                 </div>
             </div>
         </div>
