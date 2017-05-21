@@ -13,7 +13,7 @@
       @hasSection ('title')
         @yield('title') - Event Timeline Creation System
       @else
-        Timeline Creator
+        Event Timeline Creation System
       @endif
     </title>
 

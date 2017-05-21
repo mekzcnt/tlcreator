@@ -42,12 +42,13 @@
           <div class="col-md-6">
               @if (Auth::check())
                 @if($post->isLiked)
-                  <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Liked <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Liked <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                    &nbsp;&nbsp;{{ Auth::user()->name }} likes this !
                 @else
-                  <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
                 @endif
               @else
-                <a href="#" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                  <a href="#" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
               @endif
           </div>
           <div class="col-md-6 text-right">
