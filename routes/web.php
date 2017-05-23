@@ -70,7 +70,6 @@ Route::group(['middleware'=>'admin'], function() {
         'edit'=>'admin.media.edit'
     ]]);
 
-
     Route::resource('admin/comments', 'PostCommentsController',['names'=>[
         'index'=>'admin.comments.index',
         'create'=>'admin.comments.create',
@@ -98,12 +97,10 @@ Route::group(['middleware'=>'auth'], function(){
         'edit'=>'admin.posts.edit'
     ]]);
 
-    Route::get('/timeline/posts/create/index', 'UserPostsController@indexEvent');
     Route::post('/timeline/posts/create/add', 'UserPostsController@addEvent');
-    Route::get('/timeline/posts/create/view', 'UserPostsController@viewEvent');
-    Route::post('/timeline/posts/create/update', 'UserPostsController@updateEvent');
-    Route::post('/timeline/posts/create/delete', 'UserPostsController@deleteEvent');
-    Route::post('/timeline/posts/create/deleteAll', 'UserPostsController@deleteAllEvent');
+    Route::post('/timeline/posts/create/update/{id}', 'UserPostsController@updateEvent');
+    Route::delete('/timeline/posts/create/delete/{id}', 'UserPostsController@deleteEvent');
+    Route::delete('/timeline/posts/create/deleteAll', 'UserPostsController@deleteAllEvent');
 
     // Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');

@@ -54,8 +54,7 @@
                         <label for="profile-url" class="col-md-4 control-label">Profile URL</label>
 
                         <div class="col-md-6">
-                            {{-- <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"> --}}
-                            <a href="{{ url('/', Auth::user()->username) }}"><h4>{{ url('/', Auth::user()->username) }}</h4></a>
+                            <a class="btn btn-link" href="{{ url('/', Auth::user()->username) }}">{{ url('/', Auth::user()->username) }}</a>
                         </div>
                     </div>
 
@@ -82,6 +81,14 @@
                             <input type="text" class="form-control" name="name" value="{{ $currentUser->name }}">
                         </div>
                     </div>
+
+                    {{-- <div class="form-group">
+                        <label for="password" class="col-md-4 control-label">Password</label>
+
+                        <div class="col-md-6">
+                            <a class="btn btn-link btn-block" href="{{ url('/password/reset/') }}"><span class="pull-left">Click here for change password</span></a>
+                        </div>
+                    </div> --}}
 
                     <div class="form-group">
                         <label for="photo_id" class="col-md-4 control-label">User Photo</label>

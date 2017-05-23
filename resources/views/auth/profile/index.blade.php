@@ -37,13 +37,13 @@
                   <p>
                       @if (Auth::user())
                         @if (Auth::user()->id == $currentUser->id)
-                          <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">View</a>
-
-                                {!! Form::submit('Edit', ['class'=>'btn btn-warning']) !!}
-
-                              {!! Form::open(['method'=>'DELETE', 'action'=> ['UserPostsController@destroy', $post->id]]) !!}
-                                {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
-                              {!! Form::close() !!}
+                          <div class="form-group" class="form-horizontal">
+                            <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">View</a>
+                            {!! Form::submit('Edit', ['class'=>'btn btn-warning']) !!}
+                            {!! Form::open(['method'=>'DELETE', 'action'=> ['UserPostsController@destroy', $post->id], 'style'=>'display:inline-block']) !!}
+                              {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                            {!! Form::close() !!}
+                          </div>
                         @else
                           <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a>
                         @endif

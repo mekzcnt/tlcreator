@@ -59,8 +59,6 @@ class UserPostsController extends Controller
      */
     public function create()
     {
-        //$timeline_event = json_decode(Post::with('timeline'))->events;
-
         $ss_event = Session::get('event');
         $categories = Category::pluck('name','id')->all();
         return view('auth.timeline.create', compact('ss_event', 'categories'));
@@ -169,21 +167,17 @@ class UserPostsController extends Controller
 
 
 
-
-
-    /**
-     * Display all events
-     */
-    public function indexEvent()
-    {
-
-    }
-
     /**
      * Add event to timeline
      */
     public function addEvent(Request $request)
     {
+      $day = $request->event_date;
+      $date = explode("-", $day);
+      $event_day = $date[0];
+      $event_month = $date[1];
+      $event_year = $date[2];
+
       $event = array(
       "media" => array(
           "url"     => $request->event_media_url,
@@ -191,9 +185,9 @@ class UserPostsController extends Controller
           "credit"  => $request->event_media_credit
         ),
       "start_date" => array(
-          "month"   => $request->event_month,
-          "day"     => $request->event_day,
-          "year"    => $request->event_year
+          "month"   => $event_month,
+          "day"     => $event_day,
+          "year"    => $event_year
         ),
       "text" => array(
           "headline" => $request->event_title,
@@ -203,47 +197,54 @@ class UserPostsController extends Controller
 
       $request->session()->push('event', $event);
 
-      return back()->with('success','Event Added successfully.');
-    }
 
-    /**
-     * View timeline
-     */
-    public function viewEvent(Request $request)
-    {
-      // if($request->ajax()){
-      //     $id = $request->id;
-      //     $info = Post::find($id);
-      //
-      //     return response()->json($info);
-      // }
+      return back()->with('success','Event Added successfully.');
     }
 
     /**
      * Update timeline events
      */
-    public function updateEvent(Request $request)
+    public function updateEvent(Request $request, $id)
      {
-        //  $tl = $request->timeline;
-        //  $data = Post::find($tl);
-        //  $data->timeline = $request->timeline;
-        //  $data->save();
-         //
-        //  return back()->with('success','Record Updated successfully.');
+       $day = $request->event_date;
+       $date = explode("-", $day);
+       $event_day = $date[0];
+       $event_month = $date[1];
+       $event_year = $date[2];
+       
+       $newEvent = array(
+       "media" => array(
+           "url"     => $request->event_media_url,
+           "caption" => $request->event_media_caption,
+           "credit"  => $request->event_media_credit
+         ),
+       "start_date" => array(
+           "month"   => $event_month,
+           "day"     => $event_day,
+           "year"    => $event_year
+         ),
+       "text" => array(
+           "headline" => $request->event_title,
+           "text" => $request->event_description
+         )
+       );
+        $event = $request->session()->get('event');
+        $event[$id] = $newEvent;
+        $request->session()->put('event', $event);
+
+        return back()->with('success','Events updated successfully.');
      }
 
      /**
       * Delete timeline event
       */
-    public function deleteEvent(Request $request)
+    public function deleteEvent(Request $request, $id)
       {
-          $tl = $request -> timeline;
-          $data = Post::find($tl);
-          $response = $data -> delete();
-          if($response)
-              echo "Record Deleted successfully.";
-          else
-              echo "There was a problem. Please try again later.";
+          $event = $request->session()->get('event');
+          unset($event[$id]);
+          $request->session()->put('event', $event);
+
+          return back()->with('success','Events deleted successfully.');
       }
 
       /**
