@@ -74,6 +74,13 @@ class UserPostsController extends Controller
     {
       $input = $request->all();
 
+      $this->validate($request, [
+          'title'         =>  'required',
+          'category_id'   =>  'required',
+          'photo_id'      =>  'required',
+          'description'   =>  'required'
+      ]);
+
       $user = Auth::user();
 
       if($file = $request->file('photo_id')){
@@ -91,7 +98,7 @@ class UserPostsController extends Controller
 
       $arr['events'] = $request->session()->get('event0');
 
-      $postInfoInput = json_encode($arr, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      $postInfoInput = json_encode($arr, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
       $input['timeline'] = $postInfoInput;
 
       $user->posts()->create($input);
@@ -166,13 +173,13 @@ class UserPostsController extends Controller
 
       $arr['events'] = $request->session()->get('event'.$id);
 
-      $postInfoInput = json_encode($arr, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+      $postInfoInput = json_encode($arr, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
       $input['timeline'] = $postInfoInput;
 
       //Updata data which you edit them in forms
       Auth::user()->posts()->whereId($id)->first()->update($input);
 
-      $request->session()->forget('event'.$id);
+      // $request->session()->forget('event'.$id);
 
       return redirect('/'.Auth::user()->username);
     }
@@ -213,6 +220,11 @@ class UserPostsController extends Controller
      */
     public function addEvent(Request $request, $postId)
     {
+      $this->validate($request, [
+          'event_title' => 'required|max:255',
+          'event_description' => 'required',
+      ]);
+
       $event = array(
         "media" => array(
             "url"     => $request->event_media_url,
@@ -267,7 +279,7 @@ class UserPostsController extends Controller
      */
     public function updateEvent(Request $request, $postId, $id)
      {
-         $event = array(
+         $eventUpdate = array(
            "media" => array(
                "url"     => $request->event_media_url,
                "caption" => $request->event_media_caption,
@@ -281,7 +293,7 @@ class UserPostsController extends Controller
            );
 
          if($request->selectDateDisplay == 'y'){
-           $event['start_date'] = array(
+           $eventUpdate['start_date'] = array(
                "year"    => $request->event_year
              );
          }
@@ -291,7 +303,7 @@ class UserPostsController extends Controller
            $date = explode("-", $day);
            $event_month = $date[0];
            $event_year = $date[1];
-           $event['start_date'] = array(
+           $eventUpdate['start_date'] = array(
                "month"   => $event_month,
                "year"    => $event_year
              );
@@ -304,7 +316,7 @@ class UserPostsController extends Controller
            $event_month = $date[1];
            $event_year = $date[2];
 
-           $event['start_date'] = array(
+           $eventUpdate['start_date'] = array(
                "day"     => $event_day,
                "month"   => $event_month,
                "year"    => $event_year
@@ -312,7 +324,9 @@ class UserPostsController extends Controller
          }
 
          $event = $request->session()->get('event'.$postId);
-         $event[$id] = $event;
+
+         $event[$id] = $eventUpdate;
+
          $request->session()->put('event'.$postId, $event);
 
          return back()->with('success','Events updated successfully.');

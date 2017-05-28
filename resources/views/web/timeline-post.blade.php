@@ -19,7 +19,19 @@
 @section('content')
 
     <!-- <img class="img-responsive" src="{{$post->photo->file}}" alt=""><br> -->
-    <h1 class="text-center">{{$post->title}}</h1>
+    <h1 class="text-center">
+      {{$post->title}}
+      @if (Auth::user())
+        @if (Auth::user()->id == $post->user_id)
+          <a href="{{route('auth.timeline.edit', $post->id)}}" class="btn btn-warning">Edit</a>
+        @else
+
+        @endif
+      @else
+
+      @endif
+
+    </h1>
     <h4 class="text-center">
         <span class="glyphicon glyphicon-user"></span> <a href="{{ url('/', $post->user->username) }}">{{$post->user->name}}</a> |
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at}} |

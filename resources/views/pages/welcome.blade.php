@@ -37,7 +37,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>เหตุการณ์ 6 ตุลาคม 2519</h1>
-            <p>ย้อนดูเหตุการณ์ล้อมปราบนักศึกษา ประชาชน อันน่าสลดใจที่สุดของเมืองไทย</p>
+            {{-- <p>ย้อนดูเหตุการณ์ล้อมปราบนักศึกษา ประชาชน อันน่าสลดใจที่สุดของเมืองไทย</p> --}}
             <p><a class="btn btn-lg btn-primary" href="#" role="button">อ่านต่อ</a></p>
           </div>
         </div>
@@ -47,7 +47,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            {{-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> --}}
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
           </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            {{-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> --}}
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
           </div>
         </div>
@@ -89,19 +89,19 @@
           <img class="img-circle" src="{{ asset('images/icon-1.png') }}" alt="Generic placeholder image" width="140" height="140">
           <h2>เพิ่มเหตุการณ์</h2>
           <p>เพิ่มเหตุการณ์ต่างๆ ลงในไทม์ไลน์ สามารถแทรกรูปภาพ, ลิงค์, YouTube, Facebook, Twitter ประกอบได้</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          {{-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> --}}
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="{{ asset('images/icon-2.png') }}" alt="Generic placeholder image" width="140" height="140">
           <h2>สร้างไทม์ไลน์</h2>
           <p>กรอกข้อมูลพื้นฐานอย่างชื่อไทม์ไลน์ รายละเอียดไทม์ไลน์ หมวดหมู่ และรูปหน้าปกให้เรียบร้อย</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          {{-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> --}}
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="{{ asset('images/icon-3.png') }}" alt="Generic placeholder image" width="140" height="140">
           <h2>แชร์!</h2>
           <p>แบ่งปันไทม์ไลน์ที่คุณสร้างขึ้น ให้ผู้ได้รับรู้และเข้าใจกับเหตุการณ์ต่าง ๆ บนโลกใบนี้</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          {{-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> --}}
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 

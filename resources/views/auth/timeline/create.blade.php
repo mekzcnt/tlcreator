@@ -52,9 +52,11 @@
         @if ($message = Session::get('success'))
           <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ $message }}</strong>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  <strong>{{ $message }}</strong>
           </div>
         @endif
+
+        @include('includes.form_error')
 
         <div class="form-group">
           <div class="pull-left">
@@ -85,7 +87,7 @@
                    <td>
                       {{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-' }}{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-' }}{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}
                    </td>
-                   <td>{{ $sEvent['text']['headline'] }}</td>
+                   <td>{{ $sEvent['text']['headline'] or '' }}</td>
                    <td>
                         <button class="btn btn-warning btn-xs col-md-6" type="button" name="button" data-toggle="modal" data-target="#edit-event-{{$id}}">Edit</button>
 
@@ -140,19 +142,19 @@
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-calendar"></i>
                                             </span>
-                                            <input type="text" name="event_year" class="form-control event_year" value="{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}" placeholder="yyyy">
+                                            <input autocomplete="off" type="text" name="event_year" class="form-control event_year" value="{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}" placeholder="yyyy">
                                         </div>
                                         <div class="input-group ymDate ymDivCheck {{ (empty($sEvent['start_date']['day']) and !empty($sEvent['start_date']['month'])) ? '' : 'hidden' }}">
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-calendar"></i>
                                             </span>
-                                            <input type="text"  name="event_year_month" class="form-control event_year_month" value="{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="mm-yyyy">
+                                            <input autocomplete="off" type="text"  name="event_year_month" class="form-control event_year_month" value="{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="mm-yyyy">
                                         </div>
                                         <div  class="input-group ymdDate ymdDivCheck {{ !empty($sEvent['start_date']['day']) ? '' : 'hidden' }}">
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-calendar"></i>
                                             </span>
-                                            <input type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-'.$sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="dd-mm-yyyy">
+                                            <input autocomplete="off" type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-'.$sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="dd-mm-yyyy">
                                         </div>
                                       </div>
 
@@ -275,13 +277,13 @@
 
                         <div class="col-md-6">
                           <div class="input-group yDate hidden yDivCheck">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year" class="form-control event_year" value="{{ old("event_date") }}" placeholder="yyyy">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input autocomplete="off" type="text" name="event_year" class="form-control event_year" value="{{ old("event_date") }}" placeholder="yyyy">
                           </div>
                           <div class="input-group ymDate hidden ymDivCheck">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year_month" class="form-control event_year_month" value="{{ old("event_date") }}" placeholder="mm-yyyy">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input autocomplete="off" type="text" name="event_year_month" class="form-control event_year_month" value="{{ old("event_date") }}" placeholder="mm-yyyy">
                           </div>
                           <div class="input-group ymdDate hidden ymdDivCheck">
-                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ old("event_date") }}" placeholder="dd-mm-yyyy">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input autocomplete="off" type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ old("event_date") }}" placeholder="dd-mm-yyyy">
                           </div>
                         </div>
 
@@ -351,8 +353,6 @@
 
     </div>
     <!-- Add modal ends -->
-
-    @include('includes.form_error')
 
     @if (request()->route()->getAction()['as'] == 'auth.timeline.edit')
       {!! Form::model($post, ['method'=>'PATCH', 'action'=>['UserPostsController@update', $post->id], 'files'=>true]) !!}
@@ -457,9 +457,12 @@
                 }
             },
             "events":
-
-                  {!! json_encode(Session::get('event'.$postId), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
-
+                  {{-- dd(json_encode(Session::get('event'.$postId)) --}}
+                  @if (request()->route()->getAction()['as'] == 'auth.timeline.edit')
+                    {!! json_encode(Session::get('event'.$postId)) !!}
+                  @else
+                    {!! json_encode(Session::get('event'.$postId), JSON_UNESCAPED_SLASHES) !!}
+                  @endif
           };
           return obj;
         @endif
@@ -478,7 +481,6 @@
     <script>
       $(document).ready(function(){
         $('#eventTable').DataTable({
-          "responsive": true,
           "paging":   false,
           "searching":   false,
           "columnDefs": [

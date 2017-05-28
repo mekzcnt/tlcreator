@@ -158,7 +158,12 @@ ul.nav.navbar-nav a {
   }
   .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
     line-height: 40px;
+    height: 70px;
   }
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #1c5bc3;
 }
 
 .navbar-right li.dropdown > a, .navbar-right li.dropdown > a:hover, .navbar-right li.dropdown > a:focus {
@@ -193,6 +198,7 @@ li.dropdown ul.dropdown-menu li a {
 .carousel .item {
   height: 500px;
   background-color: #777;
+  min-height: 300px;
 }
 .carousel-inner > .item > img {
   position: absolute;
@@ -211,6 +217,17 @@ li.dropdown ul.dropdown-menu li a {
   display: block;
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 767px) {
+  .carousel {
+    height: 300px;
+    margin-bottom: 0;
+  }
+  .carousel .item {
+    height: 300px;
+    background-color: #777;
+  }
 }
 
 /* MARKETING CONTENT

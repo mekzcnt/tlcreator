@@ -59,6 +59,11 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
 
+        // $tl = $request->timeline;
+        // $tl = preg_replace('/\\\r\\\n|\\\r|\\\n\\\r|\\\n/m', ' ', $tl);
+        // $input['timeline'] = json_encode($tl, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $input['timeline'] = $request->timeline;
+
         $user->posts()->create($input);
 
         return redirect('/admin/posts');

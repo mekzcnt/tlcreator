@@ -27,7 +27,12 @@
 
     <div class="form-group">
         {!! Form::label('description', 'Description:') !!}
-        {!! Form::textarea('description', null, ['class'=>'form-control'])!!}
+        {!! Form::textarea('description', null, ['class'=>'form-control', 'rows'=> 3])!!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('timeline', 'JSON TimelineJS3 code:') !!}
+        {!! Form::textarea('timeline', null, ['class'=>'form-control', 'rows'=> 6])!!}
     </div>
 
      <div class="form-group">
