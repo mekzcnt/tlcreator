@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}">
     <!-- Custom styles for this template -->
 
+    <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">

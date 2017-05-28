@@ -25,10 +25,11 @@
         <span class="glyphicon glyphicon-time"></span> {{$post->created_at}} |
         <span class="glyphicon glyphicon-folder-close"></span> Category: <a href="{{ url('/category', $post->category_id) }}">{{$post->category->name}}</a>
     </h4>
-    <hr>
+    <br>
+    {{-- <hr> --}}
     <div class="panel panel-default">
       <div class="panel-body">
-        <div id="timeline-embed" style="width: 100%; height: 600px"></div>
+        <div id="timeline-embed" style="height: 700px"></div>
       </div>
     </div>
 
@@ -42,10 +43,10 @@
           <div class="col-md-6">
               @if (Auth::check())
                 @if($post->isLiked)
-                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Liked <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-heart"></span> Liked <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
                     &nbsp;&nbsp;{{ Auth::user()->name }} likes this !
                 @else
-                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                    <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-heart-empty"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
                 @endif
               @else
                   <a href="#" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
@@ -57,10 +58,21 @@
           </div>
         </div>
         <br>
+
+        <p><strong>Embed Code :</strong></p>
+        <div class="input-group">
+          <input id="timelineEmbedCode" class="input-lg form-control" type="text" value='<iframe width="800px" height="600px" frameborder="0" style="border: 0" src="{{ url('timeline/'.$post->id.'/embed') }}"></iframe>' readonly>
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-primary btn-lg" type="button" data-clipboard-target="#timelineEmbedCode" >Copy</button>
+          </span>
+        </div><br>
+
         <p><strong>Description :</strong></p>
         <p>{{$post->description}}</p><br>
+
         <p><strong>Tag :</strong></p>
         <p><span class="label label-default">Default</span></p>
+
         <hr>
       </div>
       <div class="col-md-1"></div>
@@ -186,7 +198,9 @@
 
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=mekz"></script>
-
+  {{-- clipboard.js Javascript Library --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js"></script>
+  {{-- TimelineJS3 Javascript Library --}}
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
   <script type="text/javascript">
@@ -198,7 +212,12 @@
     // two arguments: the id of the Timeline container (no '#')
     // and the JSON object or an instance of TL.TimelineConfig created from
     // a suitable JSON object
-    window.timeline = new TL.Timeline('timeline-embed', timeline_json);
+
+    var additionalOptions = {
+
+    }
+
+    window.timeline = new TL.Timeline('timeline-embed', timeline_json, additionalOptions);
   </script>
 
   <script>
@@ -225,7 +244,14 @@
   </script>
 
   <script>
-
+    var btns = document.querySelectorAll('button');
+    var clipboard = new Clipboard(btns);
+    clipboard.on('success', function(e) {
+      console.log(e);
+    });
+    clipboard.on('error', function(e) {
+      console.log(e);
+    });
   </script>
 
 @endsection

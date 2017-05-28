@@ -17,8 +17,9 @@
                 <img alt="" src="{{$currentUser->photo ? $currentUser->photo->file
                   : 'http://placehold.it/400x400' }}">
             </div>
-            <div class="card-info"> <span class="card-title">{{ $currentUser->name }}</span>
-          </div>
+            <div class="card-info">
+              <span class="card-title"><strong>{{ $currentUser->name }}</strong></span>
+            </div>
         </div>
         <h1 id="title-page" class="text-center">My Timeline</h1>
         <hr>
@@ -39,16 +40,16 @@
                         @if (Auth::user()->id == $currentUser->id)
                           <div class="form-group" class="form-horizontal">
                             <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">View</a>
-                            {!! Form::submit('Edit', ['class'=>'btn btn-warning']) !!}
+                            <a href="{{route('auth.timeline.edit', $post->id)}}" class="btn btn-warning">Edit</a>
                             {!! Form::open(['method'=>'DELETE', 'action'=> ['UserPostsController@destroy', $post->id], 'style'=>'display:inline-block']) !!}
                               {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
                             {!! Form::close() !!}
                           </div>
                         @else
-                          <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a>
+
                         @endif
                       @else
-                        <a href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a>
+
                       @endif
 
                   </p>

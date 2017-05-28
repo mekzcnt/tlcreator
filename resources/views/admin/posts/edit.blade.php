@@ -28,7 +28,7 @@
 
           <div class="form-group">
               {!! Form::label('photo_id', 'Photo:') !!}
-              {!! Form::file('photo_id', null,['class'=>'form-control'])!!}
+              {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
           </div>
 
           <div class="form-group">
@@ -42,11 +42,11 @@
 
           {!! Form::close() !!}
 
-               <div class="form-group">
-                  {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminPostsController@destroy', $post->id]]) !!}
-                      {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
-                  {!! Form::close() !!}
-               </div>
+           <div class="form-group">
+              {!! Form::open(['method'=>'DELETE', 'action'=> ['AdminPostsController@destroy', $post->id]]) !!}
+                  {!! Form::submit('Delete Post', ['class'=>'btn btn-danger col-sm-6']) !!}
+              {!! Form::close() !!}
+           </div>
 
         </div>
 

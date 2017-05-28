@@ -10,7 +10,7 @@
 
   <div class="container">
     <h1>Timeline ที่น่าสนใจ</h1>
-    <div class="row equal-height">
+    {{-- <div class="row equal-height">
 
       <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
@@ -56,9 +56,9 @@
         </div>
       </div>
 
-    </div>
+    </div> --}}
 
-    <p class="text-right"><a class="btn btn-primary btn-lg" href="#" role="button">ดู Timeline ที่น่าสนใจทั้งหมด &raquo;</a></p>
+    {{-- <p class="text-right"><a class="btn btn-primary btn-lg" href="#" role="button">ดู Timeline ที่น่าสนใจทั้งหมด &raquo;</a></p> --}}
 
   </div>
 </div>
@@ -97,14 +97,14 @@
           <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                  <h1>{{$category->name}} <a href="{{ url('/category', $category->id)}}" class="pull-right"><small>ดูทั้งหมด</small></a></h1>
+                  <h1>{{$category->name}} <a href="{{ url('/category', $category->id)}}" class="pull-right"><small>View All Timelines</small></a></h1>
 
                 </div>
             </div>
           </div>
 
           <div class="row equal-height">
-            @foreach($category->posts as $post)
+            @foreach($category->posts->take(4) as $post)
             <div class="col-md-3 col-sm-6 hero-feature">
               <div class="thumbnail">
                 <img src="{{$post->photo->file}}" alt="{{$post->title}}">

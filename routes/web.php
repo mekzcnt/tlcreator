@@ -10,6 +10,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+
 Route::get('/', function () {
     return view('pages.welcome');
 });
@@ -30,6 +31,7 @@ Route::get('/feed', 'FeedController@index');
 
 Route::get('/timeline', function(){ return redirect('/');});
 Route::get('/timeline/{id}', ['as'=>'feed.timeline', 'uses'=>'UserPostsController@post']);
+Route::get('/timeline/{id}/embed', 'UserPostsController@embed');
 Route::get('/category/{id}','CategoryController@show');
 Route::get('/{username}', 'UserController@getProfile');
 
@@ -88,19 +90,19 @@ Route::group(['middleware'=>'admin'], function() {
 
 });
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>'auth', 'name'=>''], function(){
     Route::post('/comment/reply', 'CommentRepliesController@createReply');
 
     Route::resource('/timeline/posts', 'UserPostsController',['names'=>[
         'create'=>'auth.timeline.create',
         'store'=>'auth.timeline.store',
-        'edit'=>'admin.posts.edit'
+        'edit'=>'auth.timeline.edit'
     ]]);
 
-    Route::post('/timeline/posts/create/add', 'UserPostsController@addEvent');
-    Route::post('/timeline/posts/create/update/{id}', 'UserPostsController@updateEvent');
-    Route::delete('/timeline/posts/create/delete/{id}', 'UserPostsController@deleteEvent');
-    Route::delete('/timeline/posts/create/deleteAll', 'UserPostsController@deleteAllEvent');
+    Route::post('/timeline/posts/{postId}/create/add', 'UserPostsController@addEvent')->name('addEvent');
+    Route::post('/timeline/posts/{postId}/create/update/{id}', 'UserPostsController@updateEvent');
+    Route::delete('/timeline/posts/{postId}/create/delete/{id}', 'UserPostsController@deleteEvent');
+    Route::delete('/timeline/posts/{postId}/create/deleteAll', 'UserPostsController@deleteAllEvent');
 
     // Route::get('/profile', 'UserController@getProfile');
     Route::get('/profile/edit', 'UserController@getUpdateProfile');

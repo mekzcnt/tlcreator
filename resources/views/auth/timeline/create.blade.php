@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Create your timeline')
+@section('title', request()->route()->getAction()['as'] == 'auth.timeline.edit' ? 'Edit your timeline' : 'Create your timeline')
 
 @section('code_head')
     <link title="timeline-styles" rel="stylesheet" href="//cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
@@ -14,9 +14,15 @@
 @section('content')
 <div class="row">
   <div class="col-lg-12">
-    <h1 id="title-page" class="text-center">Create a timeline</h1>
-    <hr>
-    <div class="panel panel-default">
+
+    @if (request()->route()->getAction()['as'] == 'auth.timeline.edit')
+      <h1 id="title-page" class="text-center">Edit a timeline</h1>
+    @else
+      <h1 id="title-page" class="text-center">Create a timeline</h1>
+    @endif
+
+    {{-- dd(Session::get('event'.$postId)) --}}
+    <div class="panel panel-default {{ count(Session::get('event'.$postId)) == 0 ? 'hidden' : '' }}">
       <div class="panel-body">
         <div id="timeline-embed" style="width: 100%; height: 600px"></div>
       </div>
@@ -40,7 +46,6 @@
 
     <hr>
 
-
     <div class="col-md-8">
       <div class="well">
 
@@ -53,24 +58,19 @@
 
         <div class="form-group">
           <div class="pull-left">
-            {!! Form::submit('Add Event', ['class'=>'btn btn-primary', 'data-toggle'=>'modal', 'data-target'=>'#add-event']) !!}
+            {!! Form::button('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Event', ['class'=>'btn btn-primary', 'data-toggle'=>'modal', 'data-target'=>'#add-event']) !!}
           </div>
           <div class="pull-right">
-            {!! Form::open(['method'=>'DELETE', 'action'=>'UserPostsController@deleteAllEvent']) !!}
-                {!! Form::submit('Delete All Events', ['class'=>'btn btn-danger']) !!}
+            {!! Form::open(['method'=>'DELETE', 'action'=>['UserPostsController@deleteAllEvent', $postId]]) !!}
+                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All Events', ['class'=>'btn btn-danger']) !!}
             {!! Form::close() !!}
           </div>
         </div>
 
-        {{-- dd(Session::get('event')) --}}
-        {{--Session::get('event')[0]['start_date']['day']--}}
-
-
         <table id="eventTable" class="table table-striped table-bordered">
           <thead>
               <tr>
-                 <th
-                 width="100px">Date</th>
+                 <th>Date</th>
                  <th>Title</th>
                  <th>Actions</th>
                </tr>
@@ -78,34 +78,32 @@
 
 
           <tbody>
-            @if(Session::has('event'))
-                @foreach(Session::get('event') as $id => $sEvent)
+            @if(Session::has('event'.$postId))
+                @foreach(Session::get('event'.$postId) as $id => $sEvent)
 
                   <tr>
                    <td>
-                       {{ $sEvent['start_date']['day'] }} -
-                       {{ $sEvent['start_date']['month'] }} -
-                       {{ $sEvent['start_date']['year'] }}
+                      {{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-' }}{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-' }}{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}
                    </td>
                    <td>{{ $sEvent['text']['headline'] }}</td>
                    <td>
-                       {!! Form::submit('Edit', ['class'=>'btn btn-warning btn-xs col-md-6', 'data-toggle'=>'modal', 'data-target'=>'#edit-event']) !!}
+                        <button class="btn btn-warning btn-xs col-md-6" type="button" name="button" data-toggle="modal" data-target="#edit-event-{{$id}}">Edit</button>
 
-                       {!! Form::open(['method'=>'DELETE', 'action'=>['UserPostsController@deleteEvent', $id]]) !!}
+                       {!! Form::open(['method'=>'DELETE', 'action'=>['UserPostsController@deleteEvent', $postId, $id]]) !!}
                           {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-xs col-md-6', 'data-toggle'=>'modal', 'data-target'=>'#delete-event']) !!}
                        {!! Form::close() !!}
                    </td>
                   </tr>
 
                   <!-- Edit modal start -->
-                  <div class="modal fade" id="edit-event" role="dialog">
+                  <div class="modal fade" id="edit-event-{{$id}}" role="dialog">
                     <div class="modal-dialog">
 
                       <!-- Modal content-->
                       <div class="modal-content">
 
                         {{-- <form action="{{ url('/timeline/posts/create/update') }}" method="post"> --}}
-                        {!! Form::open(['method'=>'POST', 'action'=>['UserPostsController@updateEvent', $id]]) !!}
+                        {!! Form::open(['method'=>'POST', 'action'=>['UserPostsController@updateEvent', $postId, $id]]) !!}
 
                         {{ csrf_field() }}
 
@@ -121,9 +119,45 @@
                                     <h4>Date</h4>
                                   </div>
                                   <div class="col-md-8">
-                                    <div class="input-group date col-md-6">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" id="event_date" name="event_date" class="form-control" value="{{ $sEvent['start_date']['day'] }}-{{ $sEvent['start_date']['month'] }}-{{ $sEvent['start_date']['year'] }}">
+
+                                    <div class="row">
+
+                                      <div class="col-md-6">
+                                        <div class="dropdown">
+                                          <div class="form-group">
+                                               <select autocomplete="off" class="form-control" id="selectDateDisplay" name="selectDateDisplay" onchange="selectCheck(this);">
+                                                 <option value="">Select Date Display</option>
+                                                 <option id="yOption" value="y" {{ empty($sEvent['start_date']['month']) ? 'selected' : '' }}>Year only</option>
+                                                 <option id="ymOption" value="ym" {{ (empty($sEvent['start_date']['day']) and !empty($sEvent['start_date']['month'])) ? 'selected' : '' }}>Month and Year</option>
+                                                 <option id="ymdOption" value="ymd" {{ !empty($sEvent['start_date']['day']) ? 'selected' : '' }}>Day, Month and Year</option>
+                                               </select>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-md-6">
+                                        <div class="input-group yDate yDivCheck {{ empty($sEvent['start_date']['month']) ? '' : 'hidden' }}">
+                                            <span class="input-group-addon">
+                                              <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" name="event_year" class="form-control event_year" value="{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}" placeholder="yyyy">
+                                        </div>
+                                        <div class="input-group ymDate ymDivCheck {{ (empty($sEvent['start_date']['day']) and !empty($sEvent['start_date']['month'])) ? '' : 'hidden' }}">
+                                            <span class="input-group-addon">
+                                              <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text"  name="event_year_month" class="form-control event_year_month" value="{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="mm-yyyy">
+                                        </div>
+                                        <div  class="input-group ymdDate ymdDivCheck {{ !empty($sEvent['start_date']['day']) ? '' : 'hidden' }}">
+                                            <span class="input-group-addon">
+                                              <i class="glyphicon glyphicon-calendar"></i>
+                                            </span>
+                                            <input type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-'.$sEvent['start_date']['month'].'-'.$sEvent['start_date']['year'] }}" placeholder="dd-mm-yyyy">
+                                        </div>
+                                      </div>
+
                                     </div>
+
                                   </div>
                               </div>
 
@@ -137,12 +171,12 @@
                                   <div class="col-md-8">
                                     <div class="form-group">
                                       <label for="event_title">Event Title:</label>
-                                      <input type="text" class="form-control" id="event_title" name="event_title" value="{{ $sEvent['text']['headline'] }}">
+                                      <input type="text" class="form-control" id="event_title" name="event_title" value="{{ $sEvent['text']['headline'] or '' }}">
                                     </div>
 
                                     <div class="form-group">
                                       <label for="event_description">Event Description:</label>
-                                      <input type="text" class="form-control" id="event_description" name="event_description" value="{{ $sEvent['text']['text'] }}">
+                                      <input type="text" class="form-control" id="event_description" name="event_description" value="{{ $sEvent['text']['text'] or '' }}">
                                     </div>
                                   </div>
                               </div>
@@ -157,17 +191,17 @@
                                     <div class="form-group">
                                       <div class="form-group">
                                         <label for="event_media_url">URL:</label>
-                                        <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="Type Image URL, YouTube Link or Twitter Link" value="{{ $sEvent['media']['url'] }}">
+                                        <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="Type Image URL, YouTube Link or Twitter Link" value="{{ $sEvent['media']['url'] or '' }}">
                                       </div>
 
                                       <div class="form-group">
                                         <label for="event_media_caption">Caption:</label>
-                                        <input type="text" class="form-control" id="event_media_caption" name="event_media_caption" value="{{ $sEvent['media']['caption'] }}">
+                                        <input type="text" class="form-control" id="event_media_caption" name="event_media_caption" value="{{ $sEvent['media']['caption'] or '' }}">
                                       </div>
 
                                       <div class="form-group">
                                         <label for="event_media_credit">Credit:</label>
-                                        <input type="text" class="form-control" id="event_media_credit" name="event_media_credit" value="{{ $sEvent['media']['credit'] }}">
+                                        <input type="text" class="form-control" id="event_media_credit" name="event_media_credit" value="{{ $sEvent['media']['credit'] or '' }}">
                                       </div>
                                     </div>
                                   </div>
@@ -177,7 +211,7 @@
 
                         <div class="modal-footer">
                           <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Edit Event</button>
                         </div>
 
                         {{-- </form> --}}
@@ -207,7 +241,7 @@
         <!-- Modal content-->
         <div class="modal-content">
 
-          <form action="{{ url('/timeline/posts/create/add') }}" method="post">
+          <form action="{{ route('addEvent', $postId) }}" method="post">
 
           {{ csrf_field() }}
 
@@ -223,9 +257,36 @@
                       <h4>Date</h4>
                     </div>
                     <div class="col-md-8">
-                      <div class="input-group date col-md-6">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" id="event_date" name="event_date" class="form-control" value="{{ old("event_date") }}">
+
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <div class="dropdown">
+                            <div class="form-group">
+                                 <select autocomplete="off" class="form-control" id="selectDateDisplay" name="selectDateDisplay" onchange="selectCheck(this);">
+                                   <option value="" selected="selected">Select Date Display</option>
+                                   <option id="yOption" value="y">Year only</option>
+                                   <option id="ymOption" value="ym">Month and Year</option>
+                                   <option id="ymdOption" value="ymd">Day, Month and Year</option>
+                                 </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="input-group yDate hidden yDivCheck">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year" class="form-control event_year" value="{{ old("event_date") }}" placeholder="yyyy">
+                          </div>
+                          <div class="input-group ymDate hidden ymDivCheck">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year_month" class="form-control event_year_month" value="{{ old("event_date") }}" placeholder="mm-yyyy">
+                          </div>
+                          <div class="input-group ymdDate hidden ymdDivCheck">
+                              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" name="event_year_month_date" class="form-control event_year_month_date" value="{{ old("event_date") }}" placeholder="dd-mm-yyyy">
+                          </div>
+                        </div>
+
                       </div>
+
                     </div>
                 </div>
 
@@ -293,40 +354,79 @@
 
     @include('includes.form_error')
 
-    {!! Form::open(['method'=>'POST', 'action'=>'UserPostsController@store', 'files'=>true]) !!}
+    @if (request()->route()->getAction()['as'] == 'auth.timeline.edit')
+      {!! Form::model($post, ['method'=>'PATCH', 'action'=>['UserPostsController@update', $post->id], 'files'=>true]) !!}
 
-    <div class="col-md-4">
-      <div class="well">
-        <div class="form-group">
-              {!! Form::label('title', 'Title:') !!}
-              {!! Form::text('title', null, ['class'=>'form-control'])!!}
-        </div>
-
-         <div class="form-group">
-             {!! Form::label('category_id', 'Category:') !!}
-             {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control']) !!}
-         </div>
-
-         <div class="form-group">
-             {!! Form::label('photo_id', 'Photo:') !!}
-             <label class="btn btn-default btn-file btn-block">
-               {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
-             </label>
-          </div>
-
-         <div class="form-group">
-             {!! Form::label('description', 'Description:') !!}
-             {!! Form::textarea('description', null, ['class'=>'form-control', 'rows'=>2])!!}
-         </div>
-
+      <div class="col-md-4">
+        <div class="well">
           <div class="form-group">
-             {!! Form::submit('Create Timeline', ['class'=>'btn btn-success btn-lg']) !!}
+                {!! Form::label('title', 'Title:') !!}
+                {!! Form::text('title', null, ['class'=>'form-control', 'value'=>'{{ $post->title }}'])!!}
           </div>
 
-      </div>
-    </div>
+           <div class="form-group">
+               {!! Form::label('category_id', 'Category:') !!}
+               {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control', 'value'=>'{{ $post->category->name }}']) !!}
+           </div>
 
-    {!! Form::close() !!}
+           <div class="form-group">
+               {!! Form::label('photo_id', 'Photo:') !!}
+               <label class="btn btn-default btn-file btn-block">
+                 {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
+               </label>
+            </div>
+
+           <div class="form-group">
+               {!! Form::label('description', 'Description:') !!}
+               {!! Form::textarea('description', null, ['class'=>'form-control', 'value'=>'{{ $post->description }}', 'rows'=>2])!!}
+           </div>
+
+            <div class="form-group">
+               {!! Form::submit('Edit Timeline', ['class'=>'btn btn-primary btn-lg']) !!}
+            </div>
+
+        </div>
+      </div>
+
+      {!! Form::close() !!}
+    @else
+      {!! Form::open(['method'=>'POST', 'action'=>['UserPostsController@store', $postId], 'files'=>true]) !!}
+
+      <div class="col-md-4">
+        <div class="well">
+          <div class="form-group">
+                {!! Form::label('title', 'Title:') !!}
+                {!! Form::text('title', null, ['class'=>'form-control'])!!}
+          </div>
+
+           <div class="form-group">
+               {!! Form::label('category_id', 'Category:') !!}
+               {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control']) !!}
+           </div>
+
+           <div class="form-group">
+               {!! Form::label('photo_id', 'Photo:') !!}
+               <label class="btn btn-default btn-file btn-block">
+                 {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
+               </label>
+            </div>
+
+           <div class="form-group">
+               {!! Form::label('description', 'Description:') !!}
+               {!! Form::textarea('description', null, ['class'=>'form-control', 'rows'=>2])!!}
+           </div>
+
+            <div class="form-group">
+               {!! Form::submit('Create Timeline', ['class'=>'btn btn-success btn-lg']) !!}
+            </div>
+
+        </div>
+      </div>
+
+      {!! Form::close() !!}
+    @endif
+
+
 
   </div>
 </div>
@@ -338,11 +438,12 @@
     <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="//cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-
     <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+    {{-- TimelineJS3 JavaScript Settings --}}
     <script type="text/javascript">
       function make_the_json() {
-        @if(Session::has('event'))
+        @if(Session::has('event'.$postId))
           var obj = {
             "title": {
                 "media": {
@@ -356,18 +457,24 @@
                 }
             },
             "events":
-                  {!! json_encode(Session::get('event'), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+
+                  {!! json_encode(Session::get('event'.$postId), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
+
           };
           return obj;
         @endif
       }
-      var timeline_json = make_the_json(); // you write this part
-      // two arguments: the id of the Timeline container (no '#')
-      // and the JSON object or an instance of TL.TimelineConfig created from
-      // a suitable JSON object
-      window.timeline = new TL.Timeline('timeline-embed', timeline_json);
+
+      var timeline_json = make_the_json();
+
+      var additionalOptions = {
+          start_at_end: true
+      }
+
+      window.timeline = new TL.Timeline('timeline-embed', timeline_json, additionalOptions);
     </script>
 
+    {{-- DateTables JavaScript Settings --}}
     <script>
       $(document).ready(function(){
         $('#eventTable').DataTable({
@@ -382,11 +489,49 @@
       });
     </script>
 
+    {{-- bootstrap-datepicker JavaScript Settings --}}
     <script>
 
-      $('.input-group.date').datepicker({
-          endDate: "+0d",
+      $('.event_year').datepicker({
+          endDate: "+100d",
+          format: "yyyy",
+          viewMode: "years",
+          minViewMode: "years",
+      });
+      $('.event_year_month').datepicker({
+          endDate: "+100d",
+          format: "mm-yyyy",
+          startView: "months",
+          minViewMode: "months",
+      });
+      $('.event_year_month_date').datepicker({
+          endDate: "+100d",
           format: "dd-mm-yyyy"
       });
+
+      function selectCheck(nameSelect)
+      {
+          if(nameSelect){
+              yValue = document.getElementById("yOption").value;
+              ymValue = document.getElementById("ymOption").value;
+              ymdValue = document.getElementById("ymdOption").value;
+
+              if(yValue == nameSelect.value){
+                  $('.yDivCheck').removeClass('hidden');
+                  $('.ymDivCheck').addClass('hidden');
+                  $('.ymdDivCheck').addClass('hidden');
+              }
+              else if(ymValue == nameSelect.value){
+                  $('.yDivCheck').addClass('hidden');
+                  $('.ymDivCheck').removeClass('hidden');
+                  $('.ymdDivCheck').addClass('hidden');
+              }
+              else if(ymdValue == nameSelect.value){
+                  $('.yDivCheck').addClass('hidden');
+                  $('.ymDivCheck').addClass('hidden');
+                  $('.ymdDivCheck').removeClass('hidden');
+              }
+          }
+      }
     </script>
 @stop

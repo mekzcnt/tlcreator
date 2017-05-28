@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Event Timeline Creation System</a>
+      <strong><a class="navbar-brand" href="/">Event Timeline Creation System</a></strong>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <!-- <form class="navbar-form navbar-right">
@@ -27,7 +27,7 @@
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/register') }}">Register</a></li>
         @else
-            <li><a href="{{ route('auth.timeline.create') }}"><button type="button" class="btn btn-warning">Create Timeline</button></a></li>
+            <li><a href="{{ route('auth.timeline.create') }}"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Create Timeline</button></a></li>
             <li><a href="{{ url('/feed') }}">Timeline Feed</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
