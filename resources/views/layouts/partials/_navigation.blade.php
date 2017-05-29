@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <strong><a class="navbar-brand" href="/">Event Timeline Creation System</a></strong>
+      <strong><a class="navbar-brand" href="/">Event Timeline Creation Sys.</a></strong>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <!-- <form class="navbar-form navbar-right">

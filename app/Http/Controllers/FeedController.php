@@ -31,10 +31,10 @@ class FeedController extends Controller
     {
         $categories = Category::orderBy('id', 'desc')->get();
         $lastestPosts = Post::take(4)->orderBy('id', 'desc')->get();
-        $recommend_1 = Post::where('id','=',115)->first();
-        $recommend_2 = Post::where('id','=',51)->first();
-        $recommend_3 = Post::where('id','=',22)->first();
-        $recommend_4 = Post::where('id','=',11)->first();
+        $recommend_1 = Post::where('id','=',7)->first();
+        $recommend_2 = Post::where('id','=',16)->first();
+        $recommend_3 = Post::where('id','=',23)->first();
+        $recommend_4 = Post::where('id','=',24)->first();
         return view('auth.feed',
           compact('categories', 'lastestPosts', 'recommend_1', 'recommend_2', 'recommend_3', 'recommend_4'));
     }

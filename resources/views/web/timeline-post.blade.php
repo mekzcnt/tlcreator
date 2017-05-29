@@ -41,7 +41,7 @@
     {{-- <hr> --}}
     <div class="panel panel-default">
       <div class="panel-body">
-        <div id="timeline-embed" style="height: 700px"></div>
+        <div id="timeline-embed" style="height: 600px"></div>
       </div>
     </div>
 
@@ -82,8 +82,8 @@
         <p><strong>Description :</strong></p>
         <p>{{$post->description}}</p><br>
 
-        <p><strong>Tag :</strong></p>
-        <p><span class="label label-default">Default</span></p>
+        {{-- <p><strong>Tag :</strong></p>
+        <p><span class="label label-default">Default</span></p> --}}
 
         <hr>
       </div>

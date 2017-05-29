@@ -33,35 +33,33 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img class="first-slide" src="{{ asset('assets/img/6-oct-2519-cover.jpg') }}" alt="First slide">
+        <img class="first-slide" src="{{ asset('uploads/1495990144whitney_houston_obit_P1.jpg') }}" alt="First slide">
         <div class="container">
           <div class="carousel-caption">
-            <h1>เหตุการณ์ 6 ตุลาคม 2519</h1>
+            <h1>Whitney Houston Timeline<br>(1963 - 2012)</h1>
             {{-- <p>ย้อนดูเหตุการณ์ล้อมปราบนักศึกษา ประชาชน อันน่าสลดใจที่สุดของเมืองไทย</p> --}}
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">อ่านต่อ</a></p>
+            <p><a class="btn btn-lg btn-primary" href="{{ url('timeline/16') }}" role="button">View more...</a></p>
           </div>
         </div>
       </div>
-      <div class="item">
+      {{-- <div class="item">
         <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
         <div class="container">
           <div class="carousel-caption">
             <h1>Another example headline.</h1>
-            {{-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> --}}
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
           </div>
         </div>
-      </div>
-      <div class="item">
+      </div> --}}
+      {{-- <div class="item">
         <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
         <div class="container">
           <div class="carousel-caption">
             <h1>One more for good measure.</h1>
-            {{-- <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> --}}
             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
