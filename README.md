@@ -5,7 +5,7 @@ Backend system is powered by Laravel 5.4 and MySQL 5.7.6+ (The reason for these 
 
 # How to install
 1. Install LAMP 
-- Linux (I'm using Ubuntu 14.04)
+- Linux (I'm using Ubuntu 16.04)
 - Apache 2.0+
 - MySQL 5.7.6+
 - PHP 7+
