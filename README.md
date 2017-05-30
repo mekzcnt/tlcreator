@@ -1,5 +1,7 @@
 # Timeline Creator
-This project present system for create timeline for describe news, events and histories. When you created it show on your browsers that timeline was displayed by TimelineJS JavaScript Library.
+This project present system for create timeline for describe news, events and histories. When you created it, you can view it on your browsers that timeline was displayed by TimelineJS JavaScript Library. 
+
+And can embed your timeline on your websites or your blogs too!
 
 Backend system is powered by Laravel 5.4 and MySQL 5.7.6+ (The reason for these MySQL versions because they support JSON field type which uses with TimelineJS) 
 
