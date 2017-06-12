@@ -28,8 +28,8 @@
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+      {{-- <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li> --}}
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="item active">
@@ -109,7 +109,7 @@
 @endsection
 
 @section('content')
-<div class="container marketing">
+<div class="marketing">
 
 
     <!-- <hr class="featurette-divider"> -->
@@ -138,6 +138,33 @@
 
     <hr class="featurette-divider">
 
+    <div class="row">
+      <div class="col-md-12">
+
+          <h1>Timeline ล่าสุดในระบบ <small></small></h1>
+
+      </div>
+    </div>
+
+    <div class="row equal-height">
+        @if(count($posts) > 0)
+            @foreach($posts as $post)
+            <div class="col-md-3 col-sm-6 hero-feature">
+              <div class="thumbnail">
+                <img src="{{$post->photo->file}}" alt="{{$post->title}}">
+                <div class="caption">
+                  <h3><a title="{{ $post->title }}" href="{{route('feed.timeline', $post->id)}}">{{str_limit($post->title, 40)}}</a></h3>
+                  <p>{{str_limit($post->description, 60)}}</p>
+                  <p><a title="{{ $post->title }}" href="{{route('feed.timeline', $post->id)}}" class="btn btn-default">More Info</a></p>
+                </div>
+              </div>
+            </div>
+            @endforeach
+        @endif
+    </div>
+
+    <hr class="featurette-divider">
+
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">ได้ไทม์ไลน์ไว้แชร์<span class="text-muted">บนออนไลน์</span></h2>
@@ -150,9 +177,31 @@
 
     <hr class="featurette-divider">
 
+    <div class="row">
+      <div class="col-md-12">
+          <h1>ตัวอย่างการแสดงผลไทม์ไลน์<small>โดยใช้ Embed Code</small></h1>
+          <iframe width="100%" height="600px" frameborder="0" style="border: 0" src="http://103.253.146.81/timeline/24/embed"></iframe>
+      </div>
+    </div>
+
     <!-- /END THE FEATURETTES -->
 
   </div><!-- /.container -->
+
+
+  <div class="row">
+    <div class="col-md-12">
+      @if(count($categories) > 0)
+          @foreach($categories as $category)
+              <div class="page-header">
+                <h1>{{$category->name}} <a href="{{ url('/category', $category->id)}}" class="pull-right"><small>View All &raquo;</small></a></h1>
+              </div>
+          @endforeach
+      @endif
+    </div>
+  </div>
+
+
 
 
 @endsection

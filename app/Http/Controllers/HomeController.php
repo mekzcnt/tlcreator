@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
-class FeedController extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,7 +19,7 @@ class FeedController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('web');
     }
 
     /**
@@ -29,10 +29,9 @@ class FeedController extends Controller
      */
     public function index()
     {
-
         $posts = Post::take(4)->orderBy('id', 'desc')->get();
         $categories = Category::get();
 
-        return view('web.feed', compact('categories','posts'));
+        return view('pages.welcome', compact('categories','posts'));
     }
 }

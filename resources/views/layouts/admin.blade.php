@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Timeline Creator<!DOCTYPE html>
 <html lang="en">
 
 <head>

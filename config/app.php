@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Event Timeline Creation System'),
+    'name' => env('APP_NAME', 'Timeline Creator'),
 
     /*
     |--------------------------------------------------------------------------

@@ -221,8 +221,7 @@ class UserPostsController extends Controller
     public function addEvent(Request $request, $postId)
     {
       $this->validate($request, [
-          'event_title' => 'required|max:255',
-          'event_description' => 'required',
+          'event_title' => 'required|max:255'
       ]);
 
       $event = array(
@@ -239,12 +238,20 @@ class UserPostsController extends Controller
         );
 
       if($request->selectDateDisplay == 'y'){
+        $this->validate($request, [
+            'event_year' => 'required'
+        ]);
+
         $event['start_date'] = array(
             "year"    => $request->event_year
           );
       }
 
       else if($request->selectDateDisplay == 'ym'){
+        $this->validate($request, [
+            'event_year_month' => 'required'
+        ]);
+
         $day = $request->event_year_month;
         $date = explode("-", $day);
         $event_month = $date[0];
@@ -256,6 +263,10 @@ class UserPostsController extends Controller
       }
 
       else if($request->selectDateDisplay == 'ymd'){
+        $this->validate($request, [
+            'event_year_month_date' => 'required'
+        ]);
+
         $day = $request->event_year_month_date;
         $date = explode("-", $day);
         $event_day = $date[0];
@@ -269,6 +280,15 @@ class UserPostsController extends Controller
           );
       }
 
+      else {
+        $this->validate($request, [
+            'event_year' => 'required',
+            'event_year_month' => 'required',
+            'event_year_month_date' => 'required'
+        ]);
+      }
+
+
       $request->session()->push('event'.$postId, $event);
 
       return back()->with('success','Event Added successfully.');
@@ -279,6 +299,10 @@ class UserPostsController extends Controller
      */
     public function updateEvent(Request $request, $postId, $id)
      {
+         $this->validate($request, [
+             'event_title' => 'required|max:255'
+         ]);
+
          $eventUpdate = array(
            "media" => array(
                "url"     => $request->event_media_url,
@@ -323,6 +347,14 @@ class UserPostsController extends Controller
              );
          }
 
+         else {
+           $this->validate($request, [
+               'event_year' => 'required',
+               'event_year_month' => 'required',
+               'event_year_month_date' => 'required'
+           ]);
+         }
+
          $event = $request->session()->get('event'.$postId);
 
          $event[$id] = $eventUpdate;
@@ -339,7 +371,9 @@ class UserPostsController extends Controller
       {
           $event = $request->session()->get('event'.$postId);
           unset($event[$id]);
-          $request->session()->put('event'.$postId, $event);
+          $event2 = array_values($event);
+          $request->session()->put('event'.$postId, $event2);
+
 
           return back()->with('success','Events deleted successfully.');
       }

@@ -41,7 +41,9 @@
     {{-- <hr> --}}
     <div class="panel panel-default">
       <div class="panel-body">
-        <div id="timeline-embed" style="height: 600px"></div>
+        <div id="timeline-embed" style="height: 600px">
+          <div id="timeline"></div>
+        </div>
       </div>
     </div>
 
@@ -61,7 +63,7 @@
                     <a href="{{ route('post.like', $post->id) }}" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-heart-empty"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
                 @endif
               @else
-                  <a href="#" id="like-btn" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
+                  <a href="#login-first" id="like-btn" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-heart-empty"></span> Like <span class="badge"><strong>{{ $countLikes }}</strong></span></a>
               @endif
           </div>
           <div class="col-md-6 text-right">
@@ -124,7 +126,7 @@
             {!! Form::close() !!}
         </div>
         @else
-          <div class="alert alert-warning">
+          <div class="alert alert-warning" id="login-first">
             Please <a title="Login to system" href="{{ url('/login') }}">Login</a> to likes or comments.
           </div>
         @endif
@@ -157,7 +159,7 @@
                                  <div class="form-group">
                                     <input type="hidden" name="comment_id" value="{{$comment->id}}">
                                      {!! Form::label('body', 'Reply:') !!}
-                                     {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>1])!!}
+                                     {!! Form::textarea('body', null, ['class'=>'form-control','rows'=>2])!!}
                                  </div>
 
                                  <div class="form-group">

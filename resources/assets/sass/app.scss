@@ -120,6 +120,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #FFFFBF;
 }
 
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+.modal-body h4.required {
+  content:"*";
+  color:red;
+}
+
 /* CUSTOMIZE NAVBAR
 -------------------------------------------------- */
 .navbar {

@@ -64,7 +64,7 @@
           </div>
           <div class="pull-right">
             {!! Form::open(['method'=>'DELETE', 'action'=>['UserPostsController@deleteAllEvent', $postId]]) !!}
-                {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete All Events', ['class'=>'btn btn-danger']) !!}
+                {!! Form::submit('Delete All Events', ['class'=>'btn btn-danger']) !!}
             {!! Form::close() !!}
           </div>
         </div>
@@ -85,6 +85,7 @@
 
                   <tr>
                    <td>
+                      <span class="hidden">{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'] }}{{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'] }}</span>
                       {{ empty($sEvent['start_date']['day']) ? '' : $sEvent['start_date']['day'].'-' }}{{ empty($sEvent['start_date']['month']) ? '' : $sEvent['start_date']['month'].'-' }}{{ empty($sEvent['start_date']['year']) ? '' : $sEvent['start_date']['year'] }}
                    </td>
                    <td>{{ $sEvent['text']['headline'] or '' }}</td>
@@ -118,7 +119,9 @@
 
                               <div class="row">
                                   <div class="col-md-4 text-right">
-                                    <h4>Date</h4>
+                                    <div class="form-group required">
+                                      <h4><label class="control-label">Date </label></h4>
+                                    </div>
                                   </div>
                                   <div class="col-md-8">
 
@@ -171,14 +174,14 @@
                                   </div>
 
                                   <div class="col-md-8">
-                                    <div class="form-group">
-                                      <label for="event_title">Event Title:</label>
+                                    <div class="form-group required">
+                                      <label class="control-label" for="event_title">Event Title: </label>
                                       <input type="text" class="form-control" id="event_title" name="event_title" value="{{ $sEvent['text']['headline'] or '' }}">
                                     </div>
 
                                     <div class="form-group">
                                       <label for="event_description">Event Description:</label>
-                                      <input type="text" class="form-control" id="event_description" name="event_description" value="{{ $sEvent['text']['text'] or '' }}">
+                                      <textarea class="form-control" rows="4" name="event_description" id="event_description">{{ $sEvent['text']['text'] or '' }}</textarea>
                                     </div>
                                   </div>
                               </div>
@@ -193,17 +196,20 @@
                                     <div class="form-group">
                                       <div class="form-group">
                                         <label for="event_media_url">URL:</label>
-                                        <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="Type Image URL, YouTube Link or Twitter Link" value="{{ $sEvent['media']['url'] or '' }}">
+                                        <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="" value="{{ $sEvent['media']['url'] or '' }}">
+                                        <span id="helpBlock" class="help-block">Type Image URL, YouTube Link or Twitter Link</span>
                                       </div>
 
                                       <div class="form-group">
                                         <label for="event_media_caption">Caption:</label>
-                                        <input type="text" class="form-control" id="event_media_caption" name="event_media_caption" value="{{ $sEvent['media']['caption'] or '' }}">
+                                        <textarea class="form-control" rows="3" name="event_media_caption" id="event_media_caption">{{ $sEvent['media']['caption'] or '' }}</textarea>
+                                        <span id="helpBlock" class="help-block">Describe a media that you put it in this event.</span>
                                       </div>
 
                                       <div class="form-group">
                                         <label for="event_media_credit">Credit:</label>
-                                        <input type="text" class="form-control" id="event_media_credit" name="event_media_credit" value="{{ $sEvent['media']['credit'] or '' }}">
+                                        <textarea class="form-control" rows="2" name="event_media_credit" id="event_media_credit">{{ $sEvent['media']['credit'] or '' }}</textarea>
+                                        <span id="helpBlock" class="help-block">Give a credit of a media.</span>
                                       </div>
                                     </div>
                                   </div>
@@ -255,9 +261,13 @@
           <div class="modal-body">
 
                 <div class="row">
+
                     <div class="col-md-4 text-right">
-                      <h4>Date</h4>
+                      <div class="form-group required">
+                        <h4><label class="control-label">Date </label></h4>
+                      </div>
                     </div>
+
                     <div class="col-md-8">
 
                       <div class="row">
@@ -300,14 +310,14 @@
                     </div>
 
                     <div class="col-md-8">
-                      <div class="form-group">
-                        <label for="event_title">Event Title:</label>
+                      <div class="form-group required">
+                        <label class="control-label" for="event_title">Event Title: </label>
                         <input type="text" class="form-control" id="event_title" name="event_title">
                       </div>
 
                       <div class="form-group">
                         <label for="event_description">Event Description:</label>
-                        <input type="text" class="form-control" id="event_description" name="event_description" rows="3">
+                        <textarea class="form-control" rows="4" name="event_description" id="event_description"></textarea>
                       </div>
                     </div>
                 </div>
@@ -322,17 +332,20 @@
                       <div class="form-group">
                         <div class="form-group">
                           <label for="event_media_url">URL:</label>
-                          <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="Type Image URL, YouTube Link or Twitter Link">
+                          <input type="text" class="form-control" id="event_media_url" name="event_media_url" placeholder="">
+                          <span id="helpBlock" class="help-block">Type Image URL, YouTube Link or Twitter Link</span>
                         </div>
 
                         <div class="form-group">
                           <label for="event_media_caption">Caption:</label>
-                          <input type="text" class="form-control" id="event_media_caption" name="event_media_caption">
+                          <textarea class="form-control" rows="3" name="event_media_caption" id="event_media_caption"></textarea>
+                          <span id="helpBlock" class="help-block">Describe a media that you put it in this event.</span>
                         </div>
 
                         <div class="form-group">
                           <label for="event_media_credit">Credit:</label>
-                          <input type="text" class="form-control" id="event_media_credit" name="event_media_credit">
+                          <textarea class="form-control" rows="2" name="event_media_credit" id="event_media_credit"></textarea>
+                          <span id="helpBlock" class="help-block">Give a credit of a media.</span>
                         </div>
                       </div>
                     </div>
@@ -359,25 +372,25 @@
 
       <div class="col-md-4">
         <div class="well">
-          <div class="form-group">
-                {!! Form::label('title', 'Title:') !!}
+          <div class="form-group required">
+                {!! Form::label('title', 'Title:', ['class'=>'control-label']) !!}
                 {!! Form::text('title', null, ['class'=>'form-control', 'value'=>'{{ $post->title }}'])!!}
           </div>
 
-           <div class="form-group">
-               {!! Form::label('category_id', 'Category:') !!}
+           <div class="form-group required">
+               {!! Form::label('category_id', 'Category:', ['class'=>'control-label']) !!}
                {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control', 'value'=>'{{ $post->category->name }}']) !!}
            </div>
 
            <div class="form-group">
-               {!! Form::label('photo_id', 'Photo:') !!}
+               {!! Form::label('photo_id', 'Photo:', ['class'=>'control-label']) !!}
                <label class="btn btn-default btn-file btn-block">
                  {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
                </label>
             </div>
 
-           <div class="form-group">
-               {!! Form::label('description', 'Description:') !!}
+           <div class="form-group required">
+               {!! Form::label('description', 'Description:', ['class'=>'control-label']) !!}
                {!! Form::textarea('description', null, ['class'=>'form-control', 'value'=>'{{ $post->description }}', 'rows'=>2])!!}
            </div>
 
@@ -394,25 +407,25 @@
 
       <div class="col-md-4">
         <div class="well">
-          <div class="form-group">
-                {!! Form::label('title', 'Title:') !!}
+          <div class="form-group required">
+                {!! Form::label('title', 'Title: ', ['class'=>'control-label']) !!}
                 {!! Form::text('title', null, ['class'=>'form-control'])!!}
           </div>
 
-           <div class="form-group">
-               {!! Form::label('category_id', 'Category:') !!}
+           <div class="form-group required">
+               {!! Form::label('category_id', 'Category: ', ['class'=>'control-label']) !!}
                {!! Form::select('category_id', [''=>'Choose Categories'] + $categories, null, ['class'=>'form-control']) !!}
            </div>
 
-           <div class="form-group">
-               {!! Form::label('photo_id', 'Photo:') !!}
+           <div class="form-group required">
+               {!! Form::label('photo_id', 'Photo: ', ['class'=>'control-label']) !!}
                <label class="btn btn-default btn-file btn-block">
                  {!! Form::file('photo_id', null, ['class'=>'form-control'])!!}
                </label>
             </div>
 
-           <div class="form-group">
-               {!! Form::label('description', 'Description:') !!}
+           <div class="form-group required">
+               {!! Form::label('description', 'Description: ', ['class'=>'control-label']) !!}
                {!! Form::textarea('description', null, ['class'=>'form-control', 'rows'=>2])!!}
            </div>
 
