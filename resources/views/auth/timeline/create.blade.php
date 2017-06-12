@@ -67,7 +67,7 @@
                 {!! Form::submit('Delete All Events', ['class'=>'btn btn-danger']) !!}
             {!! Form::close() !!}
           </div>
-        </div>
+        </div> 
 
         <table id="eventTable" class="table table-striped table-bordered">
           <thead>
